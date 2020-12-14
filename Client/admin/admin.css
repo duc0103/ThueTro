@@ -1,0 +1,41 @@
+body{
+    background-color: lightblue;
+}
+#gioithieu{
+    font-size: 50px;
+    color:lightseagreen;
+    text-shadow: 4px 2px 4px;
+}
+#dndk{
+    position: fixed;
+    top: 10px;
+    right: 30px;
+    display: flex;
+    width: auto;
+    height: 50px;
+}
+#dn{
+    flex:1;
+    width: 120px;
+    text-align: center;
+    margin: 10px;
+}
+#dk{
+    flex:1;
+    width: 120px;
+    text-align: center;
+    margin: 10px;
+}
+#content{
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    height: 500px;
+    margin:inherit;
+    margin-left: auto;
+    margin-right: auto;
+}
+#content button{
+    height: 100px;
+    margin: 20px;
+}
