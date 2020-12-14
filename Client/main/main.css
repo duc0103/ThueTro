@@ -1,0 +1,69 @@
+    #container {
+        position: sticky;
+        top: 0px;
+        background-color: seashell;
+        border: solid 1px steelblue;
+        border-radius: 10px;
+        margin-top: 0px;
+        margin: auto;
+        width: 1000px;
+    }
+    
+    #gioithieu {
+        position: relative;
+        font-size: 30px;
+        color: brown;
+    }
+    
+    .dangnhap {
+        border: 1px solid black;
+        background-color: lightblue;
+        border-radius: 8px;
+        text-decoration: none;
+        padding: 5px;
+        right: 100px;
+        position: absolute;
+    }
+    
+    .dangtin {
+        border: 1px solid black;
+        background-color: lightblue;
+        border-radius: 8px;
+        text-decoration: none;
+        padding: 5px;
+        right: 10px;
+        position: absolute;
+    }
+    
+    .dangki {
+        background-color: burlywood;
+        border: solid 2px red;
+    }
+    
+    #timkiem input {
+        border: solid 1px black;
+        border-radius: 5px;
+        padding: 5px;
+        margin-left: 200px;
+        width: 60%;
+        background-color: ghostwhite;
+        color: black;
+    }
+    
+    .timkiem1 {
+        display: flex;
+        justify-content: center;
+        position: sticky;
+        top: 0px;
+        padding: 10px;
+    }
+    
+    .timkiem2 {
+        border: solid 1px black;
+        border-radius: 5px;
+        padding: 5px;
+        margin: 5px;
+        background-color: lavender;
+        color: teal;
+        cursor: pointer;
+    }
