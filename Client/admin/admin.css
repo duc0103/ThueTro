@@ -1,5 +1,7 @@
 body{
     background-color: lightblue;
+    width: 100%;
+    margin: auto;
 }
 #gioithieu{
     font-size: 50px;
@@ -29,8 +31,8 @@ body{
 #content{
     display: flex;
     flex-direction: column;
-    width: auto;
-    height: 500px;
+    width: 100%;
+    height: 100%px;
     margin:inherit;
     margin-left: auto;
     margin-right: auto;
@@ -38,4 +40,70 @@ body{
 #content button{
     height: 100px;
     margin: 20px;
+}
+.htdn{
+    position:fixed;
+    background-color:lavenderblush;
+    width:100%;
+    height:100%;
+    overflow: auto;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+.htdn1{
+    position: absolute;
+    display:none;
+    z-index:2;
+    width: 50%;
+    height: 50%;
+    background-color: aqua;
+    top: 100px;
+    left: 350px;
+    border: solid 3px cadetblue;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.htdn1>div{
+    text-align: center;
+    padding: 20px;
+}
+.htdn1>div>div{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}
+input{
+    width: 300px;
+    height: 30px;
+    border: solid 2px teal;
+    border-radius: 5px;
+}
+#thoat{
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+#tt1{
+    font-size: 50px;
+    color:lightseagreen;
+    text-shadow: 2px 2px 4px;
+}
+#nutdn{
+    width: 120px;
+    height: 30px;
+    border: solid 2px teal;
+    border-radius: 5px;
+}
+button{
+    cursor: pointer;
+}
+#thoat{
+    width: 40px;
+    height: 30px;
+}
+#thoat:hover{
+    background-color: red;
+    color: white;
 }
