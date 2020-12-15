@@ -31,6 +31,7 @@ body{
 }
 #content{
     display: flex;
+    flex:1;
     flex-direction: column;
     width: 100%;
     height: 100%px;
@@ -107,4 +108,20 @@ button{
 #thoat:hover{
     background-color: red;
     color: white;
+}
+#khung{
+    display: flex;
+}
+#htContent1, #htContent2, #htContent3, #htContent4{
+    position: relative;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+    flex:5;
+    margin: 20px;
+    display: none;
+}
+.thoat1{
+    position: absolute;
+    top: 0px;
+    right: 0px;
 }
