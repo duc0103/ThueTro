@@ -4,6 +4,7 @@ body{
     margin: auto;
 }
 #gioithieu{
+    margin-left: 20px;
     font-size: 50px;
     color:lightseagreen;
     text-shadow: 4px 2px 4px;
