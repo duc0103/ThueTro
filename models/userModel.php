@@ -11,9 +11,9 @@ class User {
 	// Xác thực username/password
 	// return true/false + họ tên người dùng đăng nhập thành công 
     public function checkAccount($u, $p) {
-        $data = $this->db->doQuery("select * from admin where user = '$u' and pass = '$p';");
+        $data = $this->db->doQuery("select * from User where user = '$u' and pass = '$p';");
      	// Thành công
-        if (count($data) > 0) return [true, $data[0]["name"]];
+        if (count($data) > 0) return [true, $data[0]];
         // // không thành công
         return [false, ""];
     }
@@ -30,7 +30,7 @@ class User {
         return $ret;
     }
     public function getAll(){
-        $data = $this->db->doQuery ("select * from admin ");
+        $data = $this->db->doQuery ("select * from User ");
         return $data;
 
     }

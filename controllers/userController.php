@@ -13,7 +13,7 @@ class UserController {
 	public function hasLogged() {
 		$ret = 0;
     	if (isset($_SESSION["user"])) $ret = 1;
-		return array("status" => "OK", "data" => [$ret, $_SESSION["user"], $_SESSION["name"]]);
+		return array("status" => "OK", "data" => [$ret, $_SESSION["user"], $_SESSION["name"],$_SESSION["per"]]);
 	}
 	//
 	//
@@ -31,11 +31,12 @@ class UserController {
 				$input["loginSubmitted"] == "1")
 			{
 				$user = new \models\User();
-                $auth = $user->checkAccount($input["user"], $input["pass"]);
+				$auth = $user->checkAccount($input["user"], $input["pass"]);
 				if ($auth[0]) {
 					// Thiết lập dữ liệu phiên
 				    $_SESSION["user"] = $input["user"];
-					$_SESSION["name"] = $auth[1];
+					$_SESSION["name"] = $auth[1]["name"];
+					$_SESSION["per"]=$auth[1]["per"];
 					$ret = 1;
 				}
 			}
