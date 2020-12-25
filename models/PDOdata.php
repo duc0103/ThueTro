@@ -6,11 +6,10 @@
 		private $db = null; 
 		public function __construct() {
 			try {
-				$this->db = new PDO("mysql:host=localhost;dbname=qldt;", "root", "");
+				$this->db = new PDO("mysql:host=localhost;dbname=accommodations;", "root", "");
 			} catch(PDOException $ex) { echo $ex->getMessage();	}
 		}
-		
-		
+
 		/**
 		* Ham huy
 		*/

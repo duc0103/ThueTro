@@ -1,0 +1,77 @@
+<!DOCTYPE html><html><head>
+	<title>Quản lý sinh viên</title>
+	<meta charset="utf-8">
+
+</head><body>
+	<div class="container">
+		<div class="panel panel-edit">
+			<h1>Đăng nhập</h1>
+			<div class="row">
+				<label>Tên sử dụng: </label>
+				<input type="text" class="tsd"/> 
+			</div>
+			<div class="row">
+				<label>Mật khẩu:</label>
+				<input type="password" class="mk" />
+			</div>
+			<div class="row nodisplay err-submit">
+				<label>&nbsp;</label>
+				<span class="err err-submit">Tên đăng nhập hoặc mật khẩu không đúng.</span>
+			</div>
+			<div class="row">
+				<label>&nbsp;</label>
+				<button class="submit">Đăng nhập</button>
+			</div>
+		</div>
+ 	</div>
+	<script>
+		//
+		//
+		// Nếu người dùng đã đăng nhập trước đây rồi 
+		// thì chuyển ngay và "Trang chủ"
+		fetch("../../index.php/logged")
+		.then(resp => {
+			if (resp.status == 200) {
+				resp.json()
+				.then(ret => {
+					if (ret.status == "OK") {
+						if (ret.data[0] == 1) {
+							document.location.href = "../main/index.htm";
+						}
+					}
+				}); 
+			}
+		});
+		//
+		//
+		// Người dùng bấm nút "Đăng nhập"
+		document.querySelector("button.submit").onclick = function() {
+			fetch("../../index.php/login", {
+				method: "POST",
+				headers: {"Content-Type": "application/json"},
+				body: '{"user":"' + document.querySelector("input.tsd").value + 
+					'","pass":"' + document.querySelector("input.mk").value + '", "loginSubmitted":"1"}'
+			})
+			.then(resp => {
+				if (resp.status == 200) {
+					resp.json()
+					.then(ret => {
+						if (ret.status == "OK") {
+							if (ret.data == 1) {
+								// Đăng nhập thành công
+								document.location.href = "../main/index.htm";
+							}
+							else {
+								// Sai tên đăng nhập hoặc mật khẩu
+								document.querySelector("div.err-submit").classList.remove("nodisplay");
+							}
+						} else {
+						}
+					});
+				} else {
+					// Xử lý lỗi HTTP
+				}
+			});
+		}
+	</script>
+</body></html>

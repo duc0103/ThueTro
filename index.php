@@ -1,6 +1,6 @@
 <?php
 	namespace core\control;
-    require_once("Core/Router.php");
+    require_once("Controllers/Router.php");
 
     //Bộ điều khiển mặt trước
     class FrontController {
@@ -10,10 +10,10 @@
             //Định tuyến
             $ret = Router::proc();
             //Bao hàm tệp cài đặt lớp điều khiển
-            $filename = "/controllers/".ucfirst($ret["controllerName"])."Controller.php";   
+            $filename = "controllers/".ucfirst($ret["controllerName"])."Controller.php"; 
             require_once($filename);
             //Khai báo đối tượng lớp điều khiển
-            $controllerName = "\\controllers\\".ucfirst($ret["controllerName"])."Controller";  
+            $controllerName = "controllers\\".ucfirst($ret["controllerName"])."Controller";  
             $controller = new $controllerName();
 			//Kiểm tra phương thức có tồn tại hay không và thực thi 
 			//trả kết quả cho frontend
