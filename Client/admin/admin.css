@@ -34,7 +34,7 @@ body{
     flex:1;
     flex-direction: column;
     width: 100%;
-    height: 100%px;
+    height: 600px;
     margin:inherit;
     margin-left: auto;
     margin-right: auto;
@@ -112,7 +112,7 @@ button{
 #khung{
     display: flex;
 }
-#htContent1, #htContent2, #htContent3, #htContent4{
+#htContent1, #htContent2, #htContent3, #htContent4,#htContent5{
     position: relative;
     border: solid 2px steelblue;
     border-radius: 5px;

@@ -9,10 +9,12 @@ let qltk = document.getElementById("qltk");
 let qlbd = document.getElementById("qlbd");
 let tb = document.getElementById("tb");
 let tkpt = document.getElementById("tkpt");
+let chat = document.getElementById("chat");
 let htContent1 = document.getElementById("htContent1");
 let htContent2 = document.getElementById("htContent2");
 let htContent3 = document.getElementById("htContent3");
 let htContent4 = document.getElementById("htContent4");
+let htContent5 = document.getElementById("htContent5");
 let thoatndct = document.getElementsByClassName("thoat1");
 console.log(htdn);
 window.onload = function () {
@@ -98,31 +100,43 @@ qltk.onclick = function () {
     htContent2.style.display = "none";
     htContent3.style.display = "none";
     htContent4.style.display = "none";
+    htContent5.style.display = "none";
 }
 qlbd.onclick = function () {
     htContent2.style.display = "block";
     htContent1.style.display = "none";
     htContent3.style.display = "none";
     htContent4.style.display = "none";
+    htContent5.style.display = "none";
 }
 tb.onclick = function () {
     htContent3.style.display = "block";
     htContent1.style.display = "none";
     htContent2.style.display = "none";
     htContent4.style.display = "none";
+    htContent5.style.display = "none";
 }
 tkpt.onclick = function () {
     htContent4.style.display = "block";
     htContent1.style.display = "none";
     htContent2.style.display = "none";
     htContent3.style.display = "none";
+    htContent5.style.display = "none";
 }
-for (let i = 0; i <= 3; i++) {
+chat.onclick = function () {
+    htContent5.style.display = "block";
+    htContent1.style.display = "none";
+    htContent2.style.display = "none";
+    htContent3.style.display = "none";
+    htContent4.style.display = "none";
+}
+for (let i = 0; i <= 4; i++) {
     thoatndct[i].onclick = function () {
         htContent1.style.display = "none";
         htContent2.style.display = "none";
         htContent3.style.display = "none";
         htContent4.style.display = "none";
+        htContent5.style.display = "none";
     }
 }
 function createDisplayUser(userName, per){
