@@ -1,5 +1,5 @@
 let dn = document.getElementById("dn");
-let dn = document.getElementById("dx");
+let dx = document.getElementById("dx");
 let htdn = document.getElementsByClassName("htdn")[0];
 let htdn1 = document.getElementsByClassName("htdn1")[0];
 let thoat = document.getElementById("thoat");

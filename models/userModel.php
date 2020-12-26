@@ -34,8 +34,14 @@ class User {
         return $data;
 
     }
-    // public function addUserRender($user,$pass,$email,$name){
-    //     $data=$this->db->doQuery("INSERT INTO user (user, pass, email, name)
-    //     VALUES ('Trinh Giao Kim',"Nam","44","Bac Lieu");")
-    // }
+    public function addUserRender($user,$pass,$email,$name){
+        $data=$this->db->doQuery("
+        INSERT INTO user (user, pass, email, name)
+        VALUES ('$user','$pass','$email','$name');");
+        if($data->execute()){
+            return true;
+        }
+        return false;
+        
+    }
 }   

@@ -52,6 +52,20 @@ class UserController {
 		return array("status" => "OK", "data" => 1);
    }
    public function registerRender(){
-
+	$ret = 0; 
+	
+		$input = json_decode(file_get_contents("php://input"), true);
+		if (isset($input["user"]) && 
+			isset($input["pass"]) && 
+			isset($input["email"]) && 
+			isset($input["name"] ))
+		{
+			$user = new User();
+			$authAdd = $user->addUserRender($input["user"], $input["pass"],$input["email"],$input["name"]);
+			if ($authAdd) {
+				$ret = 1;
+			}
+		}
+	return array("status" => "OK", "data" => $ret);
    }
 }

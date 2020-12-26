@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 24, 2020 lúc 05:19 AM
+-- Thời gian đã tạo: Th12 26, 2020 lúc 06:39 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.4.10
 
@@ -20,29 +20,6 @@ SET time_zone = "+00:00";
 --
 -- Cơ sở dữ liệu: `accommodations`
 --
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `admin`
---
-
-CREATE TABLE `admin` (
-  `code_id` int(11) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `phoneNumber` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `admin`
---
-
-INSERT INTO `admin` (`code_id`, `pass`, `address`, `email`, `status`, `phoneNumber`, `name`) VALUES
-(18020352, '', 'Cầu Giấy -Hà Nội', 'Leducdhcn@gmail.com', 1, '0986459532', 'Lê Văn Đức');
 
 -- --------------------------------------------------------
 
@@ -11514,48 +11491,8 @@ INSERT INTO `devvn_xaphuongthitran` (`xaid`, `name`, `type`, `maqh`) VALUES
 --
 
 CREATE TABLE `image` (
-  `id` int(11) NOT NULL,
   `room_id` int(11) NOT NULL,
   `url_image` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `owners`
---
-
-CREATE TABLE `owners` (
-  `code_id` int(11) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `address` varchar(255) NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `email` varchar(255) NOT NULL,
-  `phoneNumber` varchar(255) NOT NULL,
-  `name` varchar(255) NOT NULL
-) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
-
---
--- Đang đổ dữ liệu cho bảng `owners`
---
-
-INSERT INTO `owners` (`code_id`, `pass`, `address`, `status`, `email`, `phoneNumber`, `name`) VALUES
-(1802225, '123456', 'Cầu Giấy-Hà Nội', 2, 'donvuvan@gmail.com', '0326654448', 'Vũ Văn Đông'),
-(18020352, '123456', 'Cầu giấy -Hà nội', 2, 'leducdhcn@gmail.com', '0986459532', 'Lê Văn Đức');
-
--- --------------------------------------------------------
-
---
--- Cấu trúc bảng cho bảng `renters`
---
-
-CREATE TABLE `renters` (
-  `id` int(11) NOT NULL,
-  `name` varchar(255) NOT NULL,
-  `pass` varchar(255) NOT NULL,
-  `phoneNumber` varchar(255) NOT NULL,
-  `status` tinyint(4) NOT NULL,
-  `email` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 -- --------------------------------------------------------
@@ -11565,38 +11502,76 @@ CREATE TABLE `renters` (
 --
 
 CREATE TABLE `room_for_rent` (
-  `id` int(11) NOT NULL,
+  `room_id` int(11) NOT NULL,
   `owners_Id` int(11) NOT NULL,
   `room_area` int(11) NOT NULL,
   `address` varchar(255) NOT NULL,
-  `rental_costs` int(11) NOT NULL,
-  `room_type` varchar(255) NOT NULL,
-  `near_location` varchar(255) NOT NULL,
-  `general_owner` varchar(255) NOT NULL,
-  `date_submitted` date NOT NULL,
-  `date_expiration` date NOT NULL,
-  `bathroom` varchar(255) NOT NULL,
-  `kitchen` varchar(255) NOT NULL,
-  `isBalcony` tinyint(1) NOT NULL,
-  `other_utility` text NOT NULL
+  `gia_thue` int(11) NOT NULL,
+  `loai_phong` varchar(255) NOT NULL,
+  `dia_diem_gan` varchar(255) NOT NULL,
+  `chung_chu` tinyint(1) NOT NULL,
+  `ngay_dang` date DEFAULT NULL,
+  `ngay_het_han` date NOT NULL,
+  `phong_tam` varchar(255) NOT NULL,
+  `phong_bep` varchar(255) NOT NULL,
+  `ban_cong` tinyint(1) NOT NULL,
+  `mo_ta` text NOT NULL,
+  `gia_dien` int(11) NOT NULL,
+  `gia_nuoc` int(11) NOT NULL,
+  `public` tinyint(4) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `room_for_rent`
 --
 
-INSERT INTO `room_for_rent` (`id`, `owners_Id`, `room_area`, `address`, `rental_costs`, `room_type`, `near_location`, `general_owner`, `date_submitted`, `date_expiration`, `bathroom`, `kitchen`, `isBalcony`, `other_utility`) VALUES
-(1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 'Không', '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học');
+INSERT INTO `room_for_rent` (`room_id`, `owners_Id`, `room_area`, `address`, `gia_thue`, `loai_phong`, `dia_diem_gan`, `chung_chu`, `ngay_dang`, `ngay_het_han`, `phong_tam`, `phong_bep`, `ban_cong`, `mo_ta`, `gia_dien`, `gia_nuoc`, `public`) VALUES
+(1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `user`
+--
+
+CREATE TABLE `user` (
+  `user_id` int(11) NOT NULL,
+  `code_id` int(11) DEFAULT NULL,
+  `user` varchar(255) NOT NULL,
+  `pass` varchar(255) NOT NULL,
+  `address` varchar(255) DEFAULT NULL,
+  `status` tinyint(4) NOT NULL,
+  `email` varchar(255) NOT NULL,
+  `phoneNumber` varchar(255) DEFAULT NULL,
+  `name` varchar(255) NOT NULL,
+  `per` varchar(255) NOT NULL,
+  `online` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `user`
+--
+
+INSERT INTO `user` (`user_id`, `code_id`, `user`, `pass`, `address`, `status`, `email`, `phoneNumber`, `name`, `per`, `online`) VALUES
+(1, 18020352, 'dong', '1', 'Cầu Giấy-Hà Nội', 2, 'donvuvan@gmail.com', '0326654448', 'Vũ Văn Đông', 'owner', 0),
+(2, 180203352, 'duc', '1', 'Cầu giấy -Hà nội', 1, 'leducdhcn@gmail.com', '0986459532', 'Lê Văn Đức', 'admin', 0),
+(3, NULL, 'thue tro', '1', NULL, 0, 'vuvandong@gmail.com', NULL, 'vũ Văn Đông', 'render', 0),
+(4, NULL, 'hung', '1', NULL, 0, 'hung@gmail.com', NULL, 'hưng', 'render', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `yeu_thich`
+--
+
+CREATE TABLE `yeu_thich` (
+  `user_id` int(11) NOT NULL,
+  `rom_id` int(11) NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Chỉ mục cho các bảng đã đổ
 --
-
---
--- Chỉ mục cho bảng `admin`
---
-ALTER TABLE `admin`
-  ADD PRIMARY KEY (`code_id`);
 
 --
 -- Chỉ mục cho bảng `comments`
@@ -11623,22 +11598,16 @@ ALTER TABLE `devvn_xaphuongthitran`
   ADD PRIMARY KEY (`xaid`);
 
 --
--- Chỉ mục cho bảng `image`
---
-ALTER TABLE `image`
-  ADD PRIMARY KEY (`id`);
-
---
--- Chỉ mục cho bảng `owners`
---
-ALTER TABLE `owners`
-  ADD PRIMARY KEY (`code_id`);
-
---
 -- Chỉ mục cho bảng `room_for_rent`
 --
 ALTER TABLE `room_for_rent`
-  ADD PRIMARY KEY (`id`);
+  ADD PRIMARY KEY (`room_id`);
+
+--
+-- Chỉ mục cho bảng `user`
+--
+ALTER TABLE `user`
+  ADD PRIMARY KEY (`user_id`);
 
 --
 -- AUTO_INCREMENT cho các bảng đã đổ
@@ -11648,7 +11617,13 @@ ALTER TABLE `room_for_rent`
 -- AUTO_INCREMENT cho bảng `room_for_rent`
 --
 ALTER TABLE `room_for_rent`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+
+--
+-- AUTO_INCREMENT cho bảng `user`
+--
+ALTER TABLE `user`
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
