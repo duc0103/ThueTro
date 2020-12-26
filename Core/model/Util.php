@@ -3,13 +3,18 @@
 	class Util {
 		public function __construct() {	}
 		public function __destruct() {}
+		// kiểm tra đầu vào có phải làm emailhay ko
+		public  function emailValid($string) 
+    { 
+        if (preg_match ("/^([a-zA-Z0-9])+([a-zA-Z0-9\._-])*@([a-zA-Z0-9_-])+\.[A-Za-z]{2,6}$/", $string)) 
+			return true; 
+		return false;
+    } 
+
 		//
 		//
-		// Kiểm tra một xâu ký tự có phải là mã sinh viên hay không 
-		// Input: $s
-		// Điều kiện: Mã sinh viên có 8 chữ số
-		//            Chữ số đầu tiên khác 0
-        public static function isStdCode($s) {
+		// Kiểm tra một xâu ký tự có phải là mã 
+        public static function isCode($s) {
 			$c1 = preg_match("/^[1-9][0-9]{7}$/", $s);
 			if ($c1 == 1) return true;
 			else return false;

@@ -17,31 +17,22 @@ class User {
         // // không thành công
         return [false, ""];
     }
-	//
-	//
-	// Kiểm tra quyền truy cập
-	// Input: user, resource
-	// return Danh sách quyền 
-    public function accessRights($user, $resource) {
-        $data = $this->db->doPreparedQuery("select quyen from quyensd where tsd like ? and tainguyen like ?;", array($user, $resource));
-		$ret = array();
-		foreach ($data as $item)
-			array_push($ret, $item["quyen"]);
-        return $ret;
+        // kiểm tra xem email dăng kí đăng nhập có tồn tại
+    public function checkEmailUserExist($e,$u){
+        $data= $this->db->doQuery(" select user from User where email = '$e' or user = '$u'");
+        if (count($data) > 0) return true;
+        // // không thành công
+        return false;
     }
     public function getAllUser(){
-        $data = $this->db->doQuery ("select * from User where status=0 or status =2");
+        $data = $this->db->doQuery ("select * from User where status=0 or status = 2");
         return $data;
     }
    
     public function addUserRender($user,$pass,$email,$name){
         $data=$this->db->doQuery("
-        INSERT INTO user (user, pass, email, name)
-        VALUES ('$user','$pass','$email','$name');");
-        if($data->execute()){
-            return true;
-        }
-        return false;
-        
+        INSERT INTO user (user, pass, email, name,per)
+        VALUES ('$user','$pass','$email','$name','render');");
+        return true;
     }
 }   

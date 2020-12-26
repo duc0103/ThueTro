@@ -1,6 +1,7 @@
 <?php
 
 require_once("models/userModel.php");
+require_once("Core/model/Util.php");
 
 class UserController {
 	public function __contruct() {}
@@ -60,14 +61,18 @@ class UserController {
 		$input = json_decode(file_get_contents("php://input"), true);
 		if (isset($input["user"]) && 
 			isset($input["pass"]) && 
-			isset($input["email"]) && 
+			Util::emailValid($input["email"]) && 
 			isset($input["name"] ))
 		{
 			$user = new User();
-			$authAdd = $user->addUserRender($input["user"], $input["pass"],$input["email"],$input["name"]);
-			if ($authAdd) {
-				$ret = 1;
+			$checkuseremail=$user->checkEmailUserExist($input["email"],$input["user"]);
+			if(!$checkuseremail){
+				$authAdd = $user->addUserRender($input["user"], $input["pass"],$input["email"],$input["name"]);
+				if ($authAdd) {
+					$ret = 1;
+				}
 			}
+		
 		}
 	return array("status" => "OK", "data" => $ret);
    }

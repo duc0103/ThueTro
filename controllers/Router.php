@@ -51,6 +51,14 @@
 				$controllerName = "user";
 				$actionName = "doGetUser";
 			}
+		// post /register
+			else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+			count($commandArray) == 1 &&
+			strtolower($commandArray[0]) == strtolower("register")) 
+		{
+			$controllerName = "user";
+			$actionName = "registerRender";
+		}
 			// Trả kết quả về cho bộ điều khiển mặt trước
 			$ret["controllerName"]  = $controllerName;
 			$ret["actionName"]  = $actionName;
