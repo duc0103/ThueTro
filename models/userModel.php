@@ -29,14 +29,11 @@ class User {
 			array_push($ret, $item["quyen"]);
         return $ret;
     }
-    public function getAllUserRender(){
-        $data = $this->db->doQuery ("select * from User where status=0 ");
+    public function getAllUser(){
+        $data = $this->db->doQuery ("select * from User where status=0 or status =2");
         return $data;
     }
-    public function getAllUserOwner(){
-        $data = $this->db->doQuery ("select * from User where status = 2 ");
-        return $data;
-    }
+   
     public function addUserRender($user,$pass,$email,$name){
         $data=$this->db->doQuery("
         INSERT INTO user (user, pass, email, name)

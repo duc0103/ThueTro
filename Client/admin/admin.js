@@ -21,10 +21,10 @@ let giamsotrang = document.getElementsByClassName("giam");
 let tangsotrang = document.getElementsByClassName("tang");
 let giatritrang = document.getElementsByClassName("giatri");
 let thongtinquanli = document.getElementById("thongtinquanli");
-console.log(giatritrang[0].value);
-let chuoijson = '[{"tdn":"Dong","userName":"Dong1","email":"dong@gmail.com","sdt":"01232831","tt":"tài khoản thường"},{"tdn":"Duc","userName":"Duc1","email":"duc@gmail.com","sdt":"01483424","tt":"Admin"}]';
-let chuoi1 = JSON.parse(chuoijson);
-console.log(chuoi1[0]["tdn"]);
+
+let chuoijson = "";
+let chuoi1="";
+
 window.onload = function () {
     htdn.style.display = "none";
     htdn1.style.display = "none";
@@ -120,21 +120,36 @@ fetch("../../index.php/logged")
 }
 //Hiển thị các phần thông tin khi từng thông tin được click chuột
 qltk.onclick = function () {
-    htContent1.style.display = "block";
-    htContent2.style.display = "none";
-    htContent3.style.display = "none";
-    htContent4.style.display = "none";
-    htContent5.style.display = "none";
-    //Hiển thị thông tin các tài khoản
-    thongtinquanli.innerHTML = "";
-    let sotrang = giatritrang[0].value - 1;
-    console.log("Đây là giá trị trang");
-    console.log(giatritrang[0]);
-    for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
-        if(chuoi1[i]!=null)
-        themthongtinhienthi(i);
-    }
-    console.log(thongtinquanli);
+    fetch("../../index.php/getUser")
+        .then(resp => {
+            if (resp.status == 200) {
+                resp.json()
+                .then(ret => {
+                    if (ret.status == "ok") {
+                        chuoijson=ret.data;
+                        console.log(chuoijson);
+                        htContent1.style.display = "block";
+                        htContent2.style.display = "none";
+                        htContent3.style.display = "none";
+                        htContent4.style.display = "none";
+                        htContent5.style.display = "none";
+                        //Hiển thị thông tin các tài khoản
+                        thongtinquanli.innerHTML = "";
+                        let sotrang = giatritrang[0].value - 1;
+                        console.log("Đây là giá trị trang");
+                        console.log(giatritrang[0]);
+                        for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
+                            if(chuoi1[i]!=null)
+                            themthongtinhienthi(i);
+                        }
+                    }
+                    //  console.log(ret.status);
+                }); 
+            }
+        });
+        
+  
+    // console.log(thongtinquanli);
 }
 qlbd.onclick = function () {
     htContent2.style.display = "block";

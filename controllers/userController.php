@@ -71,25 +71,15 @@ class UserController {
 		}
 	return array("status" => "OK", "data" => $ret);
    }
-   public function doGetUserRender(){
+   public function doGetUser(){
 	   //quyen admin ms xem đc các user
 	   if(isset($_SESSION["user"]) && $_SESSION["status"]== 1 ){
 			$user = new User();
-			$data=$user->getAllUserRender();
+			$data=$user->getAllUser();
 			return array("status"=> "ok" ,"data"=> $data);
 	   }
 	   return array("status"=> "nok" ,"data"=> "ko co");
 
    }
-   public function doGetUserOwner(){
-	//quyen admin ms xem đc các user
-	if(isset($_SESSION["status"]) && $_SESSION["status"]==1 ){
-		 $user = new User();
-		 $data=$user->getAllUserOwner();
-		 return array("status"=> "ok" ,"data"=> $data);
-	}
-	return array("status"=> "nok" ,"data"=> "ACCESS-DENIED");
-
-}
    
 }
