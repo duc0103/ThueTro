@@ -1,5 +1,5 @@
 <?php
-namespace controllers;
+
 require_once("models/userModel.php");
 
 class UserController {
@@ -30,7 +30,7 @@ class UserController {
 				isset($input["loginSubmitted"]) && 
 				$input["loginSubmitted"] == "1")
 			{
-				$user = new \models\User();
+				$user = new User();
 				$auth = $user->checkAccount($input["user"], $input["pass"]);
 				if ($auth[0]) {
 					// Thiết lập dữ liệu phiên
@@ -50,5 +50,8 @@ class UserController {
 		unset($_SESSION["user"]);
 		unset($_SESSION["name"]);
 		return array("status" => "OK", "data" => 1);
+   }
+   public function registerRender(){
+
    }
 }

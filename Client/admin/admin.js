@@ -1,4 +1,5 @@
 let dn = document.getElementById("dn");
+let dn = document.getElementById("dx");
 let htdn = document.getElementsByClassName("htdn")[0];
 let htdn1 = document.getElementsByClassName("htdn1")[0];
 let thoat = document.getElementById("thoat");
@@ -48,7 +49,22 @@ thoat.onclick = function () {
     });
     //
     //
-
+    dx.onclick = function () {
+        fetch("../../index.php/logout")
+        .then(resp => {
+            if (resp.status == 200) {
+                resp.json()
+                .then(ret => {
+                    if (ret.status == "OK") {
+                        if (ret.data == 1) {
+                            dn.style.display = "block";
+                            dx.style.display="none";
+                        }
+                    }
+                }); 
+            }
+        });
+        }
     // Người dùng bấm nút "Đăng nhập"
     nutdn.onclick = function() {
         fetch("../../index.php/login", {

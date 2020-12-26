@@ -1,10 +1,10 @@
 <?php
-namespace models;
+
 require_once("models/PDOData.php");
 
 class User {
 	private $db;
-    public function __construct() { $this->db = new \core\model\PDOData();}
+    public function __construct() { $this->db = new PDOData();}
     public function __destruct() { $this->db = null;}
     //
 	//
@@ -34,4 +34,8 @@ class User {
         return $data;
 
     }
+    // public function addUserRender($user,$pass,$email,$name){
+    //     $data=$this->db->doQuery("INSERT INTO user (user, pass, email, name)
+    //     VALUES ('Trinh Giao Kim',"Nam","44","Bac Lieu");")
+    // }
 }   

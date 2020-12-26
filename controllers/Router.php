@@ -1,6 +1,5 @@
 <?php
-	// Tệp app/core/control/Router.php
-    namespace core\control;
+
     
     class Router {
 		/*
