@@ -129,7 +129,8 @@ button{
     display: flex;
 }
 #bangquanli div,#quanlibaidang div,#thongtinquanli>div>div{
-    flex: 1;
+    flex:1;
+    overflow: auto;
     text-align: center;
     border: solid 2px steelblue;
     margin-top:5px ;
@@ -142,7 +143,7 @@ button{
 }
 .qlbd1,.qltk1,.tb1,.chat1{
     display: flex;
-    flex-direction: inherit;
+    flex:1;
 }
 .qlbd1>div,.qltk1>div,.tb1>div,.chat1>div{
     flex: 1;
