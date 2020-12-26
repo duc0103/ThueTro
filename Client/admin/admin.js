@@ -127,7 +127,8 @@ qltk.onclick = function () {
                 .then(ret => {
                     if (ret.status == "ok") {
                         chuoijson=ret.data;
-                        console.log(chuoijson);
+                        chuoi1 = chuoijson;
+                        //console.log(chuoijson);
                         htContent1.style.display = "block";
                         htContent2.style.display = "none";
                         htContent3.style.display = "none";
@@ -136,8 +137,7 @@ qltk.onclick = function () {
                         //Hiển thị thông tin các tài khoản
                         thongtinquanli.innerHTML = "";
                         let sotrang = giatritrang[0].value - 1;
-                        console.log("Đây là giá trị trang");
-                        console.log(giatritrang[0]);
+                        console.log(chuoijson[0]);
                         for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
                             if(chuoi1[i]!=null)
                             themthongtinhienthi(i);
@@ -241,19 +241,22 @@ function themthongtinhienthi(bienchay) {
     let tendangnhap = document.createElement("div");
     let email = document.createElement("div");
     let sodienthoai = document.createElement("div");
+    let diachi = document.createElement("div");
     let loaitaikhoan = document.createElement("div");
     chucnang.appendChild(nutsua);
     chucnang.appendChild(nutxoa);
-    hoten.textContent = chuoi1[bienchay].tdn;
-    tendangnhap.textContent = chuoi1[bienchay].userName;
+    hoten.textContent = chuoi1[bienchay].user;
+    tendangnhap.textContent = chuoi1[bienchay].name;
     email.textContent = chuoi1[bienchay].email;
-    sodienthoai.textContent = chuoi1[bienchay].sdt;
-    loaitaikhoan.textContent = chuoi1[bienchay].tt;
+    sodienthoai.textContent = chuoi1[bienchay].phoneNumber;
+    diachi.textContent = chuoi1[bienchay].address;
+    loaitaikhoan.textContent = chuoi1[bienchay].per;
     theto.appendChild(chucnang);
     theto.appendChild(hoten);
     theto.appendChild(tendangnhap);
     theto.appendChild(email);
     theto.appendChild(sodienthoai);
+    theto.appendChild(diachi);
     theto.appendChild(loaitaikhoan);
     thongtinquanli.appendChild(theto);
 }
