@@ -37,6 +37,7 @@ class UserController {
 				    $_SESSION["user"] = $input["user"];
 					$_SESSION["name"] = $auth[1]["name"];
 					$_SESSION["per"]=$auth[1]["per"];
+					$_SESSION["status"]=$auth[1]["status"];
 					$ret = 1;
 				}
 			}
@@ -49,6 +50,8 @@ class UserController {
    public function doLogout() {
 		unset($_SESSION["user"]);
 		unset($_SESSION["name"]);
+		unset($_SESSION["per"]);
+		unset($_SESSION["status"]);
 		return array("status" => "OK", "data" => 1);
    }
    public function registerRender(){
@@ -68,4 +71,25 @@ class UserController {
 		}
 	return array("status" => "OK", "data" => $ret);
    }
+   public function doGetUserRender(){
+	   //quyen admin ms xem đc các user
+	   if(isset($_SESSION["user"]) && $_SESSION["status"]== 1 ){
+			$user = new User();
+			$data=$user->getAllUserRender();
+			return array("status"=> "ok" ,"data"=> $data);
+	   }
+	   return array("status"=> "nok" ,"data"=> "ko co");
+
+   }
+   public function doGetUserOwner(){
+	//quyen admin ms xem đc các user
+	if(isset($_SESSION["status"]) && $_SESSION["status"]==1 ){
+		 $user = new User();
+		 $data=$user->getAllUserOwner();
+		 return array("status"=> "ok" ,"data"=> $data);
+	}
+	return array("status"=> "nok" ,"data"=> "ACCESS-DENIED");
+
+}
+   
 }

@@ -19,7 +19,7 @@
 			if (method_exists($controller, $ret['actionName'])) {
                 $action = $ret['actionName'];
                 $ret = $controller->$action($ret['parameters']);
-				header('Content-type: application/json');
+                header('Content-type: application/json');
     			echo json_encode($ret);
             } else {
 				header('Content-type: application/json');

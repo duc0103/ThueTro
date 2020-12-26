@@ -29,10 +29,13 @@ class User {
 			array_push($ret, $item["quyen"]);
         return $ret;
     }
-    public function getAll(){
-        $data = $this->db->doQuery ("select * from User ");
+    public function getAllUserRender(){
+        $data = $this->db->doQuery ("select * from User where status=0 ");
         return $data;
-
+    }
+    public function getAllUserOwner(){
+        $data = $this->db->doQuery ("select * from User where status = 2 ");
+        return $data;
     }
     public function addUserRender($user,$pass,$email,$name){
         $data=$this->db->doQuery("
