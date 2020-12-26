@@ -1,10 +1,10 @@
 <?php
-namespace models;
+
 require_once("models/PDOData.php");
 
 class User {
 	private $db;
-    public function __construct() { $this->db = new \core\model\PDOData();}
+    public function __construct() { $this->db = new PDOData();}
     public function __destruct() { $this->db = null;}
     //
 	//
@@ -29,9 +29,22 @@ class User {
 			array_push($ret, $item["quyen"]);
         return $ret;
     }
-    public function getAll(){
-        $data = $this->db->doQuery ("select * from User ");
+    public function getAllUserRender(){
+        $data = $this->db->doQuery ("select * from User where status=0 ");
         return $data;
-
+    }
+    public function getAllUserOwner(){
+        $data = $this->db->doQuery ("select * from User where status = 2 ");
+        return $data;
+    }
+    public function addUserRender($user,$pass,$email,$name){
+        $data=$this->db->doQuery("
+        INSERT INTO user (user, pass, email, name)
+        VALUES ('$user','$pass','$email','$name');");
+        if($data->execute()){
+            return true;
+        }
+        return false;
+        
     }
 }   

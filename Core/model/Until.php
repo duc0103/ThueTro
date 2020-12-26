@@ -1,5 +1,4 @@
 <?php
-    namespace core\model;
    
 	class Util {
 		public function __construct() {	}

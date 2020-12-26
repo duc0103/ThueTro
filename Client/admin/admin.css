@@ -125,10 +125,10 @@ button{
     top: 0px;
     right: 0px;
 }
-#bangquanli,#quanlibaidang{
+#bangquanli,#quanlibaidang,#thongtinquanli>div{
     display: flex;
 }
-#bangquanli div,#quanlibaidang div{
+#bangquanli div,#quanlibaidang div,#thongtinquanli>div>div{
     flex: 1;
     text-align: center;
     border: solid 2px steelblue;

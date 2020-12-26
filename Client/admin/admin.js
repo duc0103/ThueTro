@@ -19,7 +19,11 @@ let thoatndct = document.getElementsByClassName("thoat1");
 let giamsotrang = document.getElementsByClassName("giam");
 let tangsotrang = document.getElementsByClassName("tang");
 let giatritrang = document.getElementsByClassName("giatri");
+let thongtinquanli = document.getElementById("thongtinquanli");
 console.log(giatritrang[0].value);
+let chuoijson = '[{"tdn":"Dong","userName":"Dong1","email":"dong@gmail.com","sdt":"01232831","tt":"tài khoản thường"},{"tdn":"Duc","userName":"Duc1","email":"duc@gmail.com","sdt":"01483424","tt":"Admin"}]';
+let chuoi1 = JSON.parse(chuoijson);
+console.log(chuoi1[0]["tdn"]);
 window.onload = function () {
     htdn.style.display = "none";
     htdn1.style.display = "none";
@@ -35,69 +39,69 @@ thoat.onclick = function () {
     htdn1.style.display = "none";
 }
 
-    fetch("../../index.php/logged")
+fetch("../../index.php/logged")
     .then(resp => {
         if (resp.status == 200) {
             resp.json()
-            .then(ret => {
-                if (ret.status == "OK") {
-                    if (ret.data[0] == 1) {
-                        dn.style.display = "none";
-                        createDisplayUser(ret.data[1],ret.data[3]);
+                .then(ret => {
+                    if (ret.status == "OK") {
+                        if (ret.data[0] == 1) {
+                            dn.style.display = "none";
+                            createDisplayUser(ret.data[1], ret.data[3]);
+                        }
                     }
-                }
-            }); 
+                });
         }
     });
-    //
-    //
+//
+//
 
-    // Người dùng bấm nút "Đăng nhập"
-    nutdn.onclick = function() {
-        fetch("../../index.php/login", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: '{"user":"' + user.value + 
-                '","pass":"' + pass.value + '", "loginSubmitted":"1"}'
-        })
+// Người dùng bấm nút "Đăng nhập"
+nutdn.onclick = function () {
+    fetch("../../index.php/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: '{"user":"' + user.value +
+            '","pass":"' + pass.value + '", "loginSubmitted":"1"}'
+    })
         .then(resp => {
             if (resp.status == 200) {
                 resp.json()
-                .then(ret => {
-                    if (ret.status == "OK") {
-                        if (ret.data == 1) {
-                            // Đăng nhập thành công
-                            fetch("../../index.php/logged")
-                            .then(resp2 => {
-                                if (resp2.status == 200) {
-                                    resp2.json()
-                                    .then(ret2 => {
-                                        if (ret2.status == "OK") {
-                                            if (ret2.data[0] == 1) {
-                                                // console.log(ret2.data[1],ret2.data[2]);
-                                                htdn.style.display = "none";
-                                                htdn1.style.display = "none";
-                                                dn.style.display = "none";
-                                                createDisplayUser(ret2.data[1],ret2.data[3]);
-                                            }
+                    .then(ret => {
+                        if (ret.status == "OK") {
+                            if (ret.data == 1) {
+                                // Đăng nhập thành công
+                                fetch("../../index.php/logged")
+                                    .then(resp2 => {
+                                        if (resp2.status == 200) {
+                                            resp2.json()
+                                                .then(ret2 => {
+                                                    if (ret2.status == "OK") {
+                                                        if (ret2.data[0] == 1) {
+                                                            // console.log(ret2.data[1],ret2.data[2]);
+                                                            htdn.style.display = "none";
+                                                            htdn1.style.display = "none";
+                                                            dn.style.display = "none";
+                                                            createDisplayUser(ret2.data[1], ret2.data[3]);
+                                                        }
+                                                    }
+                                                });
                                         }
                                     });
-                                }
-                            });	
+                            }
+                            else {
+                                // Sai tên đăng nhập hoặc mật khẩu
+                                alert("sai ten tai khoan hoac mat khau");
+                                // document.querySelector("div.err-submit").classList.remove("nodisplay");
+                            }
+                        } else {
                         }
-                        else {
-                            // Sai tên đăng nhập hoặc mật khẩu
-                            alert("sai ten tai khoan hoac mat khau");
-                            // document.querySelector("div.err-submit").classList.remove("nodisplay");
-                        }
-                    } else {
-                    }
-                });
+                    });
             } else {
                 // Xử lý lỗi HTTP
             }
         });
-    }
+}
 //Hiển thị các phần thông tin khi từng thông tin được click chuột
 qltk.onclick = function () {
     htContent1.style.display = "block";
@@ -105,6 +109,16 @@ qltk.onclick = function () {
     htContent3.style.display = "none";
     htContent4.style.display = "none";
     htContent5.style.display = "none";
+    //Hiển thị thông tin các tài khoản
+    thongtinquanli.innerHTML = "";
+    let sotrang = giatritrang[0].value - 1;
+    console.log("Đây là giá trị trang");
+    console.log(giatritrang[0]);
+    for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
+        if(chuoi1[i]!=null)
+        themthongtinhienthi(i);
+    }
+    console.log(thongtinquanli);
 }
 qlbd.onclick = function () {
     htContent2.style.display = "block";
@@ -143,31 +157,72 @@ for (let i = 0; i <= 4; i++) {
         htContent4.style.display = "none";
         htContent5.style.display = "none";
         for (let j = 0; j <= 3; j++) {
-           giatritrang[j].value = 1;
+            giatritrang[j].value = 1;
         }
     }
 }
 //Vòng lặp tăng giảm giá trị của số trang
-for (let i = 0; i <= 3; i++) {
-    giamsotrang[i].onclick = function () {
-        if(giatritrang[i].value >1 )
-        giatritrang[i].value --;
+for (let j = 0; j <= 3; j++) {
+    giamsotrang[j].onclick = function () {
+        if (giatritrang[j].value > 1)
+            giatritrang[j].value--;
+        thongtinquanli.innerHTML = "";
+        let sotrang = giatritrang[j].value - 1;
+        for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
+            if(chuoi1[i]!=null)
+            themthongtinhienthi(i);
+        }
     }
 }
-for (let i = 0; i <= 3; i++) {
-    tangsotrang[i].onclick = function () {
-        giatritrang[i].value ++;
+for (let j = 0; j <= 3; j++) {
+    tangsotrang[j].onclick = function () {
+        giatritrang[j].value++;
+        thongtinquanli.innerHTML = "";
+        let sotrang = giatritrang[j].value - 1;
+        for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
+            if(chuoi1[i]!=null)
+            themthongtinhienthi(i);
+        }
     }
 }
-function createDisplayUser(userName, per){
+function createDisplayUser(userName, per) {
 
     let c1 = document.createElement("tr");
-    var string1 = userName+ " quyền: " +per;
-    c1.innerHTML=string1;
+    var string1 = userName + " quyền: " + per;
+    c1.innerHTML = string1;
     let r = document.getElementById("displayusename");
-    if(r.childElementCount<1){
+    if (r.childElementCount < 1) {
         r.appendChild(c1);
 
     }
 
+}
+function themthongtinhienthi(bienchay) {
+    let theto = document.createElement("div");
+    let chucnang = document.createElement("div");
+    let nutsua = document.createElement("button");
+    nutsua.classList = "Sua";
+    nutsua.textContent = "Sửa";
+    let nutxoa = document.createElement("button");
+    nutxoa.classList = "Xoa";
+    nutxoa.textContent = "Xóa";
+    let hoten = document.createElement("div");
+    let tendangnhap = document.createElement("div");
+    let email = document.createElement("div");
+    let sodienthoai = document.createElement("div");
+    let loaitaikhoan = document.createElement("div");
+    chucnang.appendChild(nutsua);
+    chucnang.appendChild(nutxoa);
+    hoten.textContent = chuoi1[bienchay].tdn;
+    tendangnhap.textContent = chuoi1[bienchay].userName;
+    email.textContent = chuoi1[bienchay].email;
+    sodienthoai.textContent = chuoi1[bienchay].sdt;
+    loaitaikhoan.textContent = chuoi1[bienchay].tt;
+    theto.appendChild(chucnang);
+    theto.appendChild(hoten);
+    theto.appendChild(tendangnhap);
+    theto.appendChild(email);
+    theto.appendChild(sodienthoai);
+    theto.appendChild(loaitaikhoan);
+    thongtinquanli.appendChild(theto);
 }

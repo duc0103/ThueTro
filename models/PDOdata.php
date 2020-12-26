@@ -1,6 +1,4 @@
 <?php
-    namespace core\model;
-    use \PDO;
     
 	class PDOData {
 		private $db = null; 

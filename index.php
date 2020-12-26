@@ -1,5 +1,4 @@
 <?php
-	namespace core\control;
     require_once("Controllers/Router.php");
 
     //Bộ điều khiển mặt trước
@@ -13,14 +12,14 @@
             $filename = "controllers/".ucfirst($ret["controllerName"])."Controller.php"; 
             require_once($filename);
             //Khai báo đối tượng lớp điều khiển
-            $controllerName = "controllers\\".ucfirst($ret["controllerName"])."Controller";  
+            $controllerName =ucfirst($ret["controllerName"])."Controller";  
             $controller = new $controllerName();
 			//Kiểm tra phương thức có tồn tại hay không và thực thi 
 			//trả kết quả cho frontend
 			if (method_exists($controller, $ret['actionName'])) {
                 $action = $ret['actionName'];
                 $ret = $controller->$action($ret['parameters']);
-				header('Content-type: application/json');
+                header('Content-type: application/json');
     			echo json_encode($ret);
             } else {
 				header('Content-type: application/json');
