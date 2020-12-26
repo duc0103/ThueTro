@@ -140,3 +140,19 @@ button{
     margin-top:5px ;
     padding: 5px;
 }
+.qlbd1,.qltk1,.tb1,.chat1{
+    display: flex;
+    flex-direction: inherit;
+}
+.qlbd1>div,.qltk1>div,.tb1>div,.chat1>div{
+    flex: 1;
+}
+.sotrang input{
+    width: 40px;
+    text-align: center;
+}
+.qlbd1 button,.qltk1 button,.tb1 button,.chat1 button{
+    border: solid 2px steelblue;
+    height: 30px;
+    border-radius: 5px;
+}

@@ -16,7 +16,10 @@ let htContent3 = document.getElementById("htContent3");
 let htContent4 = document.getElementById("htContent4");
 let htContent5 = document.getElementById("htContent5");
 let thoatndct = document.getElementsByClassName("thoat1");
-console.log(htdn);
+let giamsotrang = document.getElementsByClassName("giam");
+let tangsotrang = document.getElementsByClassName("tang");
+let giatritrang = document.getElementsByClassName("giatri");
+console.log(giatritrang[0].value);
 window.onload = function () {
     htdn.style.display = "none";
     htdn1.style.display = "none";
@@ -95,6 +98,7 @@ thoat.onclick = function () {
             }
         });
     }
+//Hiển thị các phần thông tin khi từng thông tin được click chuột
 qltk.onclick = function () {
     htContent1.style.display = "block";
     htContent2.style.display = "none";
@@ -130,6 +134,7 @@ chat.onclick = function () {
     htContent3.style.display = "none";
     htContent4.style.display = "none";
 }
+//Khi bấm nút thoát thì thoát khỏi tất cả phần hiển thị thông tin trở về màn hình chính
 for (let i = 0; i <= 4; i++) {
     thoatndct[i].onclick = function () {
         htContent1.style.display = "none";
@@ -137,6 +142,21 @@ for (let i = 0; i <= 4; i++) {
         htContent3.style.display = "none";
         htContent4.style.display = "none";
         htContent5.style.display = "none";
+        for (let j = 0; j <= 3; j++) {
+           giatritrang[j].value = 1;
+        }
+    }
+}
+//Vòng lặp tăng giảm giá trị của số trang
+for (let i = 0; i <= 3; i++) {
+    giamsotrang[i].onclick = function () {
+        if(giatritrang[i].value >1 )
+        giatritrang[i].value --;
+    }
+}
+for (let i = 0; i <= 3; i++) {
+    tangsotrang[i].onclick = function () {
+        giatritrang[i].value ++;
     }
 }
 function createDisplayUser(userName, per){
