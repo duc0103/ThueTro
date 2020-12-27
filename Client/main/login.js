@@ -22,23 +22,20 @@ btnLogin.onclick = function() {
                             // Đăng nhập thành công
                             alert("Đăng nhập thành công ");
                             document.getElementById('id01').style.display='none';
-                            // fetch("../../index.php/logged")
-                            //     .then(resp2 => {
-                            //         if (resp2.status == 200) {
-                            //             resp2.json()
-                            //                 .then(ret2 => {
-                            //                     if (ret2.status == "OK") {
-                            //                         if (ret2.data[0] == 1) {
-                            //                             // console.log(ret2.data[1],ret2.data[2]);
-                            //                             htdn.style.display = "none";
-                            //                             htdn1.style.display = "none";
-                            //                             dn.style.display = "none";
-                            //                             createDisplayUser(ret2.data[1], ret2.data[3]);
-                            //                         }
-                            //                     }
-                            //                 });
-                            //         }
-                            //     });
+                            // 
+                            fetch("../../index.php/logged")
+                                .then(resp2 => {
+                                    if (resp2.status == 200) {
+                                        resp2.json()
+                                            .then(ret2 => {
+                                                if (ret2.status == "OK") {
+                                                    if (ret2.data[0] == 1 && ret2.data[3]=="admin")  {
+                                                        document.location.href = "../admin/admin.htm";
+                                                    }
+                                                }
+                                            });
+                                    }
+                                });
                         }
                         else {
                             // Sai tên đăng nhập hoặc mật khẩu
