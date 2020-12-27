@@ -44,9 +44,18 @@ class User {
         return  $this->db->doQuery ("select * from User where status=0 or status = 2");
 
     }
-    public function updateUser($id,$user,$pass,$email,$name){
+    public function updateUser($id,$code_id,$user,$pass,$address,$email,$phone,$name){
         $this->db->doQuery("
-        update User set pass = '$pass' , email =' $email', name = '$name' ,user = '$user' where user_id  = '$id';
+        update User set 
+        pass = '$pass' , 
+        email =' $email', 
+        name = '$name' ,
+        user = '$user' ,
+        code_id = ' $code_id',
+        address='$address',
+        phone='$phone'
+        
+        where user_id  = '$id';
         ");
         return  $this->db->doQuery ("select * from User where status=0 or status = 2");
     }
