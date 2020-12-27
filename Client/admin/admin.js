@@ -161,6 +161,7 @@ timkiemqltk.onclick = function () {
                         if (ret.status == "ok") {
                             console.log(ret.data);
                             chuoijson = ret.data;
+                            giatritrang[0].value=1;
                             them(chuoijson);
                         }
                     })
@@ -169,24 +170,25 @@ timkiemqltk.onclick = function () {
 
     iptimkiemqltk.value = "";
 };
+//Xóa tài khoản người dùng
 function deleteUser(id) {
     fetch("../../index.php/deleteUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: '{"id":"' + id + '"}'
     })
-    .then(resp => {
-        if (resp.status == 200) {
-            resp.json()
-                .then(ret => {
-                    if (ret.status == "ok") {
-                        console.log(ret.data);
-                        chuoijson = ret.data;
-                        them(chuoijson);
-                    }
-                })
-        }
-    })
+        .then(resp => {
+            if (resp.status == 200) {
+                resp.json()
+                    .then(ret => {
+                        if (ret.status == "ok") {
+                            console.log(ret.data);
+                            chuoijson = ret.data;
+                            them(chuoijson);
+                        }
+                    })
+            }
+        })
 }
 
 //Xử lí khi bấm vào phần hiển thị của quản lí bài đăng
@@ -307,7 +309,7 @@ function themthongtinhienthi(bienchay) {
     theto.appendChild(loaitaikhoan);
     thongtinquanli.appendChild(theto);
 }
-//Thêm và vẽ thông tin 
+//Hàm chứa các công việc thêm sửa xóa và vẽ thông tin 
 function them(chuoijson) {
     //chuoijson = ret.data;
     chuoi1 = chuoijson;
@@ -322,32 +324,34 @@ function them(chuoijson) {
     maxVongLap = chuoijson.length;
     thongtinquanli.innerHTML = "";
     let sotrang = giatritrang[0].value - 1;
-    // console.log(chuoijson.length);
-    // console.log(maxTrang);
     for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
         if (chuoi1[i] != null)
             themthongtinhienthi(i);
     }
     nutSua = document.getElementsByClassName("Sua");
     nutXoa = document.getElementsByClassName("Xoa");
-    // console.log("đây là nút xóa");
-    // console.log(nutXoa);
-    //Các hành động được thực hiện khi nút sửa và xóa được nhấn
+    //Phím chức năng xóa được chọn
     for (let m = 0; m < 10; m++) {
         if (nutXoa[m] != null) {
             nutXoa[m].onclick = function () {
-                console.log("Nut xóa " + m + "được nhấn");
-                console.log("Trang được nhấn là :" + giatritrang[0].value);
-                let phanTuDuocThaoTacXoa = m + (giatritrang[0].value - 1) * 10;
-                console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
+                    console.log("Nut xóa " + m + "được nhấn");
+                    console.log("Trang được nhấn là :" + giatritrang[0].value);
+                    let phanTuDuocThaoTacXoa = m + (giatritrang[0].value - 1) * 10;
+                    console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
+                    let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].user_id;//Chọn ra id của phần tử được xóa
+                    if(confirm("Bạn chắc chắn muốn XÓA tài khoản : " + chuoijson[phanTuDuocThaoTacXoa].user + " ?") )
+                    deleteUser(giaTriXoa);//Xóa phần tử
             }
         }
+        //Phím chức năng sửa được chọn
         if (nutSua[m] != null) {
             nutSua[m].onclick = function () {
                 console.log("Nút sửa" + m + "được nhấn");
                 console.log("Trang được nhấn là :" + giatritrang[0].value);
                 let phanTuDuocThaoTacSua = m + (giatritrang[0].value - 1) * 10;
                 console.log("Phần tử sẽ được sửa là : " + phanTuDuocThaoTacSua);
+                let giaTriSua = chuoijson[phanTuDuocThaoTacSua].user_id;
+                
             }
         }
     }
