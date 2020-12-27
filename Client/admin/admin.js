@@ -23,7 +23,7 @@ let giamsotrang = document.getElementsByClassName("giam");//Nút tăng số tran
 let tangsotrang = document.getElementsByClassName("tang");//Nút giảm số trang
 let giatritrang = document.getElementsByClassName("giatri");//Thẻ input chứa giá trị trang
 let thongtinquanli = document.getElementById("thongtinquanli");//Thẻ chứa nội dung thông tin quản lí tài khoản dữ liệu được lấy về từ backend
-let chuoijson = "";//Chuỗi json trả về dữ liệu phần quản lí thông tin tài khoản
+var chuoijson = "";//Chuỗi json trả về dữ liệu phần quản lí thông tin tài khoản
 let chuoi1 = "";//Chuyển chuoijson bên trên thành đối tượng
 let nutXoa = "";//Chứa các nút xóa trong phần chức năng của hiển thị thông tin 
 let nutSua = "";//Chứa các nút sửa trong phần chức năng của hiển thị thông tin 
@@ -181,8 +181,8 @@ function deleteUser(id) {
                 .then(ret => {
                     if (ret.status == "ok") {
                         console.log(ret.data);
-                        // chuoijson = ret.data;
-                        // them(chuoijson);
+                        chuoijson = ret.data;
+                        them(chuoijson);
                     }
                 })
         }
