@@ -67,6 +67,23 @@
 			$controllerName = "user";
 			$actionName = "dosearchUser";
 		}
+		//POST/deleteUser
+			else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+			count($commandArray) == 1 &&
+			strtolower($commandArray[0]) == strtolower("deleteUser")) 
+		{
+			$controllerName = "user";
+			$actionName = "doDeleteUser";
+		}
+		//POST/updateUser
+			else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+			count($commandArray) == 1 &&
+			strtolower($commandArray[0]) == strtolower("updateUser")) 
+		{
+			$controllerName = "user";
+			$actionName = "doUpdateUser";
+		}
+
 			// Trả kết quả về cho bộ điều khiển mặt trước
 			$ret["controllerName"]  = $controllerName;
 			$ret["actionName"]  = $actionName;

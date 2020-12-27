@@ -94,5 +94,22 @@ class UserController {
    }
    return array("status"=> "nok" ,"data"=> $input);
    }
+   public function doDeleteUser(){
+	$input = json_decode(file_get_contents("php://input"), true);
+	if(isset($_SESSION["user"]) && $_SESSION["status"]== 1 && isset($input["search"]) ){
+		$user = new User();
+		$data=$user->deleteUser($input["id"]);
+		return array("status"=> "ok" ,"data"=> $data);
+
+   }
+}
+   public function doUpdateUser(){
+	$input = json_decode(file_get_contents("php://input"), true);
+	if(isset($_SESSION["user"]) && $_SESSION["status"]== 1 && isset($input["search"]) ){
+		$user = new User();
+		$data=$user->doUpdateUser($input["search"]);
+		return array("status"=> "ok" ,"data"=> $data);
+   }
+}
    
 }

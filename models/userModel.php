@@ -39,4 +39,16 @@ class User {
         return $this->db->doQuery("select * from User where user like '%$a%' or email like '%$a%' or code_id like '%$a%' or per ='$a' or name like '%$a%'
         " );
     }
+    public function deleteUser($id){
+         $this->db->doQuery("delete  from User where user_id='$id';");
+        return  $this->db->doQuery ("select * from User where status=0 or status = 2");
+
+    }
+    public function updateUser($id,$user,$pass,$email,$name){
+        $this->db->doQuery("
+        update User set pass = '$pass' , email =' $email', name = '$name' ,user = '$user' where user_id  = '$id';
+        ");
+        return  $this->db->doQuery ("select * from User where status=0 or status = 2");
+
+    }
 }   
