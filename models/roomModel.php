@@ -7,7 +7,7 @@ class Room {
     public function __construct() { $this->db = new PDOData();}
     public function __destruct() { $this->db = null;}
     public function deleteRoom($room_id){
-
+        return $this->db->doQuery("delete from room_for_rent where room_id = '$m';");
     }
     public function getUrlImage($id){
         $data = $this->db->doQuery("select * from image where room_id = '$id' ;");
