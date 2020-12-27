@@ -58,7 +58,7 @@ body{
     display:none;
     z-index:2;
     width: 50%;
-    height: 50%;
+   /* // height: 50%; */
     background-color: aqua;
     top: 100px;
     left: 350px;
