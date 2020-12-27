@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 26, 2020 lúc 06:39 AM
+-- Thời gian đã tạo: Th12 27, 2020 lúc 09:17 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.4.10
 
@@ -28,13 +28,19 @@ SET time_zone = "+00:00";
 --
 
 CREATE TABLE `comments` (
-  `id` int(11) NOT NULL,
   `id_user` int(11) NOT NULL,
   `id_room` int(11) NOT NULL,
   `votting` tinyint(4) NOT NULL,
   `content` text NOT NULL,
   `Date` date NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `comments`
+--
+
+INSERT INTO `comments` (`id_user`, `id_room`, `votting`, `content`, `Date`) VALUES
+(2, 1, 4, 'Cũng thường thôi', '2020-12-22');
 
 -- --------------------------------------------------------
 
@@ -11495,6 +11501,19 @@ CREATE TABLE `image` (
   `url_image` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
+--
+-- Đang đổ dữ liệu cho bảng `image`
+--
+
+INSERT INTO `image` (`room_id`, `url_image`) VALUES
+(1, 'image1.1'),
+(1, 'image1.2'),
+(1, 'image1.3'),
+(2, 'image2.1'),
+(2, 'image2.2'),
+(2, 'image2.3'),
+(2, 'image2.4');
+
 -- --------------------------------------------------------
 
 --
@@ -11513,20 +11532,25 @@ CREATE TABLE `room_for_rent` (
   `ngay_dang` date DEFAULT NULL,
   `ngay_het_han` date NOT NULL,
   `phong_tam` varchar(255) NOT NULL,
+  `nuoc_nong` tinyint(11) NOT NULL,
   `phong_bep` varchar(255) NOT NULL,
   `ban_cong` tinyint(1) NOT NULL,
   `mo_ta` text NOT NULL,
   `gia_dien` int(11) NOT NULL,
   `gia_nuoc` int(11) NOT NULL,
-  `public` tinyint(4) NOT NULL
+  `public` tinyint(4) NOT NULL,
+  `diachi_xa` varchar(255) NOT NULL,
+  `diachi_huyen` varchar(255) NOT NULL,
+  `diachi_tinh` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `room_for_rent`
 --
 
-INSERT INTO `room_for_rent` (`room_id`, `owners_Id`, `room_area`, `address`, `gia_thue`, `loai_phong`, `dia_diem_gan`, `chung_chu`, `ngay_dang`, `ngay_het_han`, `phong_tam`, `phong_bep`, `ban_cong`, `mo_ta`, `gia_dien`, `gia_nuoc`, `public`) VALUES
-(1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 0);
+INSERT INTO `room_for_rent` (`room_id`, `owners_Id`, `room_area`, `address`, `gia_thue`, `loai_phong`, `dia_diem_gan`, `chung_chu`, `ngay_dang`, `ngay_het_han`, `phong_tam`, `nuoc_nong`, `phong_bep`, `ban_cong`, `mo_ta`, `gia_dien`, `gia_nuoc`, `public`, `diachi_xa`, `diachi_huyen`, `diachi_tinh`) VALUES
+(1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 0, 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 0, 'Dịch Vọng Hậu', 'Cầu giấy', 'Hà Nội'),
+(2, 2, 30, '45 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội\r\n', 3000, 'chung cư mini', 'Học viện Báo Chí và tuyên truyền', 0, '2020-12-16', '2020-12-31', 'Khép kín', 1, 'Khu bếp chung', 0, 'Thuận lợi cho các bạn đi làm vs diện tích  gần 30m2 thoải mái sinh hoạt', 3000, 3000, 1, 'Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Hà Nội');
 
 -- --------------------------------------------------------
 
@@ -11556,7 +11580,30 @@ INSERT INTO `user` (`user_id`, `code_id`, `user`, `pass`, `address`, `status`, `
 (1, 18020352, 'dong', '1', 'Cầu Giấy-Hà Nội', 2, 'donvuvan@gmail.com', '0326654448', 'Vũ Văn Đông', 'owner', 0),
 (2, 180203352, 'duc', '1', 'Cầu giấy -Hà nội', 1, 'leducdhcn@gmail.com', '0986459532', 'Lê Văn Đức', 'admin', 0),
 (3, NULL, 'thue tro', '1', NULL, 0, 'vuvandong@gmail.com', NULL, 'vũ Văn Đông', 'render', 0),
-(4, NULL, 'hung', '1', NULL, 0, 'hung@gmail.com', NULL, 'hưng', 'render', 0);
+(4, NULL, 'hung', '1', NULL, 0, 'hung@gmail.com', NULL, 'hưng', 'render', 0),
+(5, NULL, '', '', NULL, 1, '', NULL, 'Dong', '', 0),
+(6, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(7, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(8, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(9, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(10, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(11, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(12, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(13, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(14, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(15, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(16, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(17, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(18, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(19, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(20, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(21, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(22, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(23, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(24, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(25, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(26, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(29, NULL, 'duc0103', 'duc', NULL, 0, 'ducanh@gmail.com', NULL, 'Lê Văn Ạnh', 'render', 0);
 
 -- --------------------------------------------------------
 
@@ -11570,14 +11617,16 @@ CREATE TABLE `yeu_thich` (
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
--- Chỉ mục cho các bảng đã đổ
+-- Đang đổ dữ liệu cho bảng `yeu_thich`
 --
 
+INSERT INTO `yeu_thich` (`user_id`, `rom_id`) VALUES
+(2, 1),
+(3, 2);
+
 --
--- Chỉ mục cho bảng `comments`
+-- Chỉ mục cho các bảng đã đổ
 --
-ALTER TABLE `comments`
-  ADD PRIMARY KEY (`id`);
 
 --
 -- Chỉ mục cho bảng `devvn_quanhuyen`
@@ -11617,13 +11666,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `room_for_rent`
 --
 ALTER TABLE `room_for_rent`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=5;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
