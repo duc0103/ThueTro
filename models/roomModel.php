@@ -7,7 +7,7 @@ class Room {
     public function __construct() { $this->db = new PDOData();}
     public function __destruct() { $this->db = null;}
     public function deleteRoom($room_id){
-
+        return $this->db->doQuery("delete from room_for_rent where room_id = '$m';");
     }
     public function getUrlImage($id){
         $data = $this->db->doQuery("select * from image where room_id = '$id' ;");
@@ -26,9 +26,9 @@ class Room {
     // public function add($m, $ht, $ns, $qq) {
     //     return $this->db->doPreparedSql("insert into sinhvien(masv, hoten, ngaysinh, quequan) values(?, ?, ?, ?);", array($m, $ht, $ns, $qq));
     // }
-    // public function del($m) {
-    //     return $this->db->doPreparedSql("delete from sinhvien where masv = ?;", array($m));
-    // }
+    public function del($m) {
+        return $this->db->doPreparedSql("delete from sinhvien where masv = ?;", array($m));
+    }
     // public function update($m, $ht, $ns, $qq) {
     //     return $this->db->doPreparedSql("update sinhvien set hoten = ?, ngaysinh = ?, quequan = ? where masv = ?;", array($ht, $ns, $qq, $m));
     // }
