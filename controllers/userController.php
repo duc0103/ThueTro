@@ -96,7 +96,7 @@ class UserController {
    }
    public function doDeleteUser(){
 	$input = json_decode(file_get_contents("php://input"), true);
-	if(isset($_SESSION["user"]) && $_SESSION["status"]== 1 && isset($input["search"]) ){
+	if(isset($_SESSION["user"]) && $_SESSION["status"]== 1 && isset($input["id"]) ){
 		$user = new User();
 		$data=$user->deleteUser($input["id"]);
 		return array("status"=> "ok" ,"data"=> $data);

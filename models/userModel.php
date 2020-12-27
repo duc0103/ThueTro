@@ -49,6 +49,5 @@ class User {
         update User set pass = '$pass' , email =' $email', name = '$name' ,user = '$user' where user_id  = '$id';
         ");
         return  $this->db->doQuery ("select * from User where status=0 or status = 2");
-
     }
 }   
