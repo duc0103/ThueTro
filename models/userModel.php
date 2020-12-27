@@ -35,6 +35,14 @@ class User {
         VALUES ('$user','$pass','$email','$name','render');");
         return true;
     }
+
+    public function addUserOwner($user,$pass,$email,$name){
+        $data=$this->db->doQuery("
+        INSERT INTO user (user, pass, email, name,per)
+        VALUES ('$user','$pass','$email','$name','render');");
+        return true;
+    }
+
     public function searchUser($a){
         return $this->db->doQuery("select * from User where user like '%$a%' or email like '%$a%' or code_id like '%$a%' or per ='$a' or name like '%$a%'
         " );
@@ -44,19 +52,37 @@ class User {
         return  $this->db->doQuery ("select * from User where status=0 or status = 2");
 
     }
-    public function updateUser($id,$code_id,$user,$pass,$address,$email,$phone,$name){
-        $this->db->doQuery("
-        update User set 
-        pass = '$pass' , 
-        email =' $email', 
-        name = '$name' ,
-        user = '$user' ,
-        code_id = ' $code_id',
-        address='$address',
-        phone='$phone'
+    public function updateUser($id,$code_id,$user,$address,$email,$phone,$name,$per){
         
-        where user_id  = '$id';
+        $status = 0;
+        if($per == "owner" ){
+            $status=2;
+        }
+        $sql=" UPDATE  User set  email =' $email', name = '$name' , user = '$user' , code_id = ' $code_id', address='$address',	phoneNumber='$phone', per='$per',
+        status='$status' where user_id  = '$id'; ";
+        $this->db->doQuery( $sql);
+         return  $this->db->doQuery ("select * from User where status = 0 or status = 2");
+    }
+    public function changePass($pass,$newpass){
+        $user=$_SESSION["user"];
+        if (isset($_SESSION["user"])) 
+        {
+            $this->db->doQuery("
+        update User set 
+        pass = '$newpass' 
+        
+        where user  = '$user';
         ");
-        return  $this->db->doQuery ("select * from User where status=0 or status = 2");
+        return true;
+        }
+        // // không thành công
+        return false;
+
+    }
+    public function checkEmailPassExisUpdate($e,$u){
+        $data= $this->db->doQuery(" select user from User where email = '$e' or user = '$u'");
+        if (count($data) > 1) return true;
+        // // không thành công
+        return false;
     }
 }   

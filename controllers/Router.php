@@ -84,6 +84,15 @@
 			$actionName = "doUpdateUser";
 		}
 
+		//POST/changePass
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("changePass")) 
+	{
+		$controllerName = "user";
+		$actionName = "doChangePass";
+	}
+
 			// Trả kết quả về cho bộ điều khiển mặt trước
 			$ret["controllerName"]  = $controllerName;
 			$ret["actionName"]  = $actionName;

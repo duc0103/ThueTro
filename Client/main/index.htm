@@ -12,7 +12,22 @@
 <button id="btnlogin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Đăng nhập</button>
 <button id="btnRes"onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Đăng kí</button>
 <button onclick="logout()" style="width:auto;">Đăng xuất</button>
+<button id="changePass" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Đổi mật khẩu</button>
 
+
+
+
+
+
+
+
+
+
+
+
+
+
+<!-- các phần đăng nhập đăng kí đổi mật khẩu -->
 <!-- Đăng nhập -->
 <div id="id01" class="modal">
   
@@ -73,10 +88,34 @@
 	  </div>
 	</div>
   </div>
+  <!-- Đổi mật khẩu -->
+  <div id="id03" class="modal">
+  
+	<div class="modal-content animate" >
+	  <div class="imgcontainer">
+		<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+		<span>Đăng kí</span>
+	</div>
+  
+	  <div class="container">
+		<label for="psw"><b>Mật Khẩu cũ</b></label>
+		<input type="password" placeholder="Nhập Mật Khẩu" id="pass3" >
+		<label for="psw"><b>Mật khẩu mới</b></label>
+		<input type="password" placeholder="Nhập mật khẩu mới" id="newpass"  >
+		<button type="submit" onclick=" changPass()" id="doChange">Đổi mật khẩu</button>
+	
+	  </div>
+  
+	  <div class="container" style="background-color:#f1f1f1">
+		<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+	  </div>
+	</div>
+  </div>
   <script src="main.js"></script>
   <script src="login.js"></script>
   <script src="register.js"></script>
   <script src="logout.js"></script>
+  <script src="changePass.js"></script>
 
 
 

@@ -85,51 +85,51 @@ dx.onclick = function () {
         });
 }
 // Người dùng bấm nút "Đăng nhập"
-nutdn.onclick = function () {
-    fetch("../../index.php/login", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: '{"user":"' + user.value +
-            '","pass":"' + pass.value + '", "loginSubmitted":"1"}'
-    })
-        .then(resp => {
-            if (resp.status == 200) {
-                resp.json()
-                    .then(ret => {
-                        if (ret.status == "OK") {
-                            if (ret.data == 1) {
-                                // Đăng nhập thành công
-                                fetch("../../index.php/logged")
-                                    .then(resp2 => {
-                                        if (resp2.status == 200) {
-                                            resp2.json()
-                                                .then(ret2 => {
-                                                    if (ret2.status == "OK") {
-                                                        if (ret2.data[0] == 1) {
-                                                            // console.log(ret2.data[1],ret2.data[2]);
-                                                            htdn.style.display = "none";
-                                                            htdn1.style.display = "none";
-                                                            dn.style.display = "none";
-                                                            createDisplayUser(ret2.data[1], ret2.data[3]);
-                                                        }
-                                                    }
-                                                });
-                                        }
-                                    });
-                            }
-                            else {
-                                // Sai tên đăng nhập hoặc mật khẩu
-                                alert("Sai tài khoản hoặc mật khẩu");
-                                // document.querySelector("div.err-submit").classList.remove("nodisplay");
-                            }
-                        } else {
-                        }
-                    });
-            } else {
-                // Xử lý lỗi HTTP
-            }
-        });
-}
+// nutdn.onclick = function () {
+//     fetch("../../index.php/login", {
+//         method: "POST",
+//         headers: { "Content-Type": "application/json" },
+//         body: '{"user":"' + ip11.value +
+//             '","pass":"' + ip11.value + '", "loginSubmitted":"1"}'
+//     })
+//         .then(resp => {
+//             if (resp.status == 200) {
+//                 resp.json()
+//                     .then(ret => {
+//                         if (ret.status == "OK") {
+//                             if (ret.data == 1) {
+//                                 // Đăng nhập thành công
+//                                 fetch("../../index.php/logged")
+//                                     .then(resp2 => {
+//                                         if (resp2.status == 200) {
+//                                             resp2.json()
+//                                                 .then(ret2 => {
+//                                                     if (ret2.status == "OK") {
+//                                                         if (ret2.data[0] == 1) {
+//                                                             // console.log(ret2.data[1],ret2.data[2]);
+//                                                             htdn.style.display = "none";
+//                                                             htdn1.style.display = "none";
+//                                                             dn.style.display = "none";
+//                                                             createDisplayUser(ret2.data[1], ret2.data[3]);
+//                                                         }
+//                                                     }
+//                                                 });
+//                                         }
+//                                     });
+//                             }
+//                             else {
+//                                 // Sai tên đăng nhập hoặc mật khẩu
+//                                 alert("Sai tài khoản hoặc mật khẩu");
+//                                 // document.querySelector("div.err-submit").classList.remove("nodisplay");
+//                             }
+//                         } else {
+//                         }
+//                     });
+//             } else {
+//                 // Xử lý lỗi HTTP
+//             }
+//         });
+// }
 //Hiển thị các phần thông tin khi từng thông tin được click chuột
 qltk.onclick = function () {
     fetch("../../index.php/getUser")
@@ -356,12 +356,15 @@ function them(chuoijson) {
                 let giaTriSua = chuoijson[phanTuDuocThaoTacSua].user_id;
                 htdn.style.display = "block";
                 htdn1.style.display = "block";
+                let code_id = document.createElement("div");
                 let ip1 = document.createElement("div");
                 let ip2 = document.createElement("div");
                 let ip3 = document.createElement("div");
                 let ip4 = document.createElement("div");
                 let ip5 = document.createElement("div");
                 let ip6 = document.createElement("div");
+
+                let lbcode_id = document.createElement("label");
                 let lb1 = document.createElement("label");
                 let lb2 = document.createElement("label");
                 let lb3 = document.createElement("label");
@@ -369,6 +372,7 @@ function them(chuoijson) {
                 let lb5 = document.createElement("label");
                 let lb6 = document.createElement("label");
                 lb1.textContent = "User Name : ";
+                lbcode_id.textContent=" Số cmt/cccd :"
                 lb2.textContent = "Họ tên : ";
                 lb3.textContent = "Email : ";
                 lb4.textContent = "Số điện thoại";
@@ -380,18 +384,21 @@ function them(chuoijson) {
                 ip4.appendChild(lb4);
                 ip5.appendChild(lb5);
                 ip6.appendChild(lb6);
+                code_id.appendChild(lbcode_id);
                 let ip11 = document.createElement("input");
                 let ip21 = document.createElement("input");
                 let ip31 = document.createElement("input");
                 let ip41 = document.createElement("input");
                 let ip51 = document.createElement("input");
+                let code_id1 = document.createElement("input");
                 let ip61 = document.createElement("select");
                 let ip611 = document.createElement("option");
-                ip611.value = "Admin";
-                ip611.textContent = "Admin"
+               
+                ip611.value = "owner";
+                ip611.textContent = "owner"
                 let ip612 = document.createElement("option");
-                ip612.value = "Tài khoản thường";
-                ip612.textContent = "Tài khoản thường";
+                ip612.value = "render";
+                ip612.textContent = "render";
                 ip61.appendChild(ip611);
                 ip61.appendChild(ip612);
                 ip1.appendChild(ip11);
@@ -400,20 +407,62 @@ function them(chuoijson) {
                 ip4.appendChild(ip41);
                 ip5.appendChild(ip51);
                 ip6.appendChild(ip61);
+                code_id.appendChild(code_id1);
                 ip11.value = chuoijson[phanTuDuocThaoTacSua].user;
                 ip21.value = chuoijson[phanTuDuocThaoTacSua].name;
                 ip31.value = chuoijson[phanTuDuocThaoTacSua].email;
                 ip41.value = chuoijson[phanTuDuocThaoTacSua].phoneNumber;
                 ip51.value = chuoijson[phanTuDuocThaoTacSua].address;
-                ip61 = chuoijson[phanTuDuocThaoTacSua].per;
+                ip61.value = chuoijson[phanTuDuocThaoTacSua].per;
+                code_id1.value=chuoijson[phanTuDuocThaoTacSua].code_id;
                 chinhsuathongtin.appendChild(ip1);
+                chinhsuathongtin.appendChild(code_id);
                 chinhsuathongtin.appendChild(ip2);
                 chinhsuathongtin.appendChild(ip3);
                 chinhsuathongtin.appendChild(ip4);
                 chinhsuathongtin.appendChild(ip5);
                 chinhsuathongtin.appendChild(ip6);
+
+                //click để cập nhật dữ liệu
+                nutdn.onclick=function(){
+             
+                    fetch("../../index.php/updateUser", {
+                        method: "POST",
+                        headers: { "Content-Type": "application/json" },
+                        body: '{"id":"' +  chuoijson[phanTuDuocThaoTacSua].user_id +
+                        '","code_id":"'+ code_id1.value +
+                        '","user":"'+ ip11.value +
+                        '","name":"'+ ip21.value +
+                        '","email":"'+ ip31.value +
+                        '","phone":"'+ ip41.value +
+                        '","address":"'+ ip51.value +
+                        '","per":"'+ ip61.value +
+                        '"}'
+                    }).then(resp => {
+                            if (resp.status == 200) {
+                                resp.json()
+                                    .then(ret => {
+                                        if (ret.status == "ok") {
+                                            alert("sửa thành công");
+                                            htdn.style.display = "none";
+                                            htdn1.style.display = "none";
+                                            console.log(ret.data );
+                                            chuoijson = ret.data;
+                                            them(chuoijson);
+                                        }
+                                        else{
+                                            alert("tên tài khoản hoặc email đã tồn tại");
+                                        }
+                                    })
+                            }
+                        })
+                }
+               
+             
+
                 //Bấm nút xác nhận thì gửi các dữ liệu ở các thẻ ip11 , ip21 ... đến phần nutdn.onclick
             }
         }
     }
 }
+
