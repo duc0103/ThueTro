@@ -26,9 +26,9 @@ class Room {
     // public function add($m, $ht, $ns, $qq) {
     //     return $this->db->doPreparedSql("insert into sinhvien(masv, hoten, ngaysinh, quequan) values(?, ?, ?, ?);", array($m, $ht, $ns, $qq));
     // }
-    // public function del($m) {
-    //     return $this->db->doPreparedSql("delete from sinhvien where masv = ?;", array($m));
-    // }
+    public function del($m) {
+        return $this->db->doPreparedSql("delete from sinhvien where masv = ?;", array($m));
+    }
     // public function update($m, $ht, $ns, $qq) {
     //     return $this->db->doPreparedSql("update sinhvien set hoten = ?, ngaysinh = ?, quequan = ? where masv = ?;", array($ht, $ns, $qq, $m));
     // }

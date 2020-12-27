@@ -35,4 +35,8 @@ class User {
         VALUES ('$user','$pass','$email','$name','render');");
         return true;
     }
+    public function searchUser($a){
+        return $this->db->doQuery("select * from User where user like '%$a%' or email like '%$a%' or code_id like '%$a%' or per ='$a' or name like '%$a%'
+        " );
+    }
 }   

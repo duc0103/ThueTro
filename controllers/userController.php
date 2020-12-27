@@ -56,8 +56,7 @@ class UserController {
 		return array("status" => "OK", "data" => 1);
    }
    public function registerRender(){
-	$ret = 0; 
-	
+		$ret = 0; 
 		$input = json_decode(file_get_contents("php://input"), true);
 		if (isset($input["user"]) && 
 			isset($input["pass"]) && 
@@ -85,6 +84,15 @@ class UserController {
 	   }
 	   return array("status"=> "nok" ,"data"=> "ko co");
 
+   }
+   public function dosearchUser(){
+		$input = json_decode(file_get_contents("php://input"), true);
+		if(isset($_SESSION["user"]) && $_SESSION["status"]== 1 && isset($input["search"]) ){
+			$user = new User();
+			$data=$user->searchUser($input["search"]);
+			return array("status"=> "ok" ,"data"=> $data);
+   }
+   return array("status"=> "nok" ,"data"=> $input);
    }
    
 }

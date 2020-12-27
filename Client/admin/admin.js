@@ -188,6 +188,23 @@ qltk.onclick = function () {
 //Tìm kiếm thông tin phần quản lí thông tin tài khoản
 timkiemqltk.onclick = function(){
     console.log(iptimkiemqltk.value);
+
+    fetch("../../index.php/searchUser",{
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: '{"search":"' + iptimkiemqltk.value  + '"}'
+    })
+        .then(resp => {
+            if (resp.status == 200) {
+                resp.json()
+                    .then(ret => {
+                        if (ret.status == "ok") {
+                            console.log(ret.data);
+                        }
+                    })
+            }     
+           })
+
     iptimkiemqltk.value = "";
 }
 //Xử lí khi bấm vào phần hiển thị của quản lí bài đăng
