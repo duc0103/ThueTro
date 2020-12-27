@@ -1,40 +1,47 @@
-let dn = document.getElementById("dn");
-let dx = document.getElementById("dx");
-let htdn = document.getElementsByClassName("htdn")[0];
-let htdn1 = document.getElementsByClassName("htdn1")[0];
-let thoat = document.getElementById("thoat");
-let nutdn = document.getElementById("nutdn");
-let user = document.getElementById("user");
-let pass = document.getElementById("pass");
+let dn = document.getElementById("dn");//Nút đăng nhập
+let dx = document.getElementById("dx");//Nút đăng xuất
+let htdn = document.getElementsByClassName("htdn")[0];//Màn chắn hiển thị khi người dùng click nút đăng nhập
+let htdn1 = document.getElementsByClassName("htdn1")[0];//Phần hiển thị ra sau khi bấm đăng nhập
+let thoat = document.getElementById("thoat");//Nút thoát trong phần hiển thị đăng nhập
+let nutdn = document.getElementById("nutdn");//Nút đăng nhập trong phần hiển thị đăng nhập
+let user = document.getElementById("user");//Thẻ input chứa thông tin tài khoản
+let pass = document.getElementById("pass");//Thẻ input chứa thông tin mật khẩu
+//Các nút quản lí hiển thị trên màn hình chính admin
 let qltk = document.getElementById("qltk");
 let qlbd = document.getElementById("qlbd");
 let tb = document.getElementById("tb");
 let tkpt = document.getElementById("tkpt");
 let chat = document.getElementById("chat");
+//Phần nhỏ hiển thị khi bấm vào từng phần của các nút quản lí
 let htContent1 = document.getElementById("htContent1");
 let htContent2 = document.getElementById("htContent2");
 let htContent3 = document.getElementById("htContent3");
 let htContent4 = document.getElementById("htContent4");
 let htContent5 = document.getElementById("htContent5");
-let thoatndct = document.getElementsByClassName("thoat1");
-let giamsotrang = document.getElementsByClassName("giam");
-let tangsotrang = document.getElementsByClassName("tang");
-let giatritrang = document.getElementsByClassName("giatri");
-let thongtinquanli = document.getElementById("thongtinquanli");
-
-let chuoijson = "";
-let chuoi1="";
-
+let thoatndct = document.getElementsByClassName("thoat1");//Nút thoát bên trong các phần nhỏ của hiển thị thông tin
+let giamsotrang = document.getElementsByClassName("giam");//Nút tăng số trang
+let tangsotrang = document.getElementsByClassName("tang");//Nút giảm số trang
+let giatritrang = document.getElementsByClassName("giatri");//Thẻ input chứa giá trị trang
+let thongtinquanli = document.getElementById("thongtinquanli");//Thẻ chứa nội dung thông tin quản lí tài khoản dữ liệu được lấy về từ backend
+let chuoijson = "";//Chuỗi json trả về dữ liệu phần quản lí thông tin tài khoản
+let chuoi1 = "";//Chuyển chuoijson bên trên thành đối tượng
+let nutXoa = "";//Chứa các nút xóa trong phần chức năng của hiển thị thông tin 
+let nutSua = "";//Chứa các nút sửa trong phần chức năng của hiển thị thông tin 
+let maxTrang = "";
+let maxVongLap = "";
+//Hiển thị sau khi load trang
 window.onload = function () {
     htdn.style.display = "none";
     htdn1.style.display = "none";
 }
+//Hiển thị khi nút đăng nhập được click
 dn.onclick = function () {
     htdn.style.display = "block";
     htdn1.style.display = "block";
     user.value = "";
     pass.value = "";
 }
+//Nút thoát tại phần hiển thị đăng nhập được click
 thoat.onclick = function () {
     htdn.style.display = "none";
     htdn1.style.display = "none";
@@ -54,32 +61,32 @@ fetch("../../index.php/logged")
                 });
         }
     });
-    //
-    //
-    dx.onclick = function () {
-        fetch("../../index.php/logout")
+//
+//Đăng xuất
+dx.onclick = function () {
+    fetch("../../index.php/logout")
         .then(resp => {
             if (resp.status == 200) {
                 resp.json()
-                .then(ret => {
-                    if (ret.status == "OK") {
-                        if (ret.data == 1) {
-                            dn.style.display = "block";
-                            dx.style.display="none";
+                    .then(ret => {
+                        if (ret.status == "OK") {
+                            if (ret.data == 1) {
+                                dn.style.display = "block";
+                                dx.style.display = "none";
+                            }
                         }
-                    }
-                }); 
+                    });
             }
         });
-        }
-    // Người dùng bấm nút "Đăng nhập"
-    nutdn.onclick = function() {
-        fetch("../../index.php/login", {
-            method: "POST",
-            headers: {"Content-Type": "application/json"},
-            body: '{"user":"' + user.value + 
-                '","pass":"' + pass.value + '", "loginSubmitted":"1"}'
-        })
+}
+// Người dùng bấm nút "Đăng nhập"
+nutdn.onclick = function () {
+    fetch("../../index.php/login", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: '{"user":"' + user.value +
+            '","pass":"' + pass.value + '", "loginSubmitted":"1"}'
+    })
         .then(resp => {
             if (resp.status == 200) {
                 resp.json()
@@ -107,7 +114,7 @@ fetch("../../index.php/logged")
                             }
                             else {
                                 // Sai tên đăng nhập hoặc mật khẩu
-                                alert("sai ten tai khoan hoac mat khau");
+                                alert("Sai tài khoản hoặc mật khẩu");
                                 // document.querySelector("div.err-submit").classList.remove("nodisplay");
                             }
                         } else {
@@ -124,33 +131,37 @@ qltk.onclick = function () {
         .then(resp => {
             if (resp.status == 200) {
                 resp.json()
-                .then(ret => {
-                    if (ret.status == "ok") {
-                        chuoijson=ret.data;
-                        chuoi1 = chuoijson;
-                        //console.log(chuoijson);
-                        htContent1.style.display = "block";
-                        htContent2.style.display = "none";
-                        htContent3.style.display = "none";
-                        htContent4.style.display = "none";
-                        htContent5.style.display = "none";
-                        //Hiển thị thông tin các tài khoản
-                        thongtinquanli.innerHTML = "";
-                        let sotrang = giatritrang[0].value - 1;
-                        console.log(chuoijson[0]);
-                        for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
-                            if(chuoi1[i]!=null)
-                            themthongtinhienthi(i);
+                    .then(ret => {
+                        if (ret.status == "ok") {
+                            chuoijson = ret.data;
+                            chuoi1 = chuoijson;
+                            //console.log(chuoijson);
+                            htContent1.style.display = "block";
+                            htContent2.style.display = "none";
+                            htContent3.style.display = "none";
+                            htContent4.style.display = "none";
+                            htContent5.style.display = "none";
+                            //Hiển thị thông tin các tài khoản
+                            maxTrang = parseInt(chuoijson.length / 10) + 1;
+                            maxVongLap = chuoijson.length;
+                            thongtinquanli.innerHTML = "";
+                            let sotrang = giatritrang[0].value - 1;
+                            console.log(chuoijson.length);
+                            console.log(maxTrang);
+                            for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
+                                if (chuoi1[i] != null)
+                                    themthongtinhienthi(i);
+                            }
+                            nutSua = document.getElementsByClassName("Sua");
+                            nutXoa = document.getElementsByClassName("Xoa");
                         }
-                    }
-                    //  console.log(ret.status);
-                }); 
+                        //  console.log(ret.status);
+                    });
             }
         });
-        
-  
     // console.log(thongtinquanli);
 }
+//Xử lí khi bấm vào phần hiển thị của quản lí bài đăng
 qlbd.onclick = function () {
     htContent2.style.display = "block";
     htContent1.style.display = "none";
@@ -158,6 +169,7 @@ qlbd.onclick = function () {
     htContent4.style.display = "none";
     htContent5.style.display = "none";
 }
+//Xử lí khi bấm vào phần hiển thị của nút thông báo
 tb.onclick = function () {
     htContent3.style.display = "block";
     htContent1.style.display = "none";
@@ -165,19 +177,21 @@ tb.onclick = function () {
     htContent4.style.display = "none";
     htContent5.style.display = "none";
 }
-tkpt.onclick = function () {
-    htContent4.style.display = "block";
-    htContent1.style.display = "none";
-    htContent2.style.display = "none";
-    htContent3.style.display = "none";
-    htContent5.style.display = "none";
-}
+//Xử lí khi bấm vào phần hiển thị của nút chat
 chat.onclick = function () {
     htContent5.style.display = "block";
     htContent1.style.display = "none";
     htContent2.style.display = "none";
     htContent3.style.display = "none";
     htContent4.style.display = "none";
+}
+//Xử lí khi bấm vào phần hiển thị của nút thống kê phân tích xu hướng
+tkpt.onclick = function () {
+    htContent4.style.display = "block";
+    htContent1.style.display = "none";
+    htContent2.style.display = "none";
+    htContent3.style.display = "none";
+    htContent5.style.display = "none";
 }
 //Khi bấm nút thoát thì thoát khỏi tất cả phần hiển thị thông tin trở về màn hình chính
 for (let i = 0; i <= 4; i++) {
@@ -192,30 +206,33 @@ for (let i = 0; i <= 4; i++) {
         }
     }
 }
-//Vòng lặp tăng giảm giá trị của số trang
+//Sửa giá trị trang và hiển thị khi click vào nut tăng giảm bên cạnh số trang
 for (let j = 0; j <= 3; j++) {
     giamsotrang[j].onclick = function () {
         if (giatritrang[j].value > 1)
             giatritrang[j].value--;
-        thongtinquanli.innerHTML = "";
-        let sotrang = giatritrang[j].value - 1;
-        for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
-            if(chuoi1[i]!=null)
-            themthongtinhienthi(i);
+        if (j == 0) {
+            qltk.click();
+            console.log("đây là nút xóa");
+            console.log(nutXoa);
         }
     }
 }
 for (let j = 0; j <= 3; j++) {
     tangsotrang[j].onclick = function () {
-        giatritrang[j].value++;
-        thongtinquanli.innerHTML = "";
-        let sotrang = giatritrang[j].value - 1;
-        for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
-            if(chuoi1[i]!=null)
-            themthongtinhienthi(i);
+        console.log(maxTrang);
+        if (giatritrang[j].value < maxTrang) {
+            giatritrang[j].value++;
+        }
+        if (j == 0) {
+            qltk.click();
+            console.log("đây là nút xóa");
+            console.log(nutXoa);
+
         }
     }
 }
+//Hiển thị thông tin tài khoản sau khi đăng nhập
 function createDisplayUser(userName, per) {
 
     let c1 = document.createElement("tr");
@@ -228,6 +245,13 @@ function createDisplayUser(userName, per) {
     }
 
 }
+//Xử lí khi nút sửa hoặc xóa trong phần hiển thị thông tin chi tiết được click
+for (let i = 0; i < maxVongLap; i++) {
+    nutSua[i].onclick = function () {
+        console.log("Nút sửa thứ" + i + "được nhấn");
+    }
+}
+//Hàm dùng để vẽ động khi nút quản lí tài khoản được click
 function themthongtinhienthi(bienchay) {
     let theto = document.createElement("div");
     let chucnang = document.createElement("div");
