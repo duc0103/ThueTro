@@ -137,47 +137,7 @@ qltk.onclick = function () {
                     .then(ret => {
                         if (ret.status == "ok") {
                             chuoijson = ret.data;
-                            chuoi1 = chuoijson;
-                            //console.log(chuoijson);
-                            htContent1.style.display = "block";
-                            htContent2.style.display = "none";
-                            htContent3.style.display = "none";
-                            htContent4.style.display = "none";
-                            htContent5.style.display = "none";
-                            //Hiển thị thông tin các tài khoản
-                            maxTrang = parseInt(chuoijson.length / 10) + 1;
-                            maxVongLap = chuoijson.length;
-                            thongtinquanli.innerHTML = "";
-                            let sotrang = giatritrang[0].value - 1;
-                            // console.log(chuoijson.length);
-                            // console.log(maxTrang);
-                            for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
-                                if (chuoi1[i] != null)
-                                    themthongtinhienthi(i);
-                            }
-                            nutSua = document.getElementsByClassName("Sua");
-                            nutXoa = document.getElementsByClassName("Xoa");
-                            // console.log("đây là nút xóa");
-                            // console.log(nutXoa);
-                            //Các hành động được thực hiện khi nút sửa và xóa được nhấn
-                            for (let m = 0; m < 10; m++) {
-                                if (nutXoa[m] != null) {
-                                    nutXoa[m].onclick = function () {
-                                        console.log("Nut xóa " + m + "được nhấn");
-                                        console.log("Trang được nhấn là :" + giatritrang[0].value);
-                                        let phanTuDuocThaoTacXoa = m + (giatritrang[0].value - 1 )*10; 
-                                        console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
-                                    }
-                                }
-                                if (nutSua[m] != null) {
-                                    nutSua[m].onclick = function () {
-                                        console.log("Nút sửa" + m + "được nhấn");
-                                        console.log("Trang được nhấn là :" + giatritrang[0].value);
-                                        let phanTuDuocThaoTacSua = m + (giatritrang[0].value - 1 )*10;
-                                        console.log("Phần tử sẽ được sửa là : " + phanTuDuocThaoTacSua);
-                                    }
-                                }
-                            }
+                            them(chuoijson);
                         }
                         //  console.log(ret.status);
                     });
@@ -186,7 +146,7 @@ qltk.onclick = function () {
     // console.log(thongtinquanli);
 }
 //Tìm kiếm thông tin phần quản lí thông tin tài khoản
-timkiemqltk.onclick = function(){
+timkiemqltk.onclick = function () {
     console.log(iptimkiemqltk.value);
 
     fetch("../../index.php/searchUser",{
@@ -200,10 +160,13 @@ timkiemqltk.onclick = function(){
                     .then(ret => {
                         if (ret.status == "ok") {
                             console.log(ret.data);
+                            chuoijson = ret.data;
+                            them(chuoijson);
                         }
                     })
-            }     
-           })
+            }
+        })
+
 
     iptimkiemqltk.value = "";
 }
@@ -258,8 +221,7 @@ for (let j = 0; j <= 3; j++) {
         if (giatritrang[j].value > 1)
             giatritrang[j].value--;
         if (j == 0) {
-            qltk.click();
-
+            them(chuoijson);//Hiển thị thông tin dựa vào số trang
         }
     }
 }
@@ -270,9 +232,7 @@ for (let j = 0; j <= 3; j++) {
             giatritrang[j].value++;
         }
         if (j == 0) {
-            qltk.click();
-
-
+            them(chuoijson);//Hiển thị thông tin dựa vào số trang
         }
     }
 }
@@ -327,4 +287,49 @@ function themthongtinhienthi(bienchay) {
     theto.appendChild(diachi);
     theto.appendChild(loaitaikhoan);
     thongtinquanli.appendChild(theto);
+}
+//Thêm và vẽ thông tin 
+function them(chuoijson) {
+    //chuoijson = ret.data;
+    chuoi1 = chuoijson;
+    //console.log(chuoijson);
+    htContent1.style.display = "block";
+    htContent2.style.display = "none";
+    htContent3.style.display = "none";
+    htContent4.style.display = "none";
+    htContent5.style.display = "none";
+    //Hiển thị thông tin các tài khoản
+    maxTrang = parseInt(chuoijson.length / 10) + 1;
+    maxVongLap = chuoijson.length;
+    thongtinquanli.innerHTML = "";
+    let sotrang = giatritrang[0].value - 1;
+    // console.log(chuoijson.length);
+    // console.log(maxTrang);
+    for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
+        if (chuoi1[i] != null)
+            themthongtinhienthi(i);
+    }
+    nutSua = document.getElementsByClassName("Sua");
+    nutXoa = document.getElementsByClassName("Xoa");
+    // console.log("đây là nút xóa");
+    // console.log(nutXoa);
+    //Các hành động được thực hiện khi nút sửa và xóa được nhấn
+    for (let m = 0; m < 10; m++) {
+        if (nutXoa[m] != null) {
+            nutXoa[m].onclick = function () {
+                console.log("Nut xóa " + m + "được nhấn");
+                console.log("Trang được nhấn là :" + giatritrang[0].value);
+                let phanTuDuocThaoTacXoa = m + (giatritrang[0].value - 1) * 10;
+                console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
+            }
+        }
+        if (nutSua[m] != null) {
+            nutSua[m].onclick = function () {
+                console.log("Nút sửa" + m + "được nhấn");
+                console.log("Trang được nhấn là :" + giatritrang[0].value);
+                let phanTuDuocThaoTacSua = m + (giatritrang[0].value - 1) * 10;
+                console.log("Phần tử sẽ được sửa là : " + phanTuDuocThaoTacSua);
+            }
+        }
+    }
 }
