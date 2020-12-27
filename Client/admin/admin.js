@@ -1,4 +1,4 @@
-let dn = document.getElementById("dn");//Nút đăng nhập
+// let dn = document.getElementById("dn");//Nút đăng nhập
 let dx = document.getElementById("dx");//Nút đăng xuất
 let htdn = document.getElementsByClassName("htdn")[0];//Màn chắn hiển thị khi người dùng click nút đăng nhập
 let htdn1 = document.getElementsByClassName("htdn1")[0];//Phần hiển thị ra sau khi bấm đăng nhập
@@ -58,7 +58,7 @@ fetch("../../index.php/logged")
                 .then(ret => {
                     if (ret.status == "OK") {
                         if (ret.data[0] == 1) {
-                            dn.style.display = "none";
+                            // dn.style.display = "none";
                             createDisplayUser(ret.data[1], ret.data[3]);
                         }
                     }
@@ -75,8 +75,9 @@ dx.onclick = function () {
                     .then(ret => {
                         if (ret.status == "OK") {
                             if (ret.data == 1) {
-                                dn.style.display = "block";
+                                // dn.style.display = "block";
                                 dx.style.display = "none";
+                                document.location.href = "../main/index.htm";
                             }
                         }
                     });

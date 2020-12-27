@@ -9,8 +9,9 @@
 <body>
 
 
-<button onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Đăng nhập</button>
-<button onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Đăng kí</button>
+<button id="btnlogin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Đăng nhập</button>
+<button id="btnRes"onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Đăng kí</button>
+<button onclick="logout()" style="width:auto;">Đăng xuất</button>
 
 <!-- Đăng nhập -->
 <div id="id01" class="modal">
@@ -75,6 +76,7 @@
   <script src="main.js"></script>
   <script src="login.js"></script>
   <script src="register.js"></script>
+  <script src="logout.js"></script>
 
 
 
