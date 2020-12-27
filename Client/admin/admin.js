@@ -29,6 +29,9 @@ let nutXoa = "";//Chứa các nút xóa trong phần chức năng của hiển t
 let nutSua = "";//Chứa các nút sửa trong phần chức năng của hiển thị thông tin 
 let maxTrang = "";
 let maxVongLap = "";
+let timkiemqltk = document.getElementById("timkiemqltk");//Nút tìm kiếm trong phần quản lí thông tin tài khoản
+let iptimkiemqltk = document.getElementById("iptimkiemqltk");//Thẻ input trong phần quản lí thông tin tài khoản
+console.log(iptimkiemqltk.value);
 //Hiển thị sau khi load trang
 window.onload = function () {
     htdn.style.display = "none";
@@ -181,6 +184,11 @@ qltk.onclick = function () {
             }
         });
     // console.log(thongtinquanli);
+}
+//Tìm kiếm thông tin phần quản lí thông tin tài khoản
+timkiemqltk.onclick = function(){
+    console.log(iptimkiemqltk.value);
+    iptimkiemqltk.value = "";
 }
 //Xử lí khi bấm vào phần hiển thị của quản lí bài đăng
 qlbd.onclick = function () {
