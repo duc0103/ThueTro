@@ -149,10 +149,10 @@ qltk.onclick = function () {
 timkiemqltk.onclick = function () {
     console.log(iptimkiemqltk.value);
 
-    fetch("../../index.php/searchUser", {
+    fetch("../../index.php/searchUser",{
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: '{"search":"' + iptimkiemqltk.value + '"}'
+        body: '{"search":"' + iptimkiemqltk.value  + '"}'
     })
         .then(resp => {
             if (resp.status == 200) {
@@ -166,6 +166,7 @@ timkiemqltk.onclick = function () {
                     })
             }
         })
+
 
     iptimkiemqltk.value = "";
 }
