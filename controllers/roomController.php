@@ -12,4 +12,7 @@ class RoomController {
             return array("status"=> "ok" ,"data"=> $data);
 
     }
+    public function addRoom(){
+        
+    }
 }

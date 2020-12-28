@@ -5,13 +5,13 @@ require_once("models/PDOData.php");
 class Room {
 	private $db;
     public function __construct() { $this->db = new PDOData();}
-    public function __destruct() { $this->db = null;}
-    public function deleteRoom($room_id){
-        return $this->db->doQuery("delete from room_for_rent where room_id = '$m';");
-    }
+    public function __destruct() { $this->db = null;} 
     public function getUrlImage($id){
         $data = $this->db->doQuery("select * from image where room_id = '$id' ;");
-        if (count($data) > 0) return [true, $data[0]];
+        if(count($data)>0){
+            return [true,"data"=>$data];
+        }
+        
         // // không thành công
         return [false, ""];
 
@@ -32,17 +32,19 @@ class Room {
        }
        return $data1; 
     }
-    //đưa ra 10 phòng được thêm mới nhất
-    public function getTenroom() {
-        $data =  $this->db->doQuery(" SELECT * FROM `room_for_rent` ORDER BY `room_for_rent`.`ngay_dang` DESC limit 10
-        ;");
-        $data["urlimage"]= "";
-        return $data;
-     }
+    
     //tìm phòng theo id
     public function getRoomById($id) {
         $data = $this->db->doQuery("select * from room_for_rent where room_id = '$id' ;");
-        if (count($data) > 0) return [true, $data[0]];
+        $data1= $this->db->doQuery("select * from image where room_id = '$id';");
+        if (count($data) > 0) 
+        {   
+            for($j=0;$j<count($data1);$j++)
+                {
+                $data[0]["image"][]=$data1[$j]["url_image"];
+                }
+            return [true, $data[0]];
+        }
         // // không thành công
         return [false, ""];
     }
@@ -55,10 +57,16 @@ class Room {
         values($id, '$urlImage' );");
     }
     //xoa phong bang id
-    public function deleteRom($id) {
-        $data = $this->db->doQuery("select * from   ");
+    public function deleteRoom($id) {
+        // $data = $this->db->doQuery("select * from   ");
          $this->db->doQuery("delete from room_for_rent where room_id = '$id';");
-        return  $this->db->doQuery ("select * from room_for_rent where status=0 or status = 2");
+         $this->db->doQuery("delete from image where room_id = '$id';");
+         $this->db->doQuery("delete from yeu_thich where room_id = '$id';");
+         $this->db->doQuery("delete from comments where id_room = '$id';");
+        return  true;
+
+    }
+    public function updateRoom(){
 
     }
     // public function update($m, $ht, $ns, $qq) {
