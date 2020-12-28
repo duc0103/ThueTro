@@ -11,7 +11,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
+.btn_submit {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -21,7 +21,7 @@ button {
   width: 100%;
 }
 
-button:hover {
+.btn_submit:hover {
   opacity: 0.8;
 }
 
@@ -54,7 +54,7 @@ span.psw {
 .modal1 {
   display: none; /* Hidden by default */
   position: fixed; /* Stay in place */
-  z-index: 3; /* Sit on top */
+  z-index: 1000; /* Sit on top */
   left: 0;
   top: 0;
   width: 100%; /* Full width */
@@ -115,4 +115,7 @@ span.psw {
   .cancelbtn1 {
      width: 100%;
   }
+}
+#chuaanh img{
+  width: 100%;
 }
