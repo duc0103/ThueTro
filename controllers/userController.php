@@ -105,11 +105,25 @@ class UserController {
 }
    public function doUpdateUser(){
 	$input = json_decode(file_get_contents("php://input"), true);
+	
+	
 	if(isset($_SESSION["user"]) && $_SESSION["status"]== 1  ){
 		$user = new User();
-		$data=$user->updateUser($input["id"],$input["code_id"],$input["user"],$input["pass"],$input["address"],$input["email"],$input["phone"],$input["name"]);
-		return array("status"=> "ok" ,"data"=> $data);
+		$checkuseremail=$user->checkEmailPassExisUpdate($input["email"],$input["user"]);
+		if(!$checkuseremail){
+			$data=$user->updateUser($input["id"],$input["code_id"],$input["user"],$input["address"],$input["email"],$input["phone"],$input["name"],$input["per"]);
+			return array("status"=> "ok" ,"data"=> 	$data);
+		}
+	
    }
+   return array("status"=> "nok" ,"data"=> "loi");
 }
+	public function doChangePass(){
+		$input = json_decode(file_get_contents("php://input"), true);
+		$user = new User();
+		$data=$user->changePass($input["pass"],$input["newpass"]);
+		return array("status"=> "ok" ,"data"=> $data);
+
+	}
    
 }

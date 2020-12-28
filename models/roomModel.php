@@ -20,14 +20,20 @@ class Room {
        $data =  $this->db->doQuery("select * from room_for_rent ;");
        return $data;
     }
-    public function getRoomById($m) {
-        return $this->db->doQuery("select * from room_for_rent where room_id = '$m';");
+    public function getRoomById($id) {
+        return $this->db->doQuery("select * from room_for_rent where room_id = '$id';");
     }
-    // public function add($m, $ht, $ns, $qq) {
+    // public function addRoom($m, $ht, $ns, $qq) {
     //     return $this->db->doPreparedSql("insert into sinhvien(masv, hoten, ngaysinh, quequan) values(?, ?, ?, ?);", array($m, $ht, $ns, $qq));
     // }
-    public function del($m) {
-        return $this->db->doPreparedSql("delete from sinhvien where masv = ?;", array($m));
+    public function addUrlImage($id,$urlImage){
+        return $this->db->doQuery("insert into 
+        image(room_id,url_image) 
+        values($id, '$urlImage' );");
+    }
+    //xoa phong bang id
+    public function deleteRom($id) {
+        return $this->db->doQuery("delete from room_for_rent where room_id = '$id';");
     }
     // public function update($m, $ht, $ns, $qq) {
     //     return $this->db->doPreparedSql("update sinhvien set hoten = ?, ngaysinh = ?, quequan = ? where masv = ?;", array($ht, $ns, $qq, $m));

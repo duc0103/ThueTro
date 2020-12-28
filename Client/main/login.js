@@ -1,8 +1,5 @@
 var user = document.getElementById("user1");
 var pass = document.getElementById("pass1");
-
-
-
 var btnLogin = document.getElementById("login");
 
 
@@ -21,6 +18,8 @@ btnLogin.onclick = function() {
                         if (ret.data == 1) {
                             // Đăng nhập thành công
                             alert("Đăng nhập thành công ");
+                            document.getElementById("btnlogin").style.display="none";
+                            document.getElementById("btnRes").style.display="none";   
                             document.getElementById('id01').style.display='none';
                             // 
                             fetch("../../index.php/logged")

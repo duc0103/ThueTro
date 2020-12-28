@@ -17,6 +17,9 @@
 				$this->db = null;
 			} catch(PDOException $ex) { echo $ex->getMessage();	}
 		}
+		public function query($query){
+			$this->db->query($query);  
+		}
 
         /**
 		* Thuc hien truy van
