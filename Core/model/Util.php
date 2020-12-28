@@ -77,4 +77,10 @@
 			if ($c1 == 1) return true;
 			else return false;
 		} 
+		//Tên tài khoản chỉ gồm số và chữ
+		public static function isTK($s){
+			$c2 = preg_match("/^[a-z][a-z0-9A-z]{3,9}$/", $s);
+			if ($c2 == 1) return true;
+			else return false;
+		}
 	}
