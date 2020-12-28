@@ -123,4 +123,12 @@ span.psw {
   text-transform: uppercase;
   margin-right: 40px;
   color: white;
+
 }
+a:hover{
+  cursor: pointer;
+}
+#aa-menu-area{
+  margin-top: 15px;
+}
+
