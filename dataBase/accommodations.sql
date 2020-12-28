@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 28, 2020 lúc 11:31 AM
+-- Thời gian đã tạo: Th12 27, 2020 lúc 09:17 AM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
 -- Phiên bản PHP: 7.4.10
 
@@ -11577,12 +11577,33 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `code_id`, `user`, `pass`, `address`, `status`, `email`, `phoneNumber`, `name`, `per`, `online`) VALUES
-(1, 18020352, 'dong', '2', '144 xuân thủy-Cầu Giấy-Hà Nội', 2, '     vu@gmail.com', '0326654448', 'Vũ Văn Đông', 'owner', 0),
+(1, 18020352, 'dong', '1', 'Cầu Giấy-Hà Nội', 2, 'donvuvan@gmail.com', '0326654448', 'Vũ Văn Đông', 'owner', 0),
 (2, 180203352, 'duc', '1', 'Cầu giấy -Hà nội', 1, 'leducdhcn@gmail.com', '0986459532', 'Lê Văn Đức', 'admin', 0),
-(3, 187871524, 'duc11', '1', '144 xuân thủy cầu giấy', 2, '  anhduc@gmail.com', '0986599632', 'Nguyễn Anh Đức', 'owner', 0),
+(3, NULL, 'thue tro', '1', NULL, 0, 'vuvandong@gmail.com', NULL, 'vũ Văn Đông', 'render', 0),
 (4, NULL, 'hung', '1', NULL, 0, 'hung@gmail.com', NULL, 'hưng', 'render', 0),
-(29, NULL, 'duc0103', 'duc', NULL, 0, 'ducanh@gmail.com', NULL, 'Lê Văn Ạnh', 'render', 0),
-(30, NULL, 'ductam', '1234', NULL, 0, 'leduc@gmail.com', NULL, 'Lê Văn Đức', 'render', 0);
+(5, NULL, '', '', NULL, 1, '', NULL, 'Dong', '', 0),
+(6, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(7, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(8, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(9, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(10, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(11, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(12, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(13, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(14, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
+(15, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(16, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(17, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(18, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(19, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(20, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(21, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(22, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(23, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(24, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(25, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(26, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
+(29, NULL, 'duc0103', 'duc', NULL, 0, 'ducanh@gmail.com', NULL, 'Lê Văn Ạnh', 'render', 0);
 
 -- --------------------------------------------------------
 
@@ -11651,7 +11672,7 @@ ALTER TABLE `room_for_rent`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
