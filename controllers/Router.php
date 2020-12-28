@@ -100,6 +100,31 @@
 			$controllerName = "room";
 			$actionName = "doGetAllRoom";
 		}
+		//GET/getTinh
+		else if ($_SERVER["REQUEST_METHOD"] == "GET" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("getTinh")) 
+		{
+			$controllerName = "tinhhuyenxa";
+			$actionName = "doGetTinh";
+		}
+		//GET/getXa
+		else if ($_SERVER["REQUEST_METHOD"] == "GET" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("getXa")) 
+		{
+			$controllerName = "tinhhuyenxa";
+			$actionName = "doGetXa";
+		}
+		//GET/getHuyen
+		else if ($_SERVER["REQUEST_METHOD"] == "GET" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("getHuyen")) 
+		{
+			$controllerName = "tinhhuyenxa";
+			$actionName = "doGetHuyen";
+		}
+
 
 	
 
