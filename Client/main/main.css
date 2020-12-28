@@ -11,7 +11,7 @@ input[type=text], input[type=password] {
 }
 
 /* Set a style for all buttons */
-button {
+.btn_submit {
   background-color: #4CAF50;
   color: white;
   padding: 14px 20px;
@@ -21,7 +21,7 @@ button {
   width: 100%;
 }
 
-button:hover {
+.btn_submit:hover {
   opacity: 0.8;
 }
 

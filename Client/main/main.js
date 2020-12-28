@@ -16,22 +16,31 @@ fetch("../../index.php/logged")
     }
 });
 
-// var modal1 = document.getElementById('id01');
-// var modal2 = document.getElementById('id02');
-// var modal3 = document.getElementById('id03');
+var dataType = 'HELLO';
+var htmlBlock = ` <div class="col-md-4">
+<article class="aa-properties-item">
+  <a href="#" class="aa-properties-item-img">
+    <img src="img/item/1.jpg" alt="img">
+  </a>
+  <div class="aa-tag for-sale">
+    Độ hot
+  </div>
+  <div class="aa-properties-item-content">
+    <div class="aa-properties-info">
+      Cần gì thì điền vào
+    </div>
+    <div class="aa-properties-about">
+      <h3><a href="#">Tên phòng trọ</a></h3>
+      <p>Nội dung mô tả</p>
+    </div>
+    <div class="aa-properties-detial">
+      <span class="aa-price">
+        Giá tiền
+      </span>
+      <a href="#" class="aa-secondary-btn">Xem chi tiết</a>
+    </div>
+  </div>
+</article>
+</div>`;
 
-// window.onclick = function(event) {
-//     if (event.target == modal1) {
-//         modal1.style.display = "none";
-//     }
-// }
-// window.onclick = function(event) {
-//     if (event.target == modal2) {
-//         modal2.style.display = "none";
-//     }
-// }
-// window.onclick = function(event) {
-//     if (event.target == modal3) {
-//         modal3.style.display = "none";
-//     }
-// }
+console.log(htmlBlock);
