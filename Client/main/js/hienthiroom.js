@@ -1,4 +1,7 @@
 let luu = document.getElementById("luuthongtinnhatro");
+let luu1 = document.getElementById("luuthongtinnhatroaaa");
+
+luuthongtinnhatroaaa
 let luudata ="";
 let chuoixuli ="";
 let diadiem ="";
@@ -119,8 +122,9 @@ function xemchitiet(room_id)
                 <p>Phòng tắm : `+ luudata[i].phong_tam +`</p>
               </div>
             </div>
-          </div>`;
-          luu.innerHTML = chuoiluuthongtinchitiet;
+          </div>`;      
+          luu1.innerHTML = chuoiluuthongtinchitiet;
         }
     }
 }
+

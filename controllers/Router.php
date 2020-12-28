@@ -124,6 +124,14 @@
 			$controllerName = "tinhhuyenxa";
 			$actionName = "doGetHuyen";
 		}
+		//GET/searchRoom
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("searchRoom")) 
+		{
+			$controllerName = "room";
+			$actionName = "dofindRoom";
+		}
 
 
 	

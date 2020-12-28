@@ -19,7 +19,7 @@ class Room {
     //dưa ra tất cả các phòng
     public function getAllroom() {
 
-       $data1 =  $this->db->doQuery("select * from room_for_rent ;");
+       $data1 =  $this->db->doQuery("select * from room_for_rent where public = 1;");
        $data2 =  $this->db->doQuery("select * from image ;");
 
        for($i=0;$i<count($data1);$i++){
@@ -69,7 +69,29 @@ class Room {
     public function updateRoom(){
 
     }
-    // public function update($m, $ht, $ns, $qq) {
-    //     return $this->db->doPreparedSql("update sinhvien set hoten = ?, ngaysinh = ?, quequan = ? where masv = ?;", array($ht, $ns, $qq, $m));
-    // }
+    public function findRoom($road,$loai_phong,$tinh,$huyen,$xa,$priceMin,$priceMax,$sMin,$smax){
+        $data1 =  $this->db->doQuery("select * from room_for_rent 
+        where public = 1 and
+        address like '%$road%' and
+        loai_phong like '%$loai_phong%' and
+        diachi_tinh = '$tinh' and
+        diachi_huyen ='$huyen' and
+        diachi_xa = '$xa' and 
+        gia_thue >= $priceMin and
+        gia_thue <= $priceMax and
+        room_area >= $sMin and
+        room_area <= $smax
+        ;");
+        $data2 =  $this->db->doQuery("select * from image ;");
+ 
+        for($i=0;$i<count($data1);$i++){
+         $data1[$i]["image"]=array();
+         for($j=0;$j<count($data2);$j++){
+             if($data1[$i]["room_id"]== $data2[$j]["room_id"]){
+                     $data1[$i]["image"][]=$data2[$j]["url_image"];
+             }
+         }
+        }
+        return $data1; 
+    }
 }

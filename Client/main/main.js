@@ -50,4 +50,4 @@ var htmlBlock = ` <div class="col-md-4">
 </article>
 </div>`;
 
-console.log(htmlBlock);
+// console.log(htmlBlock);
