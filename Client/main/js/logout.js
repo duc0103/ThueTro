@@ -6,9 +6,11 @@ function logout() {
                     .then(ret => {
                         if (ret.status == "OK") {
                             if (ret.data == 1) {
-                                alert("đã đăng xuất");
+                                alert("đã đăng xuất"); 
+                                document.getElementById("btnRes").style.display="inline-block";
                                 document.getElementById("btnlogin").style.display="inline-block";
-                                document.getElementById("btnRes").style.display="inline-block";   
+                                document.getElementById("logout").style.display="none";
+                                document.getElementById("changePass").style.display="none";
                             }
                         }
                     });

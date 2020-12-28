@@ -18,8 +18,10 @@ btnLogin.onclick = function() {
                         if (ret.data == 1) {
                             // Đăng nhập thành công
                             alert("Đăng nhập thành công ");
+                            document.getElementById("btnRes").style.display="none";
                             document.getElementById("btnlogin").style.display="none";
-                            document.getElementById("btnRes").style.display="none";   
+                            document.getElementById("logout").style.display="inline-block";
+                            document.getElementById("changePass").style.display="inline-block";
                             document.getElementById('id01').style.display='none';
                             // 
                             fetch("../../index.php/logged")
