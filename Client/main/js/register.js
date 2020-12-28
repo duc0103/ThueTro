@@ -27,6 +27,7 @@ btnRes.onclick=function(){
                             email.values="";
                             name2.values="";
                             alert("Đăng kí thành công ");
+                            document.getElementById('id02').style.display='none';
                         }
                         else {
                             // Sai tên đăng nhập hoặc mật khẩu

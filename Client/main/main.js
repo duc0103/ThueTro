@@ -7,6 +7,8 @@ fetch("../../index.php/logged")
         resp2.json()
             .then(ret2 => {
                 if (ret2.status == "OK") {
+                  document.getElementById("nameUser").textContent="Tài Khoản: "+ret2.data[1];
+
                   document.getElementById("btnRes").style.display="none";
                   document.getElementById("btnlogin").style.display="none";
                   document.getElementById("logout").style.display="inline-block";
@@ -42,7 +44,7 @@ var htmlBlock = ` <div class="col-md-4">
       <span class="aa-price">
         Giá tiền
       </span>
-      <a href="#" class="aa-secondary-btn">Xem chi tiết</a>`+dataType+`
+      <a  class="aa-secondary-btn">Xem chi tiết</a>`+dataType+`
     </div>
   </div>
 </article>

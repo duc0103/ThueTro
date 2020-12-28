@@ -15,8 +15,12 @@ function changPass() {
                         if (ret.status == "ok" ) {
                             if (ret.data ) {
                                 alert("thay đổi mật khẩu t thafh công");
-                                document.getElementById("btnlogin").style.display="inline-block";
-                                document.getElementById("btnRes").style.display="inline-block";   
+                                
+                                document.getElementById("btnRes").style.display="none";
+                                document.getElementById("btnlogin").style.display="none";
+                                document.getElementById("logout").style.display="inline-block";
+                                document.getElementById("changePass").style.display="inline-block";
+                                document.getElementById('id03').style.display='none';
                             }
                         }
                     });

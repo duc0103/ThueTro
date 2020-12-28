@@ -23,12 +23,14 @@ btnLogin.onclick = function() {
                             document.getElementById("logout").style.display="inline-block";
                             document.getElementById("changePass").style.display="inline-block";
                             document.getElementById('id01').style.display='none';
+
                             // 
                             fetch("../../index.php/logged")
                                 .then(resp2 => {
                                     if (resp2.status == 200) {
                                         resp2.json()
                                             .then(ret2 => {
+                                                document.getElementById("nameUser").textContent="Tài Khoản: "+ret2.data[1];
                                                 if (ret2.status == "OK") {
                                                     if (ret2.data[0] == 1 && ret2.data[3]=="admin")  {
                                                         document.location.href = "../admin/admin.htm";

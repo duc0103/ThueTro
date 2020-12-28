@@ -119,3 +119,8 @@ span.psw {
 #chuaanh img{
   width: 100%;
 }
+#nameUser{
+  text-transform: uppercase;
+  margin-right: 40px;
+  color: white;
+}
