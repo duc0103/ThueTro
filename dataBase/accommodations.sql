@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 27, 2020 lúc 09:17 AM
+-- Thời gian đã tạo: Th12 28, 2020 lúc 02:21 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
--- Phiên bản PHP: 7.4.10
+-- Phiên bản PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -11541,16 +11541,17 @@ CREATE TABLE `room_for_rent` (
   `public` tinyint(4) NOT NULL,
   `diachi_xa` varchar(255) NOT NULL,
   `diachi_huyen` varchar(255) NOT NULL,
-  `diachi_tinh` varchar(255) NOT NULL
+  `diachi_tinh` varchar(255) NOT NULL,
+  `tenphong` varchar(255) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `room_for_rent`
 --
 
-INSERT INTO `room_for_rent` (`room_id`, `owners_Id`, `room_area`, `address`, `gia_thue`, `loai_phong`, `dia_diem_gan`, `chung_chu`, `ngay_dang`, `ngay_het_han`, `phong_tam`, `nuoc_nong`, `phong_bep`, `ban_cong`, `mo_ta`, `gia_dien`, `gia_nuoc`, `public`, `diachi_xa`, `diachi_huyen`, `diachi_tinh`) VALUES
-(1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 0, 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 0, 'Dịch Vọng Hậu', 'Cầu giấy', 'Hà Nội'),
-(2, 2, 30, '45 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội\r\n', 3000, 'chung cư mini', 'Học viện Báo Chí và tuyên truyền', 0, '2020-12-16', '2020-12-31', 'Khép kín', 1, 'Khu bếp chung', 0, 'Thuận lợi cho các bạn đi làm vs diện tích  gần 30m2 thoải mái sinh hoạt', 3000, 3000, 1, 'Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Hà Nội');
+INSERT INTO `room_for_rent` (`room_id`, `owners_Id`, `room_area`, `address`, `gia_thue`, `loai_phong`, `dia_diem_gan`, `chung_chu`, `ngay_dang`, `ngay_het_han`, `phong_tam`, `nuoc_nong`, `phong_bep`, `ban_cong`, `mo_ta`, `gia_dien`, `gia_nuoc`, `public`, `diachi_xa`, `diachi_huyen`, `diachi_tinh`, `tenphong`) VALUES
+(1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 0, 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 0, 'Dịch Vọng Hậu', 'Cầu giấy', 'Hà Nội', 'Phòng Mễ Trì'),
+(2, 2, 30, '45 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội\r\n', 3000, 'chung cư mini', 'Học viện Báo Chí và tuyên truyền', 0, '2020-12-16', '2020-12-31', 'Khép kín', 1, 'Khu bếp chung', 0, 'Thuận lợi cho các bạn đi làm vs diện tích  gần 30m2 thoải mái sinh hoạt', 3000, 3000, 1, 'Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Hà Nội', 'Phòng Xịn');
 
 -- --------------------------------------------------------
 
@@ -11577,33 +11578,12 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `code_id`, `user`, `pass`, `address`, `status`, `email`, `phoneNumber`, `name`, `per`, `online`) VALUES
-(1, 18020352, 'dong', '1', 'Cầu Giấy-Hà Nội', 2, 'donvuvan@gmail.com', '0326654448', 'Vũ Văn Đông', 'owner', 0),
+(1, 18020352, 'dong', '2', '144 xuân thủy-Cầu Giấy-Hà Nội', 2, '     vu@gmail.com', '0326654448', 'Vũ Văn Đông', 'owner', 0),
 (2, 180203352, 'duc', '1', 'Cầu giấy -Hà nội', 1, 'leducdhcn@gmail.com', '0986459532', 'Lê Văn Đức', 'admin', 0),
-(3, NULL, 'thue tro', '1', NULL, 0, 'vuvandong@gmail.com', NULL, 'vũ Văn Đông', 'render', 0),
+(3, 187871524, 'duc11', '1', '144 xuân thủy cầu giấy', 2, '  anhduc@gmail.com', '0986599632', 'Nguyễn Anh Đức', 'owner', 0),
 (4, NULL, 'hung', '1', NULL, 0, 'hung@gmail.com', NULL, 'hưng', 'render', 0),
-(5, NULL, '', '', NULL, 1, '', NULL, 'Dong', '', 0),
-(6, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(7, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(8, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(9, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(10, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(11, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(12, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(13, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(14, NULL, '', '', NULL, 2, '', NULL, 'Dong', '', 0),
-(15, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(16, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(17, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(18, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(19, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(20, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(21, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(22, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(23, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(24, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(25, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(26, NULL, '', '', NULL, 0, '', NULL, 'Duc', '', 0),
-(29, NULL, 'duc0103', 'duc', NULL, 0, 'ducanh@gmail.com', NULL, 'Lê Văn Ạnh', 'render', 0);
+(29, 212111221, 'duc0103', 'duc', '12123121212', 0, ' ducanh@gmail.com', '172121902012', 'Lê Văn Ạnh', 'render', 0),
+(30, NULL, 'ductam', '1234', NULL, 0, 'leduc@gmail.com', NULL, 'Lê Văn Đức', 'render', 0);
 
 -- --------------------------------------------------------
 
@@ -11672,7 +11652,7 @@ ALTER TABLE `room_for_rent`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=30;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
