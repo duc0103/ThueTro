@@ -1,3 +1,4 @@
+
 let luu = document.getElementById("luuthongtinnhatro");
 let luudata ="";
 let chuoixuli ="";
@@ -66,4 +67,5 @@ function xulidulieu(luudata,i)
             </div>`;
     return chuoixuli;
 }
+
 
