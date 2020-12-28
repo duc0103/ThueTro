@@ -88,10 +88,20 @@
 		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 		count($commandArray) == 1 &&
 		strtolower($commandArray[0]) == strtolower("changePass")) 
-	{
-		$controllerName = "user";
-		$actionName = "doChangePass";
-	}
+		{
+			$controllerName = "user";
+			$actionName = "doChangePass";
+		}
+		//GET/allRoom
+		else if ($_SERVER["REQUEST_METHOD"] == "GET" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("allRoom")) 
+		{
+			$controllerName = "room";
+			$actionName = "doGetAllRoom";
+		}
+
+	
 
 			// Trả kết quả về cho bộ điều khiển mặt trước
 			$ret["controllerName"]  = $controllerName;

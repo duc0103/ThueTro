@@ -18,13 +18,25 @@ class Room {
     }
     //dưa ra tất cả các phòng
     public function getAllroom() {
-       $data =  $this->db->doQuery("select * from room_for_rent ;");
-       return $data;
+
+       $data1 =  $this->db->doQuery("select * from room_for_rent ;");
+       $data2 =  $this->db->doQuery("select * from image ;");
+
+       for($i=0;$i<count($data1);$i++){
+        $data1[$i]["image"]=array();
+        for($j=0;$j<count($data2);$j++){
+            if($data1[$i]["room_id"]== $data2[$j]["room_id"]){
+                    $data1[$i]["image"][]=$data2[$j]["url_image"];
+            }
+        }
+       }
+       return $data1; 
     }
     //đưa ra 10 phòng được thêm mới nhất
     public function getTenroom() {
         $data =  $this->db->doQuery(" SELECT * FROM `room_for_rent` ORDER BY `room_for_rent`.`ngay_dang` DESC limit 10
         ;");
+        $data["urlimage"]= "";
         return $data;
      }
     //tìm phòng theo id

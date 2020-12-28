@@ -37,7 +37,7 @@ var htmlBlock = ` <div class="col-md-4">
       <span class="aa-price">
         Giá tiền
       </span>
-      <a href="#" class="aa-secondary-btn">Xem chi tiết</a>
+      <a href="#" class="aa-secondary-btn">Xem chi tiết</a>`+dataType+`
     </div>
   </div>
 </article>
