@@ -276,23 +276,23 @@ function them(chuoijson) {
     htContent4.style.display = "none";
     htContent5.style.display = "none";
     //Hiển thị thông tin các tài khoản
-    maxTrang = parseInt(chuoijson.length / 10) + 1;
+    maxTrang = parseInt(chuoijson.length / 8) + 1;
     maxVongLap = chuoijson.length;
     thongtinquanli.innerHTML = "";
     let sotrang = giatritrang[0].value - 1;
-    for (let i = sotrang * 10; i < sotrang * 10 + 10; i++) {
+    for (let i = sotrang * 8; i < sotrang * 8 + 8; i++) {
         if (chuoi1[i] != null)
             themthongtinhienthi(i);
     }
     nutSua = document.getElementsByClassName("Sua");
     nutXoa = document.getElementsByClassName("Xoa");
     //Phím chức năng xóa được chọn
-    for (let m = 0; m < 10; m++) {
+    for (let m = 0; m < 8; m++) {
         if (nutXoa[m] != null) {
             nutXoa[m].onclick = function () {
                 console.log("Nut xóa " + m + "được nhấn");
                 console.log("Trang được nhấn là :" + giatritrang[0].value);
-                let phanTuDuocThaoTacXoa = m + (giatritrang[0].value - 1) * 10;
+                let phanTuDuocThaoTacXoa = m + (giatritrang[0].value - 1) * 8;
                 console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
                 let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].user_id;//Chọn ra id của phần tử được xóa
                 if (confirm("Bạn chắc chắn muốn XÓA tài khoản : " + chuoijson[phanTuDuocThaoTacXoa].user + " ?"))
@@ -305,7 +305,7 @@ function them(chuoijson) {
                 chinhsuathongtin.innerHTML = "";
                 console.log("Nút sửa" + m + "được nhấn");
                 console.log("Trang được nhấn là :" + giatritrang[0].value);
-                let phanTuDuocThaoTacSua = m + (giatritrang[0].value - 1) * 10;
+                let phanTuDuocThaoTacSua = m + (giatritrang[0].value - 1) * 8;
                 console.log("Phần tử sẽ được sửa là : " + phanTuDuocThaoTacSua);
                 let giaTriSua = chuoijson[phanTuDuocThaoTacSua].user_id;
                 htdn.style.display = "block";
