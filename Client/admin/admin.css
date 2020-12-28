@@ -1,5 +1,5 @@
 body{
-    background-color: lightblue;
+    background-color:ivory;
     width: 100%;
     margin: auto;
 }
@@ -10,9 +10,9 @@ body{
     text-shadow: 4px 2px 4px;
 }
 #dndk{
-    position: fixed;
+    position: absolute;
     top: 10px;
-    right: 30px;
+    right: 0px;
     display: flex;
     width: auto;
     height: 50px;
@@ -40,8 +40,11 @@ body{
     margin-right: auto;
 }
 #content button{
-    height: 100px;
+    height: 70px;
     margin: 20px;
+    background-color: beige;
+    border: solid 2px steelblue;
+    border-radius: 5px;
 }
 .htdn{
     position:fixed;
@@ -60,7 +63,7 @@ body{
     width: 50%;
    /* // height: 50%; */
     background-color: aqua;
-    top: 100px;
+    top: 20px;
     left: 350px;
     border: solid 3px cadetblue;
     border-radius: 5px;
@@ -76,11 +79,22 @@ body{
     padding: 10px;
     font-size: 20px;
 }
-input{
+
+.thechua{
+    display: flex;
+}
+label{
+    flex: 1;
+    text-align: left;
+    margin-left: 25px;
+}
+input,select,#nutdn{
+    flex: 1;
     width: 300px;
     height: 30px;
     border: solid 2px teal;
     border-radius: 5px;
+    text-align: left;
 }
 #thoat{
     position: absolute;
@@ -97,6 +111,7 @@ input{
     height: 30px;
     border: solid 2px teal;
     border-radius: 5px;
+    text-align: center;
 }
 button{
     cursor: pointer;
@@ -114,27 +129,29 @@ button{
 }
 #htContent1, #htContent2, #htContent3, #htContent4,#htContent5{
     position: relative;
-    /* border: solid 2px steelblue; */
     border-radius: 5px;
     flex:5;
     margin: 20px;
     display: none;
 }
-.thoat1{
+/* .thoat1{
     position: absolute;
     top: 0px;
     right: 0px;
-}
+} */
 #bangquanli,#quanlibaidang,#thongtinquanli>div{
     display: flex;
 }
 #bangquanli div,#quanlibaidang div,#thongtinquanli>div>div{
-    flex:1;
+    flex: 1;
     overflow: auto;
     text-align: center;
     border: solid 2px steelblue;
-    margin-top:5px ;
+    /* border-right: solid 1px steelblue; */
     padding: 5px;
+    /* background-color: beige; */
+    margin: 1px;
+    border-radius: 5px;
 }
 #quanlichat,#quanlithongbao,#phantichxuhuong{
     border: solid 2px steelblue;
@@ -156,4 +173,61 @@ button{
     border: solid 2px steelblue;
     height: 30px;
     border-radius: 5px;
+    margin: 5px;
+}
+#displayusename button, #dx{
+    width: 80px;
+    height: 30px;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+    margin: 10px;
+}
+/* button.thoat1{
+    width: 25px;
+    height: 25px;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+} */
+button.thoat1:hover{
+    color:red;
+}
+.phandauthongtinnho{
+    font-size: 25px;
+    margin-bottom: 10px;
+    padding: 5px;
+    display: flex;
+    background:beige;
+    flex-direction: inherit;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+.phandauthongtinnho>div{
+    flex: 1;
+}
+.phandauthongtinnho>div button{
+    float: right;
+    height: 100%;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+button.Sua,button.Xoa{
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    margin-left: 5px;
+    background-color: beige;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+}
+#bangquanli div{
+    color: black;
+    font-size: 18;
+    background-color: beige;
+}
+#thongtinquanli>div>div{
+    color: black;
+    font-size: 15px;
 }
