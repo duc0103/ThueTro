@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8">
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">    
     <title>Home Property | Home</title>
     
     <!-- Favicon -->
     <!-- <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"> -->
-
+	<link rel="stylesheet" href="main.css">
     <!-- Font awesome -->
     <link href="css/font-awesome.css" rel="stylesheet">
     <!-- Bootstrap -->
@@ -20,124 +20,555 @@
     <!-- Fancybox slider -->
     <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" /> 
     <!-- Theme color -->
-    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">   
-	<meta name="viewport" content="width=device-width, initial-scale=1">
-	<meta charset="UTF-8">
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">     
 
-	<link rel="stylesheet" href="main.css">
-</head>
-<body>
+    <!-- Main style sheet -->
+    <link href="css/style.css" rel="stylesheet">    
 
 
-<button id="btnlogin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Đăng nhập</button>
-<button id="btnRes"onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Đăng kí</button>
-<button onclick="logout()" style="width:auto;">Đăng xuất</button>
-<button id="changePass" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Đổi mật khẩu</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-<!-- các phần đăng nhập đăng kí đổi mật khẩu ở  -->
-<!-- Đăng nhập -->
-<div id="id01" class="modal">
-  
-  <div class="modal-content animate" >
-    <div class="imgcontainer">
-      <span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
-	<span>Đăng nhập</span>
-	</div>
-
-    <div class="container">
-      <label for="uname"><b>Tên Tài Khoản</b></label>
-      <input type="text" placeholder="Nhập Tên Tài Khoản" id="user1" >
-
-      <label for="psw"><b>Mật Khẩu</b></label>
-      <input type="password" placeholder="Nhập Mật Khẩu" id="pass1">
-        
-      <button type="submit" id="login">Đăng Nhập</button>
-      <label>
-        <input type="checkbox" checked="checked" name="remember"> Remember me
-      </label>
-    </div>
-
-    <div class="container" style="background-color:#f1f1f1">
-      <button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
-    </div>
+  </head>
+  <body class="aa-price-range">  
+  <!-- Pre Loader -->
+  <div id="aa-preloader-area">
+    <div class="pulse"></div>
   </div>
-</div>
 
-<!-- Dăng kí -->
-<div id="id02" class="modal">
+  <!-- SCROLL TOP BUTTON -->
+    <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+  <!-- Start header section -->
+  <header id="aa-header">  
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-header-area">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="aa-header-left">
+                  <div class="aa-telephone-no">
+                    <span class="fa fa-phone"></span>
+                    0986459532
+                  </div>
+                  <div class="aa-email hidden-xs">
+                    <span class="fa fa-envelope-o"></span> leducdhcn@gmail.com
+                  </div>
+                </div>              
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="aa-header-right">
+                  <a id="btnRes"onclick="document.getElementById('id02').style.display='block'" style="width:auto;"class="aa-register">Đăng kí</a>
+				  <a id="btnlogin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;" class="aa-login">Đăng nhập</a>
+
+				  <!-- <button id="btnlogin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;">Đăng nhập</button>
+	<button id="btnRes"onclick="document.getElementById('id02').style.display='block'" style="width:auto;">Đăng kí</button>
+	<button onclick="logout()" style="width:auto;">Đăng xuất</button>
+	<button id="changePass" onclick="document.getElementById('id03').style.display='block'" style="width:auto;">Đổi mật khẩu</button> -->
+				 
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </header>
+  <!-- End header section -->
+
+  <!-- Start menu section -->
+  <section id="aa-menu-area">
+    <nav class="navbar navbar-default main-navbar" role="navigation">  
+      <div class="container">
+        <div class="navbar-header">
+          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar" aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- LOGO -->                                               
+          <!-- Text based logo -->
+           <a class="navbar-brand aa-logo" href="index.html"> Trang Chủ <span>tìm trọ</span></a>
+           <!-- Image based logo -->
+           <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
+            <li><a href="index.html">Trang chủ</a></li>
+             <!-- <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">Phòng Trọ <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">                
+                <li><a href="properties.html">Phòng Trọ </a></li>
+                <li><a href="properties-detail.html">CHi tiết phòng trọ</a></li>                                            
+              </ul>
+            </li> -->
+            <li><a href="#">Tất cả phòng trọ</a></li>
+            <li><a href="#">Chat</a></li>   
+            <li><a href="#">Yêu thích</a></li>                                      
+            <!-- <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="blog-archive.html">BLOG <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">                
+                <li><a href="blog-archive.html">BLOG</a></li>
+                <li><a href="blog-single.html">BLOG DETAILS</a></li>                                            
+              </ul>
+            </li> -->
+            <li><a href="#">Đăng tin</a></li>
+           <li><a href="#">Hướng dẫn </a></li>
+          </ul>                            
+        </div><!--/.nav-collapse -->       
+      </div>          
+    </nav> 
+  </section>
+  <!-- End menu section -->
+
+  <!-- Start slider  -->
+  <section id="aa-slider">
+    <div class="aa-slider-area"> 
+      <!-- Top slider -->
+      <div class="aa-top-slider">
+        <!-- Top slider single slide -->
+        <div class="aa-top-slider-single">
+          <img src="img/slider/1.jpg" alt="img">
+          <!-- Top slider content -->
+          <!-- <div class="aa-top-slider-content">
+            <span class="aa-top-slider-catg">Duplex</span>
+            <h2 class="aa-top-slider-title">1560 Square Feet</h2>
+            <p class="aa-top-slider-location"><i class="fa fa-map-marker"></i>South Beach, Miami (USA)</p>
+            <span class="aa-top-slider-off">30% OFF</span>
+            <p class="aa-top-slider-price">$460,000</p>
+            <a href="#" class="aa-top-slider-btn">Read More <span class="fa fa-angle-double-right"></span></a>
+          </div> -->
+          <!-- / Top slider content -->
+        </div>
+
+        <div class="aa-top-slider-single">
+          <img src="img/slider/2.jpg" alt="img">
+          <!-- / Top slider content -->
+        </div>
+     
+        <div class="aa-top-slider-single">
+          <img src="img/slider/3.jpg" alt="img">
+        </div>
+      
+        <div class="aa-top-slider-single">
+          <img src="img/slider/4.jpg" alt="img">
+          <!-- Top slider content -->
+        </div>
+        <!-- / Top slider single slide -->
+      </div>
+    </div>
+  </section>
+  <!-- End slider  -->
+
+  <!-- Advance Search -->
+  <section id="aa-advance-search">
+    <div class="container">
+      <div class="aa-advance-search-area">
+        <div class="form">
+         <div class="aa-advance-search-top">
+            <div class="row">
+              <div class="col-md-4">
+                <div class="aa-single-advance-search">
+                  <input type="text" placeholder="Nhập địa chỉ muốn tìm ">
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="aa-single-advance-search">
+                  <select>
+                   <option value="0" selected>Thể loại </option>
+                    <option value="1">phòng trọ</option>
+                    <option value="2">chung cư mini</option>
+                    <option value="3">nhà nguyên căn</option>
+                    <option value="4">chung cư nguyên căn  </option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-2">
+                <div class="aa-single-advance-search">
+                  <input class="aa-search-btn" type="submit" value="Search">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="aa-advance-search-top">
+            <div class="row">
+              <div class="col-md-4">
+                <span>Giá</span>
+                <div class="aa-single-advance-search">
+                  <input type="text" placeholder="giá tối thiểu">
+                </div>
+                <div class="aa-single-advance-search">
+                  <span>Đến</span>
+                </div>
+                <div class="aa-single-advance-search">
+                  <input type="text" placeholder="giá tối đa">
+                </div>
+              </div>  
+              <div class="col-md-4">
+                <span>Diện tích</span>
+                <div class="aa-single-advance-search">
+                  <input type="text" placeholder="Diện tích tối thiểu">
+                </div>
+                <div class="aa-single-advance-search">
+                  <span>Đến</span>
+                </div>
+                <div class="aa-single-advance-search">
+                  <input type="text" placeholder="Diện tích tối đa">
+                </div>
+              </div>  
+            </div>
+          </div>
+         </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Advance Search -->
+
+  <!-- Latest property -->
+  <section id="aa-latest-property">
+    <div class="container">
+      <div class="aa-latest-property-area">
+        <div class="aa-title">
+          <h2>Các bài đăng gần đây</h2>
+          <span></span>
+        </div>
+        <div class="aa-latest-properties-content">
+          <div class="row">
+            <div class="col-md-4">
+              <article class="aa-properties-item">
+                <a href="#" class="aa-properties-item-img">
+                  <img src="img/item/1.jpg" alt="img">
+                </a>
+                <div class="aa-tag for-sale">
+                  For Sale
+                </div>
+                <div class="aa-properties-item-content">
+                  <div class="aa-properties-info">
+                    <span>5 Rooms</span>
+                    <span>2 Beds</span>
+                    <span>3 Baths</span>
+                    <span>1100 SQ FT</span>
+                  </div>
+                  <div class="aa-properties-about">
+                    <h3><a href="#">Appartment Title</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                  </div>
+                  <div class="aa-properties-detial">
+                    <span class="aa-price">
+                      $35000
+                    </span>
+                    <a href="#" class="aa-secondary-btn">View Details</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="aa-properties-item">
+                <a href="#" class="aa-properties-item-img">
+                  <img src="img/item/2.jpg" alt="img">
+                </a>
+                <div class="aa-tag for-rent">
+                  For Rent
+                </div>
+                <div class="aa-properties-item-content">
+                  <div class="aa-properties-info">
+                    <span>5 Rooms</span>
+                    <span>2 Beds</span>
+                    <span>3 Baths</span>
+                    <span>1100 SQ FT</span>
+                  </div>
+                  <div class="aa-properties-about">
+                    <h3><a href="#">Appartment Title</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                  </div>
+                  <div class="aa-properties-detial">
+                    <span class="aa-price">
+                      $11000
+                    </span>
+                    <a href="#" class="aa-secondary-btn">View Details</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="aa-properties-item">
+                <a href="#" class="aa-properties-item-img">
+                  <img src="img/item/3.jpg" alt="img">
+                </a>
+                <div class="aa-tag sold-out">
+                  Sold Out
+                </div>
+                <div class="aa-properties-item-content">
+                  <div class="aa-properties-info">
+                    <span>5 Rooms</span>
+                    <span>2 Beds</span>
+                    <span>3 Baths</span>
+                    <span>1100 SQ FT</span>
+                  </div>
+                  <div class="aa-properties-about">
+                    <h3><a href="#">Appartment Title</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                  </div>
+                  <div class="aa-properties-detial">
+                    <span class="aa-price">
+                      $15000
+                    </span>
+                    <a href="#" class="aa-secondary-btn">View Details</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="aa-properties-item">
+                <a href="#" class="aa-properties-item-img">
+                  <img src="img/item/4.jpg" alt="img">
+                </a>
+                <div class="aa-tag for-sale">
+                  For Sale
+                </div>
+                <div class="aa-properties-item-content">
+                  <div class="aa-properties-info">
+                    <span>5 Rooms</span>
+                    <span>2 Beds</span>
+                    <span>3 Baths</span>
+                    <span>1100 SQ FT</span>
+                  </div>
+                  <div class="aa-properties-about">
+                    <h3><a href="#">Appartment Title</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                  </div>
+                  <div class="aa-properties-detial">
+                    <span class="aa-price">
+                      $35000
+                    </span>
+                    <a href="#" class="aa-secondary-btn">View Details</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="aa-properties-item">
+                <a href="#" class="aa-properties-item-img">
+                  <img src="img/item/5.jpg" alt="img">
+                </a>                
+                <div class="aa-tag sold-out">
+                  Sold Out
+                </div>
+                <div class="aa-properties-item-content">
+                  <div class="aa-properties-info">
+                    <span>5 Rooms</span>
+                    <span>2 Beds</span>
+                    <span>3 Baths</span>
+                    <span>1100 SQ FT</span>
+                  </div>
+                  <div class="aa-properties-about">
+                    <h3><a href="#">Appartment Title</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                  </div>
+                  <div class="aa-properties-detial">
+                    <span class="aa-price">
+                      $11000
+                    </span>
+                    <a href="#" class="aa-secondary-btn">View Details</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+            <div class="col-md-4">
+              <article class="aa-properties-item">
+                <a href="#" class="aa-properties-item-img">
+                  <img src="img/item/6.jpg" alt="img">
+                </a>
+                <div class="aa-tag for-rent">
+                  For Rent
+                </div>
+                <div class="aa-properties-item-content">
+                  <div class="aa-properties-info">
+                    <span>5 Rooms</span>
+                    <span>2 Beds</span>
+                    <span>3 Baths</span>
+                    <span>1100 SQ FT</span>
+                  </div>
+                  <div class="aa-properties-about">
+                    <h3><a href="#">Appartment Title</a></h3>
+                    <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Enim molestiae vero ducimus quibusdam odit vitae.</p>                      
+                  </div>
+                  <div class="aa-properties-detial">
+                    <span class="aa-price">
+                      $15000
+                    </span>
+                    <a href="#" class="aa-secondary-btn">View Details</a>
+                  </div>
+                </div>
+              </article>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Latest property -->
+
+  <!-- Promo Banner Section -->
+  <section id="aa-promo-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-promo-banner-area">
+            <h3>Trang web tìm trọ tốt nhất dành cho bạn </h3>
+            <p>Hãy đến với chúng tôi.Đảm bảo rằng bạn không hề thất vọng với công nghệ tìm trọ nhanh nhất của chúng tôi</p>
+            <a href="#" class="aa-view-btn">View Details</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Promo Banner Section -->
+
+  <!-- Footer -->
+  <footer id="aa-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+        <div class="aa-footer-area">
+          <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="aa-footer-left">
+               <p>Được tạo ra  <a rel="nofollow">Những hotboy dz</a></p>
+              </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12">
+              <div class="aa-footer-middle">
+                <a href="#"><i class="fa fa-facebook"></i></a>
+                <a href="#"><i class="fa fa-twitter"></i></a>
+                <a href="#"><i class="fa fa-google-plus"></i></a>
+                <a href="#"><i class="fa fa-youtube"></i></a>
+              </div>
+            </div>
+            <div class="col-md-6 col-sm-12 col-xs-12">
+              <div class="aa-footer-right">
+                <a href="#">Home</a>
+                <a href="#">Support</a>
+                <a href="#">License</a>
+                <a href="#">FAQ</a>
+                <a href="#">Privacy & Term</a>
+              </div>
+            </div>            
+          </div>
+        </div>
+      </div>
+      </div>
+    </div>
+  </footer>
+  <!-- / Footer -->
+
+  <!-- authen -->
+  <div id="id01" class="modal">
   
 	<div class="modal-content animate" >
 	  <div class="imgcontainer">
-		<span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
-		<span>Đăng kí</span>
-	</div>
+		<span onclick="document.getElementById('id01').style.display='none'" class="close" title="Close Modal">&times;</span>
+	  <span>Đăng nhập</span>
+	  </div>
   
 	  <div class="container">
 		<label for="uname"><b>Tên Tài Khoản</b></label>
-		<input type="text" placeholder="Nhập Tên Tài Khoản" id="user2">
+		<input type="text" placeholder="Nhập Tên Tài Khoản" id="user1" >
   
 		<label for="psw"><b>Mật Khẩu</b></label>
-		<input type="password" placeholder="Nhập Mật Khẩu" id="pass2" >
-
-		<label for="psw"><b>Họ và Tên</b></label>
-		<input type="text" placeholder="Họ và Tên" id="name"  >
-
-		<label for="psw"><b>Email</b></label>
-		<input type="text" placeholder="Nhập email" id="email" >
-		
+		<input type="password" placeholder="Nhập Mật Khẩu" id="pass1">
 		  
-		<button type="submit" id="register">Đăng kí</button>
-	
+		<button type="submit" id="login">Đăng Nhập</button>
+		<label>
+		  <input type="checkbox" checked="checked" name="remember"> Remember me
+		</label>
 	  </div>
   
 	  <div class="container" style="background-color:#f1f1f1">
-		<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+		<button type="button" onclick="document.getElementById('id01').style.display='none'" class="cancelbtn">Cancel</button>
 	  </div>
 	</div>
   </div>
-  <!-- Đổi mật khẩu -->
-  <div id="id03" class="modal">
   
-	<div class="modal-content animate" >
-	  <div class="imgcontainer">
-		<span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
-		<span>Đăng kí</span>
-	</div>
-  
-	  <div class="container">
-		<label for="psw"><b>Mật Khẩu cũ</b></label>
-		<input type="password" placeholder="Nhập Mật Khẩu" id="pass3" >
-		<label for="psw"><b>Mật khẩu mới</b></label>
-		<input type="password" placeholder="Nhập mật khẩu mới" id="newpass"  >
-		<button type="submit" onclick=" changPass()" id="doChange">Đổi mật khẩu</button>
+  <!-- Dăng kí -->
+  <div id="id02" class="modal">
 	
+	  <div class="modal-content animate" >
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('id02').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <span>Đăng kí</span>
 	  </div>
+	
+		<div class="container">
+		  <label for="uname"><b>Tên Tài Khoản</b></label>
+		  <input type="text" placeholder="Nhập Tên Tài Khoản" id="user2">
+	
+		  <label for="psw"><b>Mật Khẩu</b></label>
+		  <input type="password" placeholder="Nhập Mật Khẩu" id="pass2" >
   
-	  <div class="container" style="background-color:#f1f1f1">
-		<button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+		  <label for="psw"><b>Họ và Tên</b></label>
+		  <input type="text" placeholder="Họ và Tên" id="name"  >
+  
+		  <label for="psw"><b>Email</b></label>
+		  <input type="text" placeholder="Nhập email" id="email" >
+		  
+		  <button type="submit" id="register">Đăng kí</button>
+	  
+		</div>
+	
+		<div class="container" style="background-color:#f1f1f1">
+		  <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+		</div>
 	  </div>
 	</div>
-  </div>
-  <script src="main.js"></script>
-  <script src="js/login.js"></script>
-  <script src="js/register.js"></script>
-  <script src="js/logout.js"></script>
-  <script src="js/changePass.js"></script>
+	<!-- Đổi mật khẩu -->
+	<div id="id03" class="modal">
+	
+	  <div class="modal-content animate" >
+		<div class="imgcontainer">
+		  <span onclick="document.getElementById('id03').style.display='none'" class="close" title="Close Modal">&times;</span>
+		  <span>Đăng kí</span>
+	  </div>
+	
+		<div class="container">
+		  <label for="psw"><b>Mật Khẩu cũ</b></label>
+		  <input type="password" placeholder="Nhập Mật Khẩu" id="pass3" >
+		  <label for="psw"><b>Mật khẩu mới</b></label>
+		  <input type="password" placeholder="Nhập mật khẩu mới" id="newpass"  >
+		  <button type="submit" onclick=" changPass()" id="doChange">Đổi mật khẩu</button>
+	  
+		</div>
+	
+		<div class="container" style="background-color:#f1f1f1">
+		  <button type="button" onclick="document.getElementById('id02').style.display='none'" class="cancelbtn">Cancel</button>
+		</div>
+	  </div>
+	</div>
+	
+	<script src="main.js"></script>
+	<script src="js/login.js"></script>
+	<script src="js/register.js"></script>
+	<script src="js/logout.js"></script>
+	<script src="js/changePass.js"></script>
 
+  <!-- jQuery library -->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src="js/nouislider.js"></script>
+   <!-- mixit slider -->
+  <script type="text/javascript" src="js/jquery.mixitup.js"></script>
+  <!-- Add fancyBox -->        
+  <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+  <!-- Custom js -->
+  <script src="js/custom.js"></script> 
+  
 
-
-</body>
+  </body>
 </html>
