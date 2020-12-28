@@ -311,12 +311,15 @@ function them(chuoijson) {
                 htdn.style.display = "block";
                 htdn1.style.display = "block";
                 let code_id = document.createElement("div");
+
                 let ip1 = document.createElement("div");          
+
                 let ip2 = document.createElement("div");
                 let ip3 = document.createElement("div");
                 let ip4 = document.createElement("div");
                 let ip5 = document.createElement("div");
                 let ip6 = document.createElement("div");
+
                 ip1.classList = "thechua";
                 ip2.classList = "thechua";
                 ip3.classList = "thechua";
@@ -324,6 +327,7 @@ function them(chuoijson) {
                 ip5.classList = "thechua";
                 ip6.classList = "thechua";
                 code_id.classList = "thechua";
+
                 let lbcode_id = document.createElement("label");
                 let lb1 = document.createElement("label");
                 let lb2 = document.createElement("label");
@@ -338,6 +342,7 @@ function them(chuoijson) {
                 lb4.textContent =       "Số điện thoại   : ";
                 lb5.textContent =       "Địa chỉ         : ";
                 lb6.textContent =       "Loại tài khoản  : ";
+
                 ip1.appendChild(lb1);
                 ip2.appendChild(lb2);
                 ip3.appendChild(lb3);
@@ -353,11 +358,13 @@ function them(chuoijson) {
                 let code_id1 = document.createElement("input");
                 let ip61 = document.createElement("select");
                 let ip611 = document.createElement("option");
+
                 ip611.value = "owner";
                 ip611.textContent = "Quản lí"
                 let ip612 = document.createElement("option");
                 ip612.value = "render";
                 ip612.textContent = "Tài khoản thường";
+
                 ip61.appendChild(ip611);
                 ip61.appendChild(ip612);
                 ip1.appendChild(ip11);
@@ -373,7 +380,7 @@ function them(chuoijson) {
                 ip41.value = chuoijson[phanTuDuocThaoTacSua].phoneNumber;
                 ip51.value = chuoijson[phanTuDuocThaoTacSua].address;
                 ip61.value = chuoijson[phanTuDuocThaoTacSua].per;
-                code_id1.value = chuoijson[phanTuDuocThaoTacSua].code_id;
+                code_id1.value=chuoijson[phanTuDuocThaoTacSua].code_id;
                 chinhsuathongtin.appendChild(ip1);
                 chinhsuathongtin.appendChild(code_id);
                 chinhsuathongtin.appendChild(ip2);
@@ -404,6 +411,7 @@ function them(chuoijson) {
                                 resp.json()
                                     .then(ret => {
                                         if (ret.status == "ok") {
+
                                             alert("Sửa thông tin thành công");
                                             htdn.style.display = "none";
                                             htdn1.style.display = "none";
@@ -413,12 +421,15 @@ function them(chuoijson) {
                                         }
                                         else {
                                             alert("Tên tài khoản hoặc Email đã tồn tại");
+
                                         }
                                     })
                             }
                         })
+
                     }
                 }
+
                 //Bấm nút xác nhận thì gửi các dữ liệu ở các thẻ ip11 , ip21 ... đến phần nutdn.onclick
             }
         }
