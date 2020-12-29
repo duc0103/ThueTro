@@ -22,17 +22,53 @@ let thoatndct = document.getElementsByClassName("thoat1");//Nút thoát bên tro
 let giamsotrang = document.getElementsByClassName("giam");//Nút tăng số trang
 let tangsotrang = document.getElementsByClassName("tang");//Nút giảm số trang
 let giatritrang = document.getElementsByClassName("giatri");//Thẻ input chứa giá trị trang
-let thongtinquanli = document.getElementById("thongtinquanli");//Thẻ chứa nội dung thông tin quản lí tài khoản dữ liệu được lấy về từ backend
+let thongtinquanli = document.getElementsByClassName("thongtinquanli");//Thẻ chứa nội dung thông tin quản lí tài khoản dữ liệu được lấy về từ backend
+//let thongtinquanlibaidang = document.getElementById("thongtinquanlibaidang");
+console.log(thongtinquanli);
 var chuoijson = "";//Chuỗi json trả về dữ liệu phần quản lí thông tin tài khoản
 let chuoi1 = "";//Chuyển chuoijson bên trên thành đối tượng
 let nutXoa = "";//Chứa các nút xóa trong phần chức năng của hiển thị thông tin 
 let nutSua = "";//Chứa các nút sửa trong phần chức năng của hiển thị thông tin 
 let maxTrang = "";
 let maxVongLap = "";
-let timkiemqltk = document.getElementById("timkiemqltk");//Nút tìm kiếm trong phần quản lí thông tin tài khoản
-let iptimkiemqltk = document.getElementById("iptimkiemqltk");//Thẻ input trong phần quản lí thông tin tài khoản
+let timkiem = document.getElementsByClassName("timkiem");//Nút tìm kiếm trong phần quản lí thông tin tài khoản
+let iptimkiem = document.getElementsByClassName("iptimkiem");//Thẻ input trong phần quản lí thông tin tài khoản
 let chinhsuathongtin = document.getElementById("phanchuathongtintaikhoan");
-console.log(iptimkiemqltk.value);
+//Khai báo các phần tử lưu thông tin trùng khớp
+let theto = document.createElement("div");
+let chucnang = document.createElement("div");
+let nutsua = document.createElement("button");
+let nutxoa = document.createElement("button");
+let phanTuDuocThaoTacSua = "";
+let giaTriSua = "";
+let code_id = document.createElement("div");
+let ip1 = document.createElement("div");
+let ip2 = document.createElement("div");
+let ip3 = document.createElement("div");
+let ip4 = document.createElement("div");
+let ip5 = document.createElement("div");
+let ip6 = document.createElement("div");
+let lbcode_id = document.createElement("label");
+let lb1 = document.createElement("label");
+let lb2 = document.createElement("label");
+let lb3 = document.createElement("label");
+let lb4 = document.createElement("label");
+let lb5 = document.createElement("label");
+let lb6 = document.createElement("label");
+let ip11 = document.createElement("input");
+let ip21 = document.createElement("input");
+let ip31 = document.createElement("input");
+let ip41 = document.createElement("input");
+let ip51 = document.createElement("input");
+let code_id1 = document.createElement("input");
+let ip61 = document.createElement("select");
+let ip611 = document.createElement("option");
+let ip612 = document.createElement("option");
+let thongtin = document.getElementById("tt1");
+let sotrang = "";
+let chuoivehtmlqlbd = "";
+let chuoivehtmlqlbdSua = "";
+console.log(timkiem[0]);
 //Hiển thị sau khi load trang
 window.onload = function () {
     htdn.style.display = "none";
@@ -88,7 +124,8 @@ qltk.onclick = function () {
                     .then(ret => {
                         if (ret.status == "ok") {
                             chuoijson = ret.data;
-                            them(chuoijson);
+                            console.log(chuoijson);
+                            them(chuoijson, 0);
                         }
                         //  console.log(ret.status);
                     });
@@ -97,36 +134,38 @@ qltk.onclick = function () {
     // console.log(thongtinquanli);
 }
 //Tìm kiếm thông tin phần quản lí thông tin tài khoản
-timkiemqltk.onclick = function () {
-    console.log(iptimkiemqltk.value);
+for (let i = 0; i < 4; i++) {
+    timkiem[i].onclick = function () {
+        console.log(iptimkiem[i].value);
 
-    fetch("../../index.php/searchUser", {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: '{"search":"' + iptimkiemqltk.value + '"}'
-    })
-        .then(resp => {
-            if (resp.status == 200) {
-                resp.json()
-                    .then(ret => {
-                        if (ret.status == "ok") {
-                            console.log(ret.data);
-                            chuoijson = ret.data;
-                            giatritrang[0].value = 1;
-                            them(chuoijson);
-                        }
-                    })
-            }
+        fetch("../../index.php/searchUser", {
+            method: "POST",
+            headers: { "Content-Type": "application/json" },
+            body: '{"search":"' + iptimkiem[i].value + '"}'
         })
+            .then(resp => {
+                if (resp.status == 200) {
+                    resp.json()
+                        .then(ret => {
+                            if (ret.status == "ok") {
+                                console.log(ret.data);
+                                chuoijson = ret.data;
+                                giatritrang[i].value = 1;
+                                them(chuoijson,i);
+                            }
+                        })
+                }
+            })
 
-    iptimkiemqltk.value = "";
-};
+        iptimkiem[i].value = "";
+    };
+}
 //Xóa tài khoản người dùng
-function deleteUser(id) {
+function deleteUser(id_tenbaidang, nhandientrangxoa) {
     fetch("../../index.php/deleteUser", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: '{"id":"' + id + '"}'
+        body: '{"id":"' + id_tenbaidang + '"}'
     })
         .then(resp => {
             if (resp.status == 200) {
@@ -135,7 +174,7 @@ function deleteUser(id) {
                         if (ret.status == "ok") {
                             console.log(ret.data);
                             chuoijson = ret.data;
-                            them(chuoijson);
+                            them(chuoijson, nhandientrangxoa);
                         }
                     })
             }
@@ -144,11 +183,15 @@ function deleteUser(id) {
 
 //Xử lí khi bấm vào phần hiển thị của quản lí bài đăng
 qlbd.onclick = function () {
-    htContent2.style.display = "block";
-    htContent1.style.display = "none";
-    htContent3.style.display = "none";
-    htContent4.style.display = "none";
-    htContent5.style.display = "none";
+    // console.log("Chạy quản lí bài đăng");
+    // themthongtinhienthi(0,1);
+    chuoi1 = '[{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"}]';
+    // chuoi1 = "";
+    chuoijson = JSON.parse(chuoi1);
+    // console.log(chuoijson);
+    them(chuoijson, 1);
+    console.log("Đã bấm vào quản lí bài đăng");
+
 }
 //Xử lí khi bấm vào phần hiển thị của nút thông báo
 tb.onclick = function () {
@@ -193,7 +236,10 @@ for (let j = 0; j <= 3; j++) {
         if (giatritrang[j].value > 1)
             giatritrang[j].value--;
         if (j == 0) {
-            them(chuoijson);//Hiển thị thông tin dựa vào số trang
+            them(chuoijson, 0);//Hiển thị thông tin dựa vào số trang
+        }
+        else if (j == 1) {
+            them(chuoijson, 1);//Hiển thị thông tin dựa vào số trang
         }
     }
 }
@@ -204,7 +250,9 @@ for (let j = 0; j <= 3; j++) {
             giatritrang[j].value++;
         }
         if (j == 0) {
-            them(chuoijson);//Hiển thị thông tin dựa vào số trang
+            them(chuoijson, 0);//Hiển thị thông tin dựa vào số trang
+        } else if (j == 1) {
+            them(chuoijson, 1);//Hiển thị thông tin dựa vào số trang
         }
     }
 }
@@ -212,7 +260,7 @@ for (let j = 0; j <= 3; j++) {
 function createDisplayUser(userName, per) {
 
     let c1 = document.createElement("button");
-    var string1 = userName ;
+    var string1 = userName;
     c1.innerHTML = string1;
     let r = document.getElementById("displayusename");
     if (r.childElementCount < 1) {
@@ -227,201 +275,291 @@ for (let i = 0; i < maxVongLap; i++) {
     }
 }
 //Hàm dùng để vẽ động khi nút quản lí tài khoản được click
-function themthongtinhienthi(bienchay) {
-    let theto = document.createElement("div");
-    let chucnang = document.createElement("div");
-    let nutsua = document.createElement("button");
-    nutsua.classList = "Sua";
-    nutsua.textContent = "Sửa";
-    let nutxoa = document.createElement("button");
-    nutxoa.classList = "Xoa";
-    nutxoa.textContent = "Xóa";
-    let hoten = document.createElement("div");
-    let tendangnhap = document.createElement("div");
-    let email = document.createElement("div");
-    let sodienthoai = document.createElement("div");
-    let diachi = document.createElement("div");
-    let loaitaikhoan = document.createElement("div");
-    let luutambien = "";
-    chucnang.appendChild(nutsua);
-    chucnang.appendChild(nutxoa);
-    hoten.textContent = chuoi1[bienchay].user;
-    tendangnhap.textContent = chuoi1[bienchay].name;
-    email.textContent = chuoi1[bienchay].email;
-    sodienthoai.textContent = chuoi1[bienchay].phoneNumber;
-    diachi.textContent = chuoi1[bienchay].address;
-    if (chuoi1[bienchay].per == "owner") {
-        luutambien = "Quản lí";
-    } else if (chuoi1[bienchay].per == "render") {
-        luutambien = "Tài khoản thường";
+function themthongtinhienthi(bienchay, luuthongtintrangnho1) {
+    if (luuthongtintrangnho1 == 0) {
+        console.log("chay voi bien trang thai la 0");
+        theto = document.createElement("div");
+        chucnang = document.createElement("div");
+        nutsua = document.createElement("button");
+        nutsua.classList = "Sua";
+        nutsua.textContent = "Sửa";
+        nutxoa = document.createElement("button");
+        nutxoa.classList = "Xoa";
+        nutxoa.textContent = "Xóa";
+        let hoten = document.createElement("div");
+        let tendangnhap = document.createElement("div");
+        let email = document.createElement("div");
+        let sodienthoai = document.createElement("div");
+        let diachi = document.createElement("div");
+        let loaitaikhoan = document.createElement("div");
+        let luutambien = "";
+        chucnang.appendChild(nutsua);
+        chucnang.appendChild(nutxoa);
+        hoten.textContent = chuoi1[bienchay].user;
+        tendangnhap.textContent = chuoi1[bienchay].name;
+        email.textContent = chuoi1[bienchay].email;
+        sodienthoai.textContent = chuoi1[bienchay].phoneNumber;
+        diachi.textContent = chuoi1[bienchay].address;
+        if (chuoi1[bienchay].per == "owner") {
+            luutambien = "Quản lí";
+        } else if (chuoi1[bienchay].per == "render") {
+            luutambien = "Tài khoản thường";
+        }
+        loaitaikhoan.textContent = luutambien;
+        theto.appendChild(chucnang);
+        theto.appendChild(hoten);
+        theto.appendChild(tendangnhap);
+        theto.appendChild(email);
+        theto.appendChild(sodienthoai);
+        theto.appendChild(diachi);
+        theto.appendChild(loaitaikhoan);
+        thongtinquanli[0].appendChild(theto);
+    } else if (luuthongtintrangnho1 == 1) {
+        // console.log("chay vs biến trạng thái bằng 1");
+        chuoivehtmlqlbd = `
+        <div>
+            <div>
+                <button class="Sua1">Sửa</button>
+                <button class="Xoa1">Xóa</button>
+            </div>
+            <div>`+ chuoijson[bienchay].tenbaidang + `</div>
+            <div>`+ chuoijson[bienchay].thoigiandang + `</div>
+            <div>`+ chuoijson[bienchay].thoigianketthuc + `</div>
+            <div>`+ chuoijson[bienchay].tinhtrangpheduyet + `</div>
+            <div>`+ chuoijson[bienchay].chuquanlibaidang + `</div>
+        </div>`;
+        thongtinquanli[luuthongtintrangnho1].innerHTML += chuoivehtmlqlbd;
+        // console.log(chuoivehtmlqlbd);
     }
-    loaitaikhoan.textContent = luutambien;
-    theto.appendChild(chucnang);
-    theto.appendChild(hoten);
-    theto.appendChild(tendangnhap);
-    theto.appendChild(email);
-    theto.appendChild(sodienthoai);
-    theto.appendChild(diachi);
-    theto.appendChild(loaitaikhoan);
-    thongtinquanli.appendChild(theto);
 }
 //Hàm chứa các công việc thêm sửa xóa và vẽ thông tin 
-function them(chuoijson) {
+function them(chuoijson, bienluutrangnho) {
     //chuoijson = ret.data;
-    chuoi1 = chuoijson;
-    //console.log(chuoijson);
-    htContent1.style.display = "block";
-    htContent2.style.display = "none";
-    htContent3.style.display = "none";
-    htContent4.style.display = "none";
-    htContent5.style.display = "none";
-    //Hiển thị thông tin các tài khoản
-    maxTrang = parseInt(chuoijson.length / 8) + 1;
-    maxVongLap = chuoijson.length;
-    thongtinquanli.innerHTML = "";
-    let sotrang = giatritrang[0].value - 1;
-    for (let i = sotrang * 8; i < sotrang * 8 + 8; i++) {
-        if (chuoi1[i] != null)
-            themthongtinhienthi(i);
-    }
-    nutSua = document.getElementsByClassName("Sua");
-    nutXoa = document.getElementsByClassName("Xoa");
-    //Phím chức năng xóa được chọn
-    for (let m = 0; m < 8; m++) {
-        if (nutXoa[m] != null) {
-            nutXoa[m].onclick = function () {
-                console.log("Nut xóa " + m + "được nhấn");
-                console.log("Trang được nhấn là :" + giatritrang[0].value);
-                let phanTuDuocThaoTacXoa = m + (giatritrang[0].value - 1) * 8;
-                console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
-                let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].user_id;//Chọn ra id của phần tử được xóa
-                if (confirm("Bạn chắc chắn muốn XÓA tài khoản : " + chuoijson[phanTuDuocThaoTacXoa].user + " ?"))
-                    deleteUser(giaTriXoa);//Xóa phần tử
+    if (bienluutrangnho == 0) {
+        chuoi1 = chuoijson;
+        //console.log(chuoijson);
+        htContent1.style.display = "block";
+        htContent2.style.display = "none";
+        htContent3.style.display = "none";
+        htContent4.style.display = "none";
+        htContent5.style.display = "none";
+        //Hiển thị thông tin các tài khoản
+        maxTrang = parseInt(chuoijson.length / 8) + 1;
+        maxVongLap = chuoijson.length;
+        thongtinquanli[bienluutrangnho].innerHTML = "";
+        sotrang = giatritrang[bienluutrangnho].value - 1;
+        for (let i = sotrang * 8; i < sotrang * 8 + 8; i++) {
+            if (chuoi1[i] != null)
+                themthongtinhienthi(i, bienluutrangnho);
+        }
+        nutSua = document.getElementsByClassName("Sua");
+        nutXoa = document.getElementsByClassName("Xoa");
+        //Phím chức năng xóa được chọn
+        for (let m = 0; m < 8; m++) {
+            if (nutXoa[m] != null) {
+                nutXoa[m].onclick = function () {
+                    console.log("Nut xóa " + m + "được nhấn");
+                    console.log("Trang được nhấn là :" + giatritrang[bienluutrangnho].value);
+                    let phanTuDuocThaoTacXoa = m + (giatritrang[bienluutrangnho].value - 1) * 8;
+                    console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
+                    let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].user_id;//Chọn ra id của phần tử được xóa
+                    if (confirm("Bạn chắc chắn muốn XÓA tài khoản : " + chuoijson[phanTuDuocThaoTacXoa].user + " ?"))
+                        deleteUser(giaTriXoa, bienluutrangnho);//Xóa phần tử
+                }
+            }
+            //Phím chức năng sửa được chọn
+            if (nutSua[m] != null) {
+                nutSua[m].onclick = function () {
+                    chinhsuathongtin.innerHTML = "";
+                    console.log("Nút sửa" + m + "được nhấn");
+                    console.log("Trang được nhấn là :" + giatritrang[bienluutrangnho].value);
+                    phanTuDuocThaoTacSua = m + (giatritrang[bienluutrangnho].value - 1) * 8;
+                    console.log("Phần tử sẽ được sửa là : " + phanTuDuocThaoTacSua);
+                    giaTriSua = chuoijson[phanTuDuocThaoTacSua].user_id;
+                    htdn.style.display = "block";
+                    htdn1.style.display = "block";
+                    code_id = document.createElement("div");
+                    ip1 = document.createElement("div");
+                    ip2 = document.createElement("div");
+                    ip3 = document.createElement("div");
+                    ip4 = document.createElement("div");
+                    ip5 = document.createElement("div");
+                    ip6 = document.createElement("div");
+                    ip1.classList = "thechua";
+                    ip2.classList = "thechua";
+                    ip3.classList = "thechua";
+                    ip4.classList = "thechua";
+                    ip5.classList = "thechua";
+                    ip6.classList = "thechua";
+                    code_id.classList = "thechua";
+                    lbcode_id = document.createElement("label");
+                    lb1 = document.createElement("label");
+                    lb2 = document.createElement("label");
+                    lb3 = document.createElement("label");
+                    lb4 = document.createElement("label");
+                    lb5 = document.createElement("label");
+                    lb6 = document.createElement("label");
+                    lb1.textContent = "User Name       : ";
+                    lbcode_id.textContent = "Số CMT/CCCD     : ";
+                    lb2.textContent = "Họ tên          : ";
+                    lb3.textContent = "Email           : ";
+                    lb4.textContent = "Số điện thoại   : ";
+                    lb5.textContent = "Địa chỉ         : ";
+                    lb6.textContent = "Loại tài khoản  : ";
+                    ip1.appendChild(lb1);
+                    ip2.appendChild(lb2);
+                    ip3.appendChild(lb3);
+                    ip4.appendChild(lb4);
+                    ip5.appendChild(lb5);
+                    ip6.appendChild(lb6);
+                    code_id.appendChild(lbcode_id);
+                    ip11 = document.createElement("input");
+                    ip21 = document.createElement("input");
+                    ip31 = document.createElement("input");
+                    ip41 = document.createElement("input");
+                    ip51 = document.createElement("input");
+                    code_id1 = document.createElement("input");
+                    ip61 = document.createElement("select");
+                    ip611 = document.createElement("option");
+                    ip611.value = "owner";
+                    ip611.textContent = "Quản lí"
+                    ip612 = document.createElement("option");
+                    ip612.value = "render";
+                    ip612.textContent = "Tài khoản thường";
+                    ip61.appendChild(ip611);
+                    ip61.appendChild(ip612);
+                    ip1.appendChild(ip11);
+                    ip2.appendChild(ip21);
+                    ip3.appendChild(ip31);
+                    ip4.appendChild(ip41);
+                    ip5.appendChild(ip51);
+                    ip6.appendChild(ip61);
+                    code_id.appendChild(code_id1);
+                    ip11.value = chuoijson[phanTuDuocThaoTacSua].user;
+                    ip21.value = chuoijson[phanTuDuocThaoTacSua].name;
+                    ip31.value = chuoijson[phanTuDuocThaoTacSua].email;
+                    ip41.value = chuoijson[phanTuDuocThaoTacSua].phoneNumber;
+                    ip51.value = chuoijson[phanTuDuocThaoTacSua].address;
+                    ip61.value = chuoijson[phanTuDuocThaoTacSua].per;
+                    thongtin.textContent = "Chỉnh sửa thông tin tài khoản";
+                    code_id1.value = chuoijson[phanTuDuocThaoTacSua].code_id;
+                    chinhsuathongtin.appendChild(ip1);
+                    chinhsuathongtin.appendChild(code_id);
+                    chinhsuathongtin.appendChild(ip2);
+                    chinhsuathongtin.appendChild(ip3);
+                    chinhsuathongtin.appendChild(ip4);
+                    chinhsuathongtin.appendChild(ip5);
+                    chinhsuathongtin.appendChild(ip6);
+
+                    //click để cập nhật dữ liệu
+                    nutdn.onclick = function () {
+                        if (ip61.value == "owner" && (ip11.value == "" || ip21.value == "" || ip31.value == "" || ip41.value == "" || ip51.value == "" || code_id1.value == "")) {
+                            alert("Nhập đầy đủ thông tin");
+                        } else {
+                            fetch("../../index.php/updateUser", {
+                                method: "POST",
+                                headers: { "Content-Type": "application/json" },
+                                body: '{"id":"' + chuoijson[phanTuDuocThaoTacSua].user_id +
+                                    '","code_id":"' + code_id1.value +
+                                    '","user":"' + ip11.value +
+                                    '","name":"' + ip21.value +
+                                    '","email":"' + ip31.value +
+                                    '","phone":"' + ip41.value +
+                                    '","address":"' + ip51.value +
+                                    '","per":"' + ip61.value +
+                                    '"}'
+                            }).then(resp => {
+                                if (resp.status == 200) {
+                                    resp.json()
+                                        .then(ret => {
+                                            if (ret.status == "ok") {
+                                                alert("Sửa thông tin thành công");
+                                                htdn.style.display = "none";
+                                                htdn1.style.display = "none";
+                                                console.log(ret.data);
+                                                chuoijson = ret.data;
+                                                them(chuoijson, bienluutrangnho);
+                                            }
+                                            else {
+                                                alert("Tên tài khoản hoặc Email đã tồn tại");
+                                            }
+                                        })
+                                }
+                            })
+                        }
+                    }
+                    //Bấm nút xác nhận thì gửi các dữ liệu ở các thẻ ip11 , ip21 ... đến phần nutdn.onclick
+                }
             }
         }
-        //Phím chức năng sửa được chọn
-        if (nutSua[m] != null) {
-            nutSua[m].onclick = function () {
-                chinhsuathongtin.innerHTML = "";
-                console.log("Nút sửa" + m + "được nhấn");
-                console.log("Trang được nhấn là :" + giatritrang[0].value);
-                let phanTuDuocThaoTacSua = m + (giatritrang[0].value - 1) * 8;
-                console.log("Phần tử sẽ được sửa là : " + phanTuDuocThaoTacSua);
-                let giaTriSua = chuoijson[phanTuDuocThaoTacSua].user_id;
-                htdn.style.display = "block";
-                htdn1.style.display = "block";
-                let code_id = document.createElement("div");
-                let ip1 = document.createElement("div");          
-                let ip2 = document.createElement("div");
-                let ip3 = document.createElement("div");
-                let ip4 = document.createElement("div");
-                let ip5 = document.createElement("div");
-                let ip6 = document.createElement("div");
-                ip1.classList = "thechua";
-                ip2.classList = "thechua";
-                ip3.classList = "thechua";
-                ip4.classList = "thechua";
-                ip5.classList = "thechua";
-                ip6.classList = "thechua";
-                code_id.classList = "thechua";
-                let lbcode_id = document.createElement("label");
-                let lb1 = document.createElement("label");
-                let lb2 = document.createElement("label");
-                let lb3 = document.createElement("label");
-                let lb4 = document.createElement("label");
-                let lb5 = document.createElement("label");
-                let lb6 = document.createElement("label");
-                lb1.textContent =       "User Name       : ";
-                lbcode_id.textContent = "Số CMT/CCCD     : ";
-                lb2.textContent =       "Họ tên          : ";
-                lb3.textContent =       "Email           : ";
-                lb4.textContent =       "Số điện thoại   : ";
-                lb5.textContent =       "Địa chỉ         : ";
-                lb6.textContent =       "Loại tài khoản  : ";
-                ip1.appendChild(lb1);
-                ip2.appendChild(lb2);
-                ip3.appendChild(lb3);
-                ip4.appendChild(lb4);
-                ip5.appendChild(lb5);
-                ip6.appendChild(lb6);
-                code_id.appendChild(lbcode_id);
-                let ip11 = document.createElement("input");
-                let ip21 = document.createElement("input");
-                let ip31 = document.createElement("input");
-                let ip41 = document.createElement("input");
-                let ip51 = document.createElement("input");
-                let code_id1 = document.createElement("input");
-                let ip61 = document.createElement("select");
-                let ip611 = document.createElement("option");
-                ip611.value = "owner";
-                ip611.textContent = "Quản lí"
-                let ip612 = document.createElement("option");
-                ip612.value = "render";
-                ip612.textContent = "Tài khoản thường";
-                ip61.appendChild(ip611);
-                ip61.appendChild(ip612);
-                ip1.appendChild(ip11);
-                ip2.appendChild(ip21);
-                ip3.appendChild(ip31);
-                ip4.appendChild(ip41);
-                ip5.appendChild(ip51);
-                ip6.appendChild(ip61);
-                code_id.appendChild(code_id1);
-                ip11.value = chuoijson[phanTuDuocThaoTacSua].user;
-                ip21.value = chuoijson[phanTuDuocThaoTacSua].name;
-                ip31.value = chuoijson[phanTuDuocThaoTacSua].email;
-                ip41.value = chuoijson[phanTuDuocThaoTacSua].phoneNumber;
-                ip51.value = chuoijson[phanTuDuocThaoTacSua].address;
-                ip61.value = chuoijson[phanTuDuocThaoTacSua].per;
-                code_id1.value = chuoijson[phanTuDuocThaoTacSua].code_id;
-                chinhsuathongtin.appendChild(ip1);
-                chinhsuathongtin.appendChild(code_id);
-                chinhsuathongtin.appendChild(ip2);
-                chinhsuathongtin.appendChild(ip3);
-                chinhsuathongtin.appendChild(ip4);
-                chinhsuathongtin.appendChild(ip5);
-                chinhsuathongtin.appendChild(ip6);
-
-                //click để cập nhật dữ liệu
-                nutdn.onclick = function () {
-                    if (ip61.value == "owner" && (ip11.value == "" || ip21.value == "" || ip31.value == "" || ip41.value == "" || ip51.value == "" || code_id1.value == "")) {
-                        alert ("Nhập đầy đủ thông tin");
-                    } else {
-                        fetch("../../index.php/updateUser", {
-                            method: "POST",
-                            headers: { "Content-Type": "application/json" },
-                            body: '{"id":"' + chuoijson[phanTuDuocThaoTacSua].user_id +
-                                '","code_id":"' + code_id1.value +
-                                '","user":"' + ip11.value +
-                                '","name":"' + ip21.value +
-                                '","email":"' + ip31.value +
-                                '","phone":"' + ip41.value +
-                                '","address":"' + ip51.value +
-                                '","per":"' + ip61.value +
-                                '"}'
-                        }).then(resp => {
-                            if (resp.status == 200) {
-                                resp.json()
-                                    .then(ret => {
-                                        if (ret.status == "ok") {
-                                            alert("Sửa thông tin thành công");
-                                            htdn.style.display = "none";
-                                            htdn1.style.display = "none";
-                                            console.log(ret.data);
-                                            chuoijson = ret.data;
-                                            them(chuoijson);
-                                        }
-                                        else {
-                                            alert("Tên tài khoản hoặc Email đã tồn tại");
-                                        }
-                                    })
-                            }
-                        })
+    } else if (bienluutrangnho == 1) {
+        // console.log(chuoijson[0].tenbaidang);
+        htContent1.style.display = "none";
+        htContent2.style.display = "block";
+        htContent3.style.display = "none";
+        htContent4.style.display = "none";
+        htContent5.style.display = "none";
+        //Hiển thị thông tin các tài khoản
+        maxTrang = parseInt(chuoijson.length / 8) + 1;
+        maxVongLap = chuoijson.length;
+        thongtinquanli[bienluutrangnho].innerHTML = "";
+        sotrang = giatritrang[bienluutrangnho].value - 1;
+        for (let i = sotrang * 8; i < sotrang * 8 + 8; i++) {
+            if (chuoijson[i] != null)
+                themthongtinhienthi(i, bienluutrangnho);
+        }
+        nutSua = document.getElementsByClassName("Sua1");
+        nutXoa = document.getElementsByClassName("Xoa1");
+        console.log(nutXoa);
+        //Phím chức năng xóa được chọn
+        for (let m = 0; m < 8; m++) {
+            if (nutXoa[m] != null) {
+                nutXoa[m].onclick = function () {
+                    console.log("Nut xóa " + m + "được nhấn");
+                    console.log("Trang được nhấn là :" + giatritrang[bienluutrangnho].value);
+                    let phanTuDuocThaoTacXoa = m + (giatritrang[bienluutrangnho].value - 1) * 8;
+                    console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
+                    let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].tenbaidang;//Chọn ra id của phần tử được xóa
+                    if (confirm("Bạn chắc chắn muốn XÓA bài đăng có tên : " + chuoijson[phanTuDuocThaoTacXoa].tenbaidang + " ?"))
+                        deleteUser(giaTriXoa, bienluutrangnho);//Xóa phần tử
+                }
+            }
+            //Phím chức năng sửa được chọn
+            if (nutSua[m] != null) {
+                nutSua[m].onclick = function () {
+                    console.log("Nut sua" + m + "được nhấn");
+                    console.log("Trang được nhấn là :" + giatritrang[bienluutrangnho].value);
+                    phanTuDuocThaoTacSua = m + (giatritrang[bienluutrangnho].value - 1) * 8;
+                    giaTriSua = chuoijson[phanTuDuocThaoTacSua].tenbaidang;
+                    htdn.style.display = "block";
+                    htdn1.style.display = "block";
+                    thongtin.textContent = "Chỉnh sửa thông tin bài đăng";
+                    chuoivehtmlqlbdSua = `
+                    <div class="thechua">
+                        <label>Tên bài đăng : </label>
+                        <input value="`+ chuoijson[phanTuDuocThaoTacSua].tenbaidang + `">
+                    </div>
+                    <div class="thechua">
+                        <label>Ngày hết hạn : </label>
+                        <input value="`+ chuoijson[phanTuDuocThaoTacSua].thoigianketthuc + `">
+                    </div>
+                    <div class="thechua">
+                        <label>Tình trạng phê duyệt : </label>
+                        <select>
+                            <option value="chopheduyet">Chờ phê duyệt</option>
+                            <option value="dapheduyet">Đã phê duyệt</option>
+                        </select>
+                    </div>
+                    `;
+                    chinhsuathongtin.innerHTML = chuoivehtmlqlbdSua;
+                    nutdn.onclick = function () {
+                        console.log("Gửi thông tin lên sever");
+                        console.log(chuoijson[phanTuDuocThaoTacSua]);
                     }
                 }
-                //Bấm nút xác nhận thì gửi các dữ liệu ở các thẻ ip11 , ip21 ... đến phần nutdn.onclick
             }
         }
+
     }
 }
 
