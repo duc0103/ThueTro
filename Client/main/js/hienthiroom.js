@@ -66,7 +66,7 @@ function xulidulieu(luudata,i)
               <article class="aa-properties-item">
                 <a href="#" class="aa-properties-item-img">
                   <img width="370" height="220" src="img/item/`
-                  + hinhanh + `.jpg" alt="img">
+                  + hinhanh + `" alt="img">
                 </a>
                 <div class="aa-tag for-sale">
                   Hot
@@ -151,7 +151,7 @@ function xemchitiet(room_id,user_id_chothue)
                                                   <div class="aa-properties-content">
                                                     <div class="aa-properties-details">
                                                       <div class="aa-properties-details-img">
-                                                      <img src="img/item/`+image+`.jpg" alt="img"></img>
+                                                      <img src="img/item/`+image+`" alt="img"></img>
                                                       </div>
                                                       <div class="aa-properties-info">
                                                       <button onclick="doianh(luudata,bien,bienluu_room_id,bienluu_id_chutro)">Ảnh khác</button>
