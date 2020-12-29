@@ -201,7 +201,8 @@ function deleteRoom(id_tenbaidang, nhandientrangxoa) {
                         if (ret.status == "ok") {
                             console.log(ret.data);
                             chuoijson = ret.data;
-                            them(chuoijson, nhandientrangxoa);
+                            //them(chuoijson, nhandientrangxoa);
+                            qlbd.click();
                         }
                     })
             }
