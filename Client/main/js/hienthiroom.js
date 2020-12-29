@@ -209,7 +209,7 @@ function xemchitiet(room_id,user_id_chothue)
                                                   <textarea id="comment" class="form-control" id="review" width="100%" rows="3"></textarea>
                                                 </div>
                                               </div>
-                                              <button type="submit" onclick="addComment(`+room_id+`)" class="col-md-1 btn btn-primary">Gửi</button>
+                                              <button type="submit" onclick="addComment(`+room_id+`,bienluu_room_id,bienluu_id_chutro)"  class="col-md-1 btn btn-primary">Gửi</button>
                                               </div>
                                               `+ hienthibinhluan+`</div>
                                             </div>
@@ -238,7 +238,7 @@ function xemchitiet(room_id,user_id_chothue)
     console.log("datapphan add commit"+user_id);
 
 }
-function addComment(room_id){
+function addComment(room_id,bienluu_room_id1,bienluu_id_chutro1){
 
   fetch("../../index.php/logged")
   .then(resp2 => {
@@ -266,13 +266,14 @@ function addComment(room_id){
                                   .then(ret => {
                                     console.log("comment"+ret.data[0]["content"]);
                                       if (ret.status == "ok") {
-                                        document.getElementById("comment").value=""; 
+                                        document.getElementById("comment").value="Đã đánh giá"; 
                                         document.getElementById( "addcommentbox").innerHTML+=
 
                                         ` <div class="row">
                                         <div class="col-md-2 ">`+ret.data[0]["name"]+`</div>
                                         <div class="col-md-7 ">`+ret.data[0]["content"]+`</div>
                                       </div>`  ;
+                                      xemchitiet(bienluu_room_id1,bienluu_id_chutro1).click();
 
                                       } 
                                   });
@@ -287,7 +288,7 @@ function addComment(room_id){
       }
   });
 }
-function doianh(hamluudulieu,bien,bienluu_room_id1,bienluu_id_chutro1)
+function doianh(hamluudulieu,bien,bienluu_room_id1,bienluu_id_chutro1)//Hàm để thực hiện khi nút Ảnh khác được bấm: Hàm này thay src của ảnh
 {
   if(bientanganh < hamluudulieu[bien].image.length-1)
   {
