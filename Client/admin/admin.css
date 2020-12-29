@@ -153,7 +153,7 @@ button{
     margin: 1px;
     border-radius: 5px;
 }
-#quanlichat,#phantichxuhuong{
+#phantichxuhuong{
     border: solid 2px steelblue;
     margin-top:5px ;
     padding: 5px;
@@ -231,9 +231,10 @@ button.Sua,button.Xoa,button.Sua1,button.Xoa1{
     color: black;
     font-size: 15px;
 }
-#quanlithongbao>div{
+#quanlithongbao>div,#quanlichat>div{
     margin-bottom: 10px;
     border: solid 2px steelblue;
     border-radius: 5px;
     padding: 5px;
+    text-align: center;
 }
