@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.2
+-- version 5.0.3
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2020 lúc 12:24 PM
+-- Thời gian đã tạo: Th12 29, 2020 lúc 10:10 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
--- Phiên bản PHP: 7.4.10
+-- Phiên bản PHP: 7.2.34
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -58,7 +58,16 @@ INSERT INTO `comments` (`id_user`, `id_room`, `content`, `Date`) VALUES
 (1, 1, 'đông ăn cứt chó', '2020-12-29 18:18:38'),
 (3, 2, 'Đông gà', '2020-12-29 18:20:31'),
 (3, 1, 'nghe rõ trả lời', '2020-12-29 18:21:49'),
-(3, 1, 'aaaaaaaaaaaaaaaaaaaaa', '2020-12-29 18:22:13');
+(3, 1, 'aaaaaaaaaaaaaaaaaaaaa', '2020-12-29 18:22:13'),
+(3, 1, 'hi hi hi', '2020-12-29 18:28:36'),
+(1, 1, 'haha', '2020-12-29 19:43:08'),
+(1, 1, 'oke', '2020-12-29 19:43:16'),
+(32, 1, 'phòng xịn quá', '2020-12-29 20:54:12'),
+(32, 1, 'hello', '2020-12-29 20:55:56'),
+(32, 1, 'hjk', '2020-12-29 20:56:29'),
+(32, 1, 'jhhhkkku', '2020-12-29 20:56:49'),
+(32, 1, 'hihi', '2020-12-29 20:57:15'),
+(1, 11, 'abc', '2020-12-30 04:03:26');
 
 -- --------------------------------------------------------
 
@@ -11516,21 +11525,28 @@ INSERT INTO `devvn_xaphuongthitran` (`xaid`, `name`, `type`, `maqh`) VALUES
 
 CREATE TABLE `image` (
   `room_id` int(11) NOT NULL,
-  `url_image` varchar(255) NOT NULL
+  `url_image` varchar(255) NOT NULL,
+  `id` int(11) NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `image`
 --
 
-INSERT INTO `image` (`room_id`, `url_image`) VALUES
-(1, 'image1.1'),
-(1, 'image1.2'),
-(1, 'image1.3'),
-(2, 'image2.1'),
-(2, 'image2.2'),
-(2, 'image2.3'),
-(2, 'image2.4');
+INSERT INTO `image` (`room_id`, `url_image`, `id`) VALUES
+(1, 'image1.1.jpg', 1),
+(1, 'image1.2.jpg', 2),
+(1, 'image1.3', 3),
+(2, 'image2.1.jpg', 4),
+(2, 'image2.2.jpg', 5),
+(2, 'image2.3.jpg', 6),
+(2, 'image2.4.jpg', 7),
+(10, 'Background3.jpg', 8),
+(10, 'Background4.jpg', 9),
+(10, 'Background2.jpg', 10),
+(11, 'Background2.jpg', 11),
+(11, 'Background4.jpg', 12),
+(11, 'Background3.jpg', 13);
 
 -- --------------------------------------------------------
 
@@ -11569,7 +11585,14 @@ CREATE TABLE `room_for_rent` (
 
 INSERT INTO `room_for_rent` (`room_id`, `owners_Id`, `room_area`, `address`, `gia_thue`, `loai_phong`, `dia_diem_gan`, `chung_chu`, `ngay_dang`, `ngay_het_han`, `phong_tam`, `nuoc_nong`, `phong_bep`, `ban_cong`, `mo_ta`, `gia_dien`, `gia_nuoc`, `public`, `diachi_xa`, `diachi_huyen`, `diachi_tinh`, `tenphong`) VALUES
 (1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 0, 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu giấy', 'Thành phố Hà Nội', 'Phòng trọ Cầu Giấy'),
-(2, 2, 30, '45 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội\r\n', 3000000, 'chung cư mini', 'Học viện Báo Chí và tuyên truyền', 0, '2020-12-16', '2020-12-31', 'Khép kín', 1, 'Khu bếp chung', 0, 'Thuận lợi cho các bạn đi làm vs diện tích  gần 30m2 thoải mái sinh hoạt', 3000, 3000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành Phố Hà Nội', 'Phòng trọ đại gia');
+(2, 2, 30, '45 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội\r\n', 3000000, 'chung cư mini', 'Học viện Báo Chí và tuyên truyền', 0, '2020-12-16', '2020-12-31', 'Khép kín', 1, 'Khu bếp chung', 0, 'Thuận lợi cho các bạn đi làm vs diện tích  gần 30m2 thoải mái sinh hoạt', 3000, 3000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành Phố Hà Nội', 'Phòng trọ đại gia'),
+(4, 4, 32, '47 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 3200000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '0000-00-00', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc1'),
+(5, 5, 33, '48 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 3300000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc2'),
+(6, 6, 34, '49 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 340000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc3'),
+(7, 7, 35, '50 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 350000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, '', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc4'),
+(8, 8, 36, '51 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 360000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, '', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc5'),
+(9, 9, 37, '52 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 370000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '0000-00-00', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, '', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc6'),
+(11, 1, 20, 'Xuân Thủy - Thành phố Hà Nội - Quận Cầu Giấy - Phường Quan Hoa', 4000000, 'Chung cư mini', 'Đại Học Quốc Gia', 0, '2020-12-30', '2021-01-07', 'Có', 0, 'khu bếp riêng', 0, 'Phòng đẹp mát', 4000, 3000, 1, 'Phường Quan Hoa', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'Phòng 1');
 
 -- --------------------------------------------------------
 
@@ -11601,7 +11624,19 @@ INSERT INTO `user` (`user_id`, `code_id`, `user`, `pass`, `address`, `status`, `
 (3, 187871524, 'duc11', '1', '144 xuân thủy cầu giấy', 2, '  anhduc@gmail.com', '0986599632', 'Nguyễn Anh Đức', 'owner', 0),
 (29, NULL, 'duc0103', 'duc', NULL, 0, 'ducanh@gmail.com', NULL, 'Lê Văn Ạnh', 'render', 0),
 (30, NULL, 'ductam', '1234', NULL, 0, 'leduc@gmail.com', NULL, 'Lê Văn Đức', 'render', 0),
-(31, NULL, 'abc', '1', NULL, 0, 'abc@gmail.com', NULL, 'Họ Và C', 'render', 0);
+(31, NULL, 'abc', '1', NULL, 0, 'abc@gmail.com', NULL, 'Họ Và C', 'render', 0),
+(32, NULL, 'diep anh', '1', NULL, 0, 'quaydangyeu@gmail.com', NULL, 'nguyen thi diep anh', 'render', 0),
+(33, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(34, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(35, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(36, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(37, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(38, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(39, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(40, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(41, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(42, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
+(43, NULL, 'Đức', '', NULL, 0, '', NULL, '', '', 0);
 
 -- --------------------------------------------------------
 
@@ -11664,6 +11699,12 @@ ALTER TABLE `devvn_xaphuongthitran`
   ADD PRIMARY KEY (`xaid`);
 
 --
+-- Chỉ mục cho bảng `image`
+--
+ALTER TABLE `image`
+  ADD PRIMARY KEY (`id`);
+
+--
 -- Chỉ mục cho bảng `room_for_rent`
 --
 ALTER TABLE `room_for_rent`
@@ -11680,16 +11721,22 @@ ALTER TABLE `user`
 --
 
 --
+-- AUTO_INCREMENT cho bảng `image`
+--
+ALTER TABLE `image`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+
+--
 -- AUTO_INCREMENT cho bảng `room_for_rent`
 --
 ALTER TABLE `room_for_rent`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
 
 --
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=44;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
