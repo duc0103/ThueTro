@@ -44,11 +44,20 @@
                         <div class="aa-signin-form">
                             <div class="aa-signin-form-title">
                                 <a class="aa-property-home" href="index.htm">Thêm phòng trọ</a>
+                                <a>Lưu ý 1 là có 0 là không</a>
 
                             </div>
                                 <div class="aa-single-field">
                                     <label>Tên phòng <span class="required">*</span></label>
                                     <input type="text" id="nameRoom" required="required" aria-required="true" >
+                                </div>
+                                <div class="aa-single-field">
+                                    <label> Diện tích <span class="required">*</span></label>
+                                    <input type="text" id="dientich" required="required" aria-required="true" >
+                                </div>
+                                <div class="aa-single-field">
+                                    <label> Gần với <span class="required">*</span></label>
+                                    <input type="text" id="gan" required="required" aria-required="true" >
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Loại Phòng <span class="required">*</span></label>
@@ -85,15 +94,15 @@
                                 <div class="aa-single-field">
                                     <label> Ban công <span class="required">*</span></label>
                                     <select id="bancong">
-                                      <option value="Có" selected>Có</option>
-                                      <option value="Không">Không</option>
+                                      <option value="Có" selected>1</option>
+                                      <option value="Không">0</option>
                                     </select>
                                 </div>
                                 <div class="aa-single-field">
                                     <label> Nóng lạnh <span class="required">*</span></label>
                                     <select id="nonglanh">
-                                      <option value="Có" selected>Có</option>
-                                      <option value="Không">Không</option>
+                                      <option value="Có" selected>1</option>
+                                      <option value="Không">0</option>
                                     </select>
                                 </div>
                                 <div class="aa-single-field">
@@ -106,14 +115,14 @@
                                 <div class="aa-single-field">
                                     <label> Chung Chủ <span class="required">*</span></label>
                                     <select id="chungchu">
-                                      <option value="Có" selected>Có</option>
-                                      <option value="Không">Không</option>
+                                      <option value="Có" selected>1</option>
+                                      <option value="Không">0</option>
                                     </select>
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Giá phòng<span class="required">*</span></label>
                                     <input type="text" id="giaphong" required="required" aria-required="true" value=""
-                                        placeholder=" 1520 : 1 triệu 5 trăm 20 nghìn" name="gia_phong">
+                                        placeholder=" Vn Đồng" name="gia_phong">
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Giá điện<span class="required">*</span></label>

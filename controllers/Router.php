@@ -165,13 +165,13 @@
 			$controllerName = "room";
 			$actionName = "deleteRoomById";
 		}
-		// DELETE/deleteRoomById
-		else if ($_SERVER["REQUEST_METHOD"] == "DELETE" &&
+		// DELETE/addroom
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 		count($commandArray) == 1 &&
-		strtolower($commandArray[0]) == strtolower("deleteRoomById")) 
+		strtolower($commandArray[0]) == strtolower("addroom")) 
 		{
 			$controllerName = "room";
-			$actionName = "deleteRoomById";
+			$actionName = "doAddRoom";
 		}
 		// POST/file
 		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&

@@ -28,6 +28,14 @@ class RoomController {
         return array("status"=> "ok" ,"data"=> $data);
     }
     public function doAddRoom(){
+        $input = json_decode(file_get_contents("php://input"), true);
+        $room = new Room();
+        $data1 = $room->addRoom( $input["name"],$input["bancong"],$input["nlanh"],$input["phongtam"],$input["chung"],$input["gphong"],$input["gdien"],$input["type"],$input["gnuoc"],$input["bep"],$input["s"],$input["time"],$input["mo"],$input["tinh"],$input["huyen"],$input["xa"],$input["user_id"],$input["gan"],$input["duong"]);
+         $room->addUrlImage($data1,$input["anh1"]);
+         $room->addUrlImage($data1,$input["anh2"]);
+         $room->addUrlImage($data1,$input["anh3"]);
+
+        return array("status"=> "ok" );
 
     }
     public function doUpdateRoom(){
