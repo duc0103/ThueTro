@@ -25,6 +25,7 @@ let giatritrang = document.getElementsByClassName("giatri");//Thẻ input chứa
 let thongtinquanli = document.getElementsByClassName("thongtinquanli");//Thẻ chứa nội dung thông tin quản lí tài khoản dữ liệu được lấy về từ backend
 //let thongtinquanlibaidang = document.getElementById("thongtinquanlibaidang");
 console.log(thongtinquanli);
+let quanlithongbao = document.getElementById("quanlithongbao");
 var chuoijson = "";//Chuỗi json trả về dữ liệu phần quản lí thông tin tài khoản
 let chuoi1 = "";//Chuyển chuoijson bên trên thành đối tượng
 let nutXoa = "";//Chứa các nút xóa trong phần chức năng của hiển thị thông tin 
@@ -151,7 +152,7 @@ for (let i = 0; i < 4; i++) {
                                 console.log(ret.data);
                                 chuoijson = ret.data;
                                 giatritrang[i].value = 1;
-                                them(chuoijson,i);
+                                them(chuoijson, i);
                             }
                         })
                 }
@@ -200,6 +201,17 @@ tb.onclick = function () {
     htContent2.style.display = "none";
     htContent4.style.display = "none";
     htContent5.style.display = "none";
+    quanlithongbao.innerHTML = "";
+    //Khi người dùng bấm vào nút thông báo toàn bộ thông báo ở bảng thông báo sẽ được trả về
+    chuoi1 = '[{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa2"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài2"},{"tennguoithaydoi":"Đức1","noidungthaydoi":"Sửa"}]';
+    chuoijson = JSON.parse(chuoi1);
+    maxTrang = chuoijson.length/8 ;
+    sotrang = giatritrang[2].value - 1;
+    for (let i = sotrang*8 ; i < sotrang*8 + 8; i++) {
+        let chuoiluuthongbao = `<div>" ` + chuoijson[i].tennguoithaydoi + ` " đã " ` + chuoijson[i].noidungthaydoi + ` " : Chờ phê duyệt</div>`;
+        quanlithongbao.innerHTML += chuoiluuthongbao;
+    }
+    console.log("Xin chào");
 }
 //Xử lí khi bấm vào phần hiển thị của nút chat
 chat.onclick = function () {
@@ -240,6 +252,9 @@ for (let j = 0; j <= 3; j++) {
         }
         else if (j == 1) {
             them(chuoijson, 1);//Hiển thị thông tin dựa vào số trang
+        }else if(j == 2)
+        {
+            tb.click();
         }
     }
 }
@@ -253,6 +268,9 @@ for (let j = 0; j <= 3; j++) {
             them(chuoijson, 0);//Hiển thị thông tin dựa vào số trang
         } else if (j == 1) {
             them(chuoijson, 1);//Hiển thị thông tin dựa vào số trang
+        }else if(j == 2)
+        {
+            tb.click();
         }
     }
 }
