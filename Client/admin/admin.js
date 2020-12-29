@@ -188,6 +188,26 @@ function deleteUser(id_tenbaidang, nhandientrangxoa) {
             }
         })
 }
+function deleteBaiDang(id_tenbaidang, nhandientrangxoa) {
+    fetch("../../index.php/deleteUser", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: '{"id":"' + id_tenbaidang + '"}'
+    })
+        .then(resp => {
+            if (resp.status == 200) {
+                resp.json()
+                    .then(ret => {
+                        if (ret.status == "ok") {
+                            console.log(ret.data);
+                            chuoijson = ret.data;
+                            them(chuoijson, nhandientrangxoa);
+                        }
+                    })
+            }
+        })
+}
+
 
 //Xử lí khi bấm vào phần hiển thị của quản lí bài đăng
 qlbd.onclick = function () {

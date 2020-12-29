@@ -157,6 +157,38 @@
 			$actionName = "addComment";
 		}
 
+		// DELETE/deleteRoomById
+		else if ($_SERVER["REQUEST_METHOD"] == "DELETE" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("deleteRoomById")) 
+		{
+			$controllerName = "room";
+			$actionName = "deleteRoomById";
+		}
+		// DELETE/addroom
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("addroom")) 
+		{
+			$controllerName = "room";
+			$actionName = "doAddRoom";
+		}
+		// POST/file
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("file")) 
+		{
+			$controllerName = "image";
+			$actionName = "domovefile";
+		}
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("addComment")) 
+		{
+			$controllerName = "comment";
+			$actionName = "addComment";
+		}
+
 			// Trả kết quả về cho bộ điều khiển mặt trước
 			$ret["controllerName"]  = $controllerName;
 			$ret["actionName"]  = $actionName;

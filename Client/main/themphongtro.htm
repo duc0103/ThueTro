@@ -44,94 +44,128 @@
                         <div class="aa-signin-form">
                             <div class="aa-signin-form-title">
                                 <a class="aa-property-home" href="index.htm">Thêm phòng trọ</a>
+                                <a>Lưu ý 1 là có 0 là không</a>
 
                             </div>
-                            <form class="contactform">
                                 <div class="aa-single-field">
                                     <label>Tên phòng <span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
-                                        name="ten_phong">
+                                    <input type="text" id="nameRoom" required="required" aria-required="true" >
+                                </div>
+                                <div class="aa-single-field">
+                                    <label> Diện tích <span class="required">*</span></label>
+                                    <input type="text" id="dientich" required="required" aria-required="true" >
+                                </div>
+                                <div class="aa-single-field">
+                                    <label> Gần với <span class="required">*</span></label>
+                                    <input type="text" id="gan" required="required" aria-required="true" >
+                                </div>
+                                <div class="aa-single-field">
+                                    <label>Loại Phòng <span class="required">*</span></label>
+                                    <select id="typeRoom">
+                                      <option value="Phòng trọ" selected>Phòng trọ</option>
+                                      <option value="Chung cư mini">Chung cư mini</option>
+                                      <option value="Nhà nguyên căn">Nhà nguyên căn</option>
+                                      <option value="Chung cư cao cấp">Chung cư cao cấp</option>
+                                    </select>
+                                  </div>
+                                <div class="aa-single-field">
+                                    <label>Đường/xóm/ngõ <span class="required">*</span></label>
+                                    <input type="text" id ="road" required="required" aria-required="true" 
+                                        >
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Tỉnh/Thành Phố <span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value="" name="tinh"
-                                        placeholder="Hà Nội">
+                                    <select id="tinh" required="required">
+                                        <option value="0" selected></option>
+                                </select>
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Quận/Huyện<span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value="" name="huyen"
-                                        placeholder="Cầu Giấy">
+                                     <select id="huyen"required="required">
+                                            <option value="0" selected></option>
+                                    </select>
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Phường/Xã<span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value="" name="xa"
-                                        placeholder="Dịch Vọng">
+                                    <select id="xa"required="required">
+                                        <option value="0" selected></option>
+                                    </select>
                                 </div>
                                 <div class="aa-single-field">
-                                    <label>Ban công <span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
-                                        placeholder=" Có : 1 Không có : 0" name="ban_cong">
+                                    <label> Ban công <span class="required">*</span></label>
+                                    <select id="bancong">
+                                      <option value="Có" selected>1</option>
+                                      <option value="Không">0</option>
+                                    </select>
                                 </div>
                                 <div class="aa-single-field">
-                                    <label>Nóng lạnh <span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
-                                        placeholder=" Có : 1 Không có : 0" name="nong_lanh">
+                                    <label> Nóng lạnh <span class="required">*</span></label>
+                                    <select id="nonglanh">
+                                      <option value="Có" selected>1</option>
+                                      <option value="Không">0</option>
+                                    </select>
                                 </div>
                                 <div class="aa-single-field">
-                                    <label>Chung chủ <span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
-                                        placeholder=" Có : 1 Không có : 0" name="nong_lanh">
+                                    <label> Phòng tắm <span class="required">*</span></label>
+                                    <select id="phongtam">
+                                      <option value="Có" selected>khép kín</option>
+                                      <option value="Không">chung</option>
+                                    </select>
+                                </div>
+                                <div class="aa-single-field">
+                                    <label> Chung Chủ <span class="required">*</span></label>
+                                    <select id="chungchu">
+                                      <option value="Có" selected>1</option>
+                                      <option value="Không">0</option>
+                                    </select>
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Giá phòng<span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
-                                        placeholder=" 1520 : 1 triệu 5 trăm 20 nghìn" name="gia_phong">
+                                    <input type="text" id="giaphong" required="required" aria-required="true" value=""
+                                        placeholder=" Vn Đồng" name="gia_phong">
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Giá điện<span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
+                                    <input type="text" id="giadien"required="required" aria-required="true" value=""
                                         placeholder=" 4000 : 4000/1số" name="gia_dien">
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Giá nước<span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
+                                    <input type="text" id="gianuoc"required="required" aria-required="true" value=""
                                         placeholder=" 3000 : 3000/1khối " name="gia_nuoc">
                                 </div>
                                 <div class="aa-single-field">
-                                    <label>Bếp<span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
-                                        placeholder="Chung/Riêng" name="bep">
+                                    <label> Bếp<span class="required">*</span></label>
+                                    <select id="bep">
+                                      <option value="khu bếp riêng" selected>khu bếp riêng</option>
+                                      <option value="khu bếp chung">khu bếp chung</option>
+                                      <option value="không nấu ăn ">không nấu ăn </option>
+                                    </select>
                                 </div>
                                 <div class="aa-single-field">
-                                    <label>Khu vệ sinh<span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
-                                        placeholder="Khép kín/Chung" name="khu_ve_sinh">
-                                </div>
-                                <div class="aa-single-field">
-                                    <label>Thời gian đăng<span class="required">*</span></label>
-                                    <input type="text" required="required" aria-required="true" value=""
+                                    <label>Thời gian bạn muốn đăng đến<span class="required">*</span></label>
+                                    <input type="date" id="time"required="required" aria-required="true" value=""
                                         placeholder="50000.đ/1 ngày" name="thoi_gian_dang">
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Mô tả sơ lược <span class="required">*</span></label>
-                                    <input type="text" aria-required="true" name="mo_ta">
+                                    <input type="text" id="mota" aria-required="true" name="mo_ta">
                                 </div>
-                                <div class="aa-single-field">
-                                    <label>Hình ảnh 1<span class="required">*</span></label>
-                                    <input type="file" required="required" aria-required="true" name="hinh_anh1">
-                                </div>
+                                    <div class="aa-single-field">
+                                        <label>Hình ảnh 1<span class="required">*</span></label>
+                                        <input type="file" name="fileUpload" id="image1" required="required" aria-required="true" >
+                                    </div>  
                                 <div class="aa-single-field">
                                     <label>Hình ảnh 2<span class="required">*</span></label>
-                                    <input type="file" required="required" aria-required="true" name="hinh_anh2">
+                                    <input type="file" id="image2"required="required" aria-required="true" >
                                 </div>
                                 <div class="aa-single-field">
                                     <label>Hình ảnh 3<span class="required">*</span></label>
-                                    <input type="file" required="required" aria-required="true" name="hinh_anh3">
+                                    <input type="file" id="image3" required="required" aria-required="true" >
                                 </div>
                                 <div class="aa-single-submit">
-                                    <input type="submit" value="Thêm phòng" name="submit">
+                                    <input type="submit" id="AddRoom" value="Thêm phòng">
                                 </div>
-                            </form>
                         </div>
                     </div>
                 </div>
@@ -155,6 +189,7 @@
     <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
     <!-- Custom js -->
     <script src="js/custom.js"></script>
+    <script src="js/themphongtro.js"></script>
 
 </body>
 

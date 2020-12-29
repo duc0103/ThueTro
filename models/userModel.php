@@ -53,7 +53,6 @@ class User {
     public function deleteUser($id){
          $this->db->doQuery("delete  from User where user_id='$id';");
         return  $this->db->doQuery ("select * from User where status=0 or status = 2");
-
     }
     public function updateUser($id,$code_id,$user,$address,$email,$phone,$name,$per){
         
