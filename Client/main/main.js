@@ -14,9 +14,10 @@ fetch("../../index.php/logged")
                   document.getElementById("logout").style.display="inline-block";
                   document.getElementById("changePass").style.display="inline-block"; 
                     if (ret2.data[0] == 1 && ret2.data[3]=="admin") {
-                        alert("bạn đã đăng nhập thành công");
-                      
-                        document.location.href = "../admin/admin.htm";
+                        // alert("bạn đã đăng nhập thành công");
+                        if(confirm("Bạn Là Amin bạn có muốn vào trang quản lí")){
+                          document.location.href = "../admin/admin.htm";
+                      }                      
                     }   
                 }   
             });

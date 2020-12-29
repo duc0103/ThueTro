@@ -19,7 +19,8 @@ class Room {
     //dưa ra tất cả các phòng
     public function getAllroom() {
 
-       $data1 =  $this->db->doQuery("select * from room_for_rent where public = 1;");
+       $data1 =  $this->db->doQuery("select r.*,u.name from room_for_rent r INNER JOIN user u ON r.owners_Id=u.user_id where public = 1
+       ;");
        $data2 =  $this->db->doQuery("select * from image ;");
 
        for($i=0;$i<count($data1);$i++){
@@ -66,7 +67,10 @@ class Room {
         return  true;
 
     }
-    public function updateRoom(){
+    public function updateRoom($room_id,$ten,$dateEnd,$public){
+        return $this->db->doQuery("UPDATE  
+        room_for_rent SET tenphong ='$ten',ngay_het_han = '$dateEnd',public = '$public'
+        WHERE room_id='$room_id';");
 
     }
     public function findRoom($road,$loai_phong,$tinh,$huyen,$xa,$priceMin,$priceMax,$sMin,$smax){
@@ -93,5 +97,9 @@ class Room {
          }
         }
         return $data1; 
+    }
+    public function addRoom($nane,$bancong,$nlanh,$phongtam,$chung,$gphong,$gdien,$type,$gnuoc,$bep,$time,$mo,$a1,$a2,$a3,$r,$s,$tinh,$huyen,$xa,$user_id)
+    {
+        
     }
 }
