@@ -643,18 +643,18 @@ function them(chuoijson, bienluutrangnho) {
                     console.log("Nut sua" + m + "được nhấn");
                     console.log("Trang được nhấn là :" + giatritrang[bienluutrangnho].value);
                     phanTuDuocThaoTacSua = m + (giatritrang[bienluutrangnho].value - 1) * 8;
-                    giaTriSua = chuoijson[phanTuDuocThaoTacSua].tenbaidang;
+                    giaTriSua = chuoijson[phanTuDuocThaoTacSua].tenphong;
                     htdn.style.display = "block";
                     htdn1.style.display = "block";
                     thongtin.textContent = "Chỉnh sửa thông tin bài đăng";
                     chuoivehtmlqlbdSua = `
                     <div class="thechua">
-                        <label>Tên bài đăng : </label>
-                        <input value="`+ chuoijson[phanTuDuocThaoTacSua].tenbaidang + `">
+                        <label>Tên phòng : </label>
+                        <input value="`+ chuoijson[phanTuDuocThaoTacSua].tenphong + `">
                     </div>
                     <div class="thechua">
                         <label>Ngày hết hạn : </label>
-                        <input value="`+ chuoijson[phanTuDuocThaoTacSua].thoigianketthuc + `">
+                        <input value="`+ chuoijson[phanTuDuocThaoTacSua].ngay_het_han + `">
                     </div>
                     <div class="thechua">
                         <label>Tình trạng phê duyệt : </label>
@@ -668,6 +668,32 @@ function them(chuoijson, bienluutrangnho) {
                     nutdn.onclick = function () {
                         console.log("Gửi thông tin lên sever");
                         console.log(chuoijson[phanTuDuocThaoTacSua]);
+                        fetch("../../index.php/updateRoom", {
+                            method: "POST",
+                            headers: { "Content-Type": "application/json" },
+                            body: '{"room_id":"' + chuoijson[phanTuDuocThaoTacSua].room_id +
+                                '","tenphong":"' + chuoijson[phanTuDuocThaoTacSua].tenphong +
+                                '","date_end":"' + chuoijson[phanTuDuocThaoTacSua].ngay_het_han+
+                                '","public":"' + chuoijson[phanTuDuocThaoTacSua].public+
+                                '"}'
+                          }).then(resp => {
+                            if (resp.status == 200) {
+                                resp.json()
+                                    .then(ret => {
+                                        if (ret.status == "ok") {
+                                            alert("Sửa thông tin thành công");
+                                            htdn.style.display = "none";
+                                            htdn1.style.display = "none";
+                                            console.log(ret.data);
+                                            chuoijson = ret.data;
+                                            qlbd.click();
+                                        }
+                                        else {
+                                            alert("Tên tài khoản hoặc Email đã tồn tại");
+                                        }
+                                    })
+                            }
+                          })
                     }
                 }
             }
