@@ -18,6 +18,7 @@ class Room {
     }
     //dưa ra tất cả các phòng
     public function getAllroom() {
+        // if($_SESSION["status"]==1)
        $data1 =  $this->db->doQuery("select r.*,u.name from room_for_rent r INNER JOIN user u ON r.owners_Id=u.user_id where public = 1
        ;");
        $data2 =  $this->db->doQuery("select * from image ;");
@@ -31,6 +32,21 @@ class Room {
         }
        }
        return $data1; 
+    }
+    public function getAllroomByAdmin() {
+        $data1 =  $this->db->doQuery("select r.*,u.name from room_for_rent r INNER JOIN user u ON r.owners_Id=u.user_id 
+        ;");
+        $data2 =  $this->db->doQuery("select * from image ;");
+ 
+        for($i=0;$i<count($data1);$i++){
+         $data1[$i]["image"]=array();
+         for($j=0;$j<count($data2);$j++){
+             if($data1[$i]["room_id"]== $data2[$j]["room_id"]){
+                     $data1[$i]["image"][]=$data2[$j]["url_image"];
+             }
+         }
+        }
+        return $data1; 
     }
     
     //tìm phòng theo id
@@ -103,7 +119,7 @@ class Room {
         $this->db->doQuery(" INSERT INTO room_for_rent(owners_Id,tenphong,ban_cong,nuoc_nong,phong_tam,chung_chu,gia_thue,gia_dien,loai_phong,gia_nuoc,phong_bep,room_area,ngay_dang,ngay_het_han,mo_ta,diachi_tinh,diachi_huyen,diachi_xa,dia_diem_gan,address)
          VALUES('$user_id','$name','$bancong','$nlanh','$phongtam','$chung','$gphong','$gdien','$type','$gnuoc','$bep','$s',now(),'$time','$mo','$tinh','$huyen','$xa','$gan','$address')
         ");
-        $room_id=$this->db->doQuery("SELECT room_id FROM room_for_rent WHERE owners_Id ='$user_id' ORDER BY ngay_dang DESC ");
+        $room_id=$this->db->doQuery("SELECT room_id FROM room_for_rent WHERE owners_Id ='$user_id'  And tenphong = '$name' AND mo_ta='$mo'     ORDER BY ngay_dang DESC ");
         return $room_id[0]["room_id"];
     }
 }

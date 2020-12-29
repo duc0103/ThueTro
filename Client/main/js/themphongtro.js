@@ -39,17 +39,22 @@ fetch("../../index.php/logged")
             .then(ret2 => {
                 if (ret2.status == "OK") {
                     user_id=ret2.data[4];
+                    
 
                   document.getElementById("btnRes").style.display="none";
                   document.getElementById("btnlogin").style.display="none";
                   document.getElementById("logout").style.display="inline-block";
                   document.getElementById("changePass").style.display="inline-block"; 
-                    // if (ret2.data[0] == 1 && ret2.data[3]=="admin") {
-                    //     // alert("bạn đã đăng nhập thành công");
-                    //     if(confirm("Bạn Là Amin bạn có muốn vào trang quản lí")){
-                    //       document.location.href = "../admin/admin.htm";
-                    //   }                      
-                    // }   
+                    if (ret2.data[0] == 1 && ret2.data[3]=="admin") {
+                        // alert("bạn đã đăng nhập thành công");
+                        if(confirm("Bạn Là Amin bạn có muốn vào trang quản lí")){
+                          document.location.href = "../admin/admin.htm";
+                      }                      
+                    }   
+                    if (ret2.data[0] == 1 && ret2.data[3]=="render") {
+                        alert("xin lỗi bạn cần đăng nhập bằng tài khoản chủ trọ để đăng bài")  ;
+                        document.location.href="../main/index.htm" ;           
+                    } 
                 }   
             });
     }

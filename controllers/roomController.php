@@ -11,6 +11,11 @@ class RoomController {
             $data=$room->getAllroom();
             return array("status"=> "ok" ,"data"=> $data);
     }
+    public function doGetAllRoomAdmin(){
+        $room = new Room();
+            $data=$room->getAllroomByAdmin();
+            return array("status"=> "ok" ,"data"=> $data);
+    }
     // public function addRoom(){
         
     // }

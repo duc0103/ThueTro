@@ -108,6 +108,14 @@
 			$controllerName = "room";
 			$actionName = "doGetAllRoom";
 		}
+		//GET/allRoomAdmin
+		else if ($_SERVER["REQUEST_METHOD"] == "GET" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("allRoomAdmin")) 
+		{
+			$controllerName = "room";
+			$actionName = "doGetAllRoomAdmin";
+		}
 		//GET/getTinh
 		else if ($_SERVER["REQUEST_METHOD"] == "GET" &&
 		count($commandArray) == 1 &&
@@ -158,7 +166,7 @@
 		}
 
 		// DELETE/deleteRoomById
-		else if ($_SERVER["REQUEST_METHOD"] == "DELETE" &&
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 		count($commandArray) == 1 &&
 		strtolower($commandArray[0]) == strtolower("deleteRoomById")) 
 		{

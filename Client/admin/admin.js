@@ -188,11 +188,11 @@ function deleteUser(id_tenbaidang, nhandientrangxoa) {
             }
         })
 }
-function deleteBaiDang(id_tenbaidang, nhandientrangxoa) {
-    fetch("../../index.php/deleteUser", {
+function deleteRoom(id_tenbaidang, nhandientrangxoa) {
+    fetch("../../index.php/deleteRoomById", {
         method: "POST",
         headers: { "Content-Type": "application/json" },
-        body: '{"id":"' + id_tenbaidang + '"}'
+        body: '{"room_id":"' + id_tenbaidang + '"}'
     })
         .then(resp => {
             if (resp.status == 200) {
@@ -201,7 +201,8 @@ function deleteBaiDang(id_tenbaidang, nhandientrangxoa) {
                         if (ret.status == "ok") {
                             console.log(ret.data);
                             chuoijson = ret.data;
-                            them(chuoijson, nhandientrangxoa);
+                            //them(chuoijson, nhandientrangxoa);
+                            qlbd.click();
                         }
                     })
             }
@@ -214,7 +215,7 @@ qlbd.onclick = function () {
     // console.log("Chạy quản lí bài đăng");
     // themthongtinhienthi(0,1);
     //Lấy tất cả các phòng về 
-    fetch("../../index.php/allRoom")
+    fetch("../../index.php/allRoomAdmin")
         .then(resp => {
             if (resp.status == 200) {
                 resp.json()
@@ -438,7 +439,7 @@ function themthongtinhienthi(bienchay, luuthongtintrangnho1) {
             <div>`+ chuoijson[bienchay].ngay_dang + `</div>
             <div>`+ chuoijson[bienchay].ngay_het_han + `</div>
             <div>`+ pheduyet + `</div>
-            <div>`+ chuoijson[bienchay].owners_Id + `</div>
+            <div>`+ chuoijson[bienchay].name + `</div>
         </div>`;
         thongtinquanli[luuthongtintrangnho1].innerHTML += chuoivehtmlqlbd;
         // console.log(chuoivehtmlqlbd);
@@ -476,7 +477,7 @@ function them(chuoijson, bienluutrangnho) {
                     console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
                     let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].user_id;//Chọn ra id của phần tử được xóa
                     if (confirm("Bạn chắc chắn muốn XÓA tài khoản : " + chuoijson[phanTuDuocThaoTacXoa].user + " ?"))
-                        deleteUser(giaTriXoa, bienluutrangnho);//Xóa phần tử
+                    deleteUser(giaTriXoa, bienluutrangnho);//Xóa phần tử
                 }
             }
             //Phím chức năng sửa được chọn
@@ -631,9 +632,9 @@ function them(chuoijson, bienluutrangnho) {
                     console.log("Trang được nhấn là :" + giatritrang[bienluutrangnho].value);
                     let phanTuDuocThaoTacXoa = m + (giatritrang[bienluutrangnho].value - 1) * 8;
                     console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
-                    let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].tenphong;//Chọn ra id của phần tử được xóa
+                    let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].room_id;//Chọn ra id của phần tử được xóa
                     if (confirm("Bạn chắc chắn muốn XÓA bài đăng có tên : " + chuoijson[phanTuDuocThaoTacXoa].tenphong + " ?"))
-                        deleteUser(giaTriXoa, bienluutrangnho);//Xóa phần tử
+                    deleteRoom(giaTriXoa, bienluutrangnho);//Xóa phần tử
                 }
             }
             //Phím chức năng sửa được chọn
