@@ -1,7 +1,6 @@
 let luu = document.getElementById("luuthongtinnhatro");
 let luu1 = document.getElementById("luuthongtinnhatroaaa");
 
-luuthongtinnhatroaaa
 let luudata ="";
 let chuoixuli ="";
 let diadiem ="";
@@ -11,8 +10,7 @@ let giatien ="";
 let hinhanh ="";
 let chuoi ="";
 let room_id = "";
-let xemthongtinhchitiet = document.getElementById("abc");
-console.log(xemthongtinhchitiet);
+
 let chuoiluuthongtinchitiet ="";
 fetch("../../index.php/allRoom")
     .then(resp => {

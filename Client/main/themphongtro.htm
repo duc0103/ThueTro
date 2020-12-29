@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1">    
+    <title>Thêm Phòng Trọ</title>
+
+    <!-- Favicon -->
+    <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon">
+    
+    
+    <!-- Font awesome -->
+    <link href="css/font-awesome.css" rel="stylesheet">
+    <!-- Bootstrap -->
+    <link href="css/bootstrap.css" rel="stylesheet">   
+    <!-- slick slider -->
+    <link rel="stylesheet" type="text/css" href="css/slick.css">
+    <!-- price picker slider -->
+    <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+    <!-- Fancybox slider -->
+    <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" /> 
+    <!-- Theme color -->
+    <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">     
+
+    <!-- Main style sheet -->
+    <link href="css/style.css" rel="stylesheet">    
+
+   
+    <!-- Google Font -->
+    <link href='https://fonts.googleapis.com/css?family=Vollkorn' rel='stylesheet' type='text/css'>    
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans' rel='stylesheet' type='text/css'>
+  
+
+  </head>
+  <body>   
+  <section id="aa-signin">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-signin-area">
+            <div class="aa-signin-form">
+              <div class="aa-signin-form-title">
+                <a class="aa-property-home" href="index.htm" >Thêm phòng trọ</a>
+                
+              </div>
+              <form class="contactform">                                                 
+                <div class="aa-single-field">
+                  <label >Tên phòng <span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" name="ten_phong" >
+                </div>
+                <div class="aa-single-field">
+                  <label >Tỉnh/Thành Phố <span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" name="tinh" placeholder = "Hà Nội">
+                </div>
+				<div class="aa-single-field">
+                  <label >Quận/Huyện<span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" name="huyen" placeholder ="Cầu Giấy">
+                </div>
+                <div class="aa-single-field">
+                  <label >Phường/Xã<span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" name="xa" placeholder = "Dịch Vọng">
+                </div>
+				<div class="aa-single-field">
+                  <label >Ban công <span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" placeholder = " Có : 1 Không có : 0" name="ban_cong">
+                </div>
+                <div class="aa-single-field">
+                    <label >Nóng lạnh <span class="required">*</span></label>
+                    <input type="text" required="required" aria-required="true" value="" placeholder = " Có : 1 Không có : 0" name="nong_lanh">
+                  </div>
+				<div class="aa-single-field">
+                  <label >Giá phòng<span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" placeholder = " 1520 : 1 triệu 5 trăm 20 nghìn" name="gia_phong">
+                </div>
+                <div class="aa-single-field">
+                  <label >Giá điện<span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" placeholder = " 4000 : 4000/1số" name="gia_dien">
+                </div>
+				<div class="aa-single-field">
+                  <label >Giá nước<span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" placeholder = " 3000 : 3000/1khối " name="gia_nuoc">
+                </div>
+                <div class="aa-single-field">
+                  <label >Bếp<span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" placeholder = "Chung/Riêng" name="bep">
+                </div>
+				<div class="aa-single-field">
+                  <label >Khu vệ sinh<span class="required">*</span></label>
+                  <input type="text" required="required" aria-required="true" value="" placeholder = "Khép kín/Chung" name="khu_ve_sinh">
+                </div>
+                <div class="aa-single-field">
+                  <label >Mô tả sơ lược <span class="required">*</span></label>
+                  <input type="text" aria-required="true" name="mo_ta"> 
+                </div>
+				<div class="aa-single-field">
+                  <label >Hình ảnh<span class="required">*</span></label>
+                  <input type="file" required="required" aria-required="true" name="hinh_anh">
+                </div>
+                <div class="aa-single-submit">
+                  <input type="submit" value="Thêm phòng" name="submit">                    
+                </div>
+              </form>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section> 
+
+
+  <!-- jQuery library -->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="js/jquery.min.js"></script>   
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.js"></script>   
+  <!-- slick slider -->
+  <script type="text/javascript" src="js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src="js/nouislider.js"></script>
+   <!-- mixit slider -->
+  <script type="text/javascript" src="js/jquery.mixitup.js"></script>
+  <!-- Add fancyBox -->        
+  <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+  <!-- Custom js -->
+  <script src="js/custom.js"></script> 
+  
+  </body>
+</html>
