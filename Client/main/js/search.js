@@ -1,4 +1,5 @@
 //xử lí data phần selection
+console.log(luu+"bien ben hien thi room");
 var roomtype = document.getElementById("typeRoom");
 var tinh = document.getElementById("tinh");
 var huyen = document.getElementById("huyen");
@@ -8,11 +9,23 @@ var priceMin = document.getElementById("priceMin");
 var priceMax = document.getElementById("priceMax");
 var SMin = document.getElementById("SMin");
 var SMax = document.getElementById("SMax");
-
 var tinhdata="";
 var huyendata="";
 var xadata="";
 
+//cac bien in ra noi dung
+var luu = document.getElementById("luuthongtinnhatro");
+var luu1 = document.getElementById("luuthongtinnhatroaaa");
+
+var luudata ="";
+var chuoixuli ="";
+var diadiem ="";
+var tenphong ="";
+var noidungmota ="";
+var giatien ="";
+var hinhanh ="";
+var chuoi ="";
+var room_id = "";
 //xử lí nhập cái tài khoản
 fetch("../../index.php/getTinh")
     .then(resp => {
@@ -159,12 +172,58 @@ btnSub.onclick=function(){
             resp.json()
                 .then(ret => {
                     if (ret.status == "ok") {
-                        console.log(ret.data);
-                    } else {
+                        luudata = ret.data;
+                        luu.textContent="";
+                        // console.log(luudata);
+                        for(let i=0;i<luudata.length;i++)
+                        {
+                            luu.innerHTML += xulidulieu(luudata,i);
+                        }                       } else {
                     }
                 });
         } else {
             // Xử lý lỗi HTTP
         }
     });
+}
+
+// for(let i=0;i<=luudata.length;i++)
+// {
+//     xemthongtinhchitiet[i]
+// }
+function xulidulieu(luudata,i)
+{
+    diadiem = luudata[i].address;
+    tenphong = luudata[i].tenphong;
+    noidungmota = luudata[i].loai_phong + '<br>' + luudata[i].phong_bep;
+    giatien = luudata[i].gia_thue;
+    hinhanh = luudata[i].image[0];
+    room_id = luudata[i].room_id;
+    chuoixuli = `<div class="col-md-4">
+              <article class="aa-properties-item">
+                <a href="#" class="aa-properties-item-img">
+                  <img width="370" height="220" src="img/item/`
+                  + hinhanh + `.jpg" alt="img">
+                </a>
+                <div class="aa-tag for-sale">
+                  Hot
+                </div>
+                <div class="aa-properties-item-content">
+                  <div class="aa-properties-info"> ` +
+                    diadiem +
+                  `</div>
+                  <div class="aa-properties-about">
+                    <h3><a href="#">`+tenphong+`</a></h3>
+                    <p>`+ noidungmota +`</p>
+                  </div>
+                  <div class="aa-properties-detial">
+                    <span class="aa-price">`+
+                      giatien +`.đ
+                    </span>
+                    <a href="#" class="aa-secondary-btn" onclick = "xemchitiet(`+ room_id+ `)" >Xem chi tiết</a>
+                  </div>
+                </div>
+              </article>
+            </div>`;
+    return chuoixuli;
 }

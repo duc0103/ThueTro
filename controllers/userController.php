@@ -14,14 +14,16 @@ class UserController {
 	public function hasLogged() {
 		$ret = 0;
     	if (isset($_SESSION["user"])) $ret = 1;
-		return array("status" => "OK", "data" => [$ret, $_SESSION["user"], $_SESSION["name"],$_SESSION["per"]]);
+		return array("status" => "OK", "data" => [$ret, $_SESSION["user"], $_SESSION["name"],$_SESSION["per"],$_SESSION["id"]]);
 	}
 	//
 	//
 	// Đăng nhập (xác thực username/password)
 	// return 	1 nếu hợp lệ
 	//			0 nếu ngược lại
+	public $a;
 	 public function doLogin() { 
+		$id="";
 		$ret = 0; 
     	if (isset($_SESSION["user"])) $ret = 1;
 		else {
@@ -33,17 +35,20 @@ class UserController {
 			{
 				$user = new User();
 				$auth = $user->checkAccount($input["user"], $input["pass"]);
+				$this->a=$auth;
 				if ($auth[0]) {
 					// Thiết lập dữ liệu phiên
-				    $_SESSION["user"] = $input["user"];
+					$_SESSION["user"] =$auth[1]["user"];
+					// $_SESSION["user"]=$auth[1]["user_id"];
 					$_SESSION["name"] = $auth[1]["name"];
 					$_SESSION["per"]=$auth[1]["per"];
 					$_SESSION["status"]=$auth[1]["status"];
+					$_SESSION["id"]=$auth[1]["user_id"];
 					$ret = 1;
 				}
 			}
 		}
-		return array("status" => "OK", "data" => $ret);
+		return array("status" => "OK", "data" => $ret );
    }
 	//
 	//
@@ -53,6 +58,7 @@ class UserController {
 		unset($_SESSION["name"]);
 		unset($_SESSION["per"]);
 		unset($_SESSION["status"]);
+		unset(	$_SESSION["id"]);
 		return array("status" => "OK", "data" => 1);
    }
    public function registerRender(){

@@ -1,17 +1,18 @@
-let luu = document.getElementById("luuthongtinnhatro");
-let luu1 = document.getElementById("luuthongtinnhatroaaa");
+var luu = document.getElementById("luuthongtinnhatro");
+var luu1 = document.getElementById("luuthongtinnhatroaaa");
 
-let luudata ="";
-let chuoixuli ="";
-let diadiem ="";
-let tenphong ="";
-let noidungmota ="";
-let giatien ="";
-let hinhanh ="";
-let chuoi ="";
-let room_id = "";
+var luudata ="";
+var chuoixuli ="";
+var diadiem ="";
+var tenphong ="";
+var noidungmota ="";
+var giatien ="";
+var hinhanh ="";
+var chuoi ="";
+var room_id = "";
+var user_id="";
 
-let chuoiluuthongtinchitiet ="";
+var chuoiluuthongtinchitiet ="";
 fetch("../../index.php/allRoom")
     .then(resp => {
         if (resp.status == 200) {
@@ -120,9 +121,47 @@ function xemchitiet(room_id)
                 <p>Phòng tắm : `+ luudata[i].phong_tam +`</p>
               </div>
             </div>
-          </div>`;      
-          luu1.innerHTML = chuoiluuthongtinchitiet;
+          </div>`;     
+          luu.textContent=""; 
+          luu.innerHTML = chuoiluuthongtinchitiet;
         }
     }
+    //xem id user dang su dung
+    fetch("../../index.php/logged")
+    .then(resp2 => {
+        if (resp2.status == 200) {
+            resp2.json()
+                .then(ret2 => {
+                    document.getElementById("nameUser").textContent=ret2.data[1];
+                    if (ret2.status == "OK") {
+                      user_id=ret2.data[4];
+                        if (ret2.data[0] == 1 && ret2.data[3]=="admin")  {
+                            document.location.href = "../admin/admin.htm";
+                        }
+                    }
+                });
+        }
+    });
+    // dữ liệu comment
+    fetch("../../index.php/doComment", {
+      method: "POST",
+      headers: {"Content-Type": "application/json"},
+      body: '{"room_id":"' + room_id + 
+            '"room_id":"' + user_id + 
+          '"}'
+    })
+    .then(resp => {
+      if (resp.status == 200) {
+          resp.json()
+              .then(ret => {
+                  if (ret.status == "ok") {
+                    console.log(ret.data);
+                  } 
+              });
+      } 
+    });
+
 }
+
+
 

@@ -3,6 +3,7 @@ var pass = document.getElementById("pass1");
 var btnLogin = document.getElementById("login");
 
 
+
 btnLogin.onclick = function() {
     fetch("../../index.php/login", {
         method: "POST",
@@ -30,7 +31,7 @@ btnLogin.onclick = function() {
                                     if (resp2.status == 200) {
                                         resp2.json()
                                             .then(ret2 => {
-                                                document.getElementById("nameUser").textContent="Tài Khoản: "+ret2.data[1];
+                                                document.getElementById("nameUser").textContent=ret2.data[1];
                                                 if (ret2.status == "OK") {
                                                     if (ret2.data[0] == 1 && ret2.data[3]=="admin")  {
                                                         document.location.href = "../admin/admin.htm";

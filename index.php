@@ -23,7 +23,7 @@
     			echo json_encode($ret);
             } else {
 				header('Content-type: application/json');
-            	echo '{"status":"ERR", "data":"ACTION-NOT-FOUND"}';
+            	echo '{"status":"ERR", "data":" ACTION-NOT-FOUND"}';
 			}
         }
     }
