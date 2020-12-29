@@ -139,10 +139,10 @@ button{
     top: 0px;
     right: 0px;
 } */
-#bangquanli,#quanlibaidang,#thongtinquanli>div{
+#bangquanli,#quanlibaidang,.thongtinquanli>div{
     display: flex;
 }
-#bangquanli div,#quanlibaidang div,#thongtinquanli>div>div{
+#bangquanli div,#quanlibaidang div,.thongtinquanli>div>div{
     flex: 1;
     overflow: auto;
     text-align: center;
@@ -213,7 +213,7 @@ button.thoat1:hover{
     background-color: white;
     color: black;
 }
-button.Sua,button.Xoa{
+button.Sua,button.Xoa,button.Sua1,button.Xoa1{
     width: 40px;
     height: 30px;
     text-align: center;
@@ -227,7 +227,7 @@ button.Sua,button.Xoa{
     font-size: 18;
     background-color: beige;
 }
-#thongtinquanli>div>div{
+.thongtinquanli>div>div{
     color: black;
     font-size: 15px;
 }

@@ -1,5 +1,8 @@
-var luu = document.getElementById("luuthongtinnhatro");
-var luu1 = document.getElementById("luuthongtinnhatroaaa");
+
+
+let luu = document.getElementById("luuthongtinnhatro");
+let luu1 = document.getElementById("luuthongtinnhatroaaa");
+
 
 // document.getElementById("a");
 
