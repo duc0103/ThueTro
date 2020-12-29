@@ -124,7 +124,7 @@
 			$controllerName = "tinhhuyenxa";
 			$actionName = "doGetHuyen";
 		}
-		//GET/searchRoom
+		//GET/searchRoom 
 		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 		count($commandArray) == 1 &&
 		strtolower($commandArray[0]) == strtolower("searchRoom")) 
@@ -132,9 +132,22 @@
 			$controllerName = "room";
 			$actionName = "dofindRoom";
 		}
-
-
-	
+		// POST/doComment
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("doComment")) 
+		{
+			$controllerName = "comment";
+			$actionName = "doComment";
+		}
+		// POST/addComment
+		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+		count($commandArray) == 1 &&
+		strtolower($commandArray[0]) == strtolower("addComment")) 
+		{
+			$controllerName = "comment";
+			$actionName = "addComment";
+		}
 
 			// Trả kết quả về cho bộ điều khiển mặt trước
 			$ret["controllerName"]  = $controllerName;

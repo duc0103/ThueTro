@@ -67,11 +67,10 @@
                     class="aa-register">Đăng kí</a>
                   <a id="btnlogin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"
                     class="aa-login">Đăng nhập</a>
-                  <a id="logout" onclick="logout()" style="width:auto;"
-                    class="aa-register">Đăng xuất</a>
+                  <a id="logout" onclick="logout()" style="width:auto;" class="aa-register">Đăng xuất</a>
                   <a id="changePass" onclick="document.getElementById('id03').style.display='block'" style="width:auto;"
-                     class="aa-login">Đổi mật khẩu</a>             
-                </div>  
+                    class="aa-login">Đổi mật khẩu</a>
+                </div>
               </div>
             </div>
           </div>
@@ -160,13 +159,13 @@
             <div class="row">
               <div class="col-md-6">
                 <div class="aa-single-advance-search">
-                  <input type="text" id ="road" placeholder="Tên đường">
+                  <input type="text" id="road" placeholder="Tên đường">
                 </div>
               </div>
               <div class="col-md-4">
                 <div class="aa-single-advance-search">
                   <select id="typeRoom">
-                    <option value="Phòng trọ" selected >Phòng trọ</option>
+                    <option value="Phòng trọ" selected>Phòng trọ</option>
                     <option value="Chung cư mini">Chung cư mini</option>
                     <option value="Nhà nguyên căn">Nhà nguyên căn</option>
                     <option value="Chung cư cao cấp">Chung cư cao cấp</option>
@@ -175,7 +174,7 @@
               </div>
             </div>
             <div class="row">
-              
+
               <div class="col-md-3">
                 <div class="aa-single-advance-search">
                   <select id="tinh">
@@ -199,7 +198,7 @@
               </div>
               <div class="col-md-3">
                 <div class="aa-single-advance-search">
-                  <input class="aa-search-btn" id ="submitSearch"type="submit" value="Search">
+                  <input class="aa-search-btn" id="submitSearch" type="submit" value="Search">
                 </div>
               </div>
             </div>
@@ -211,7 +210,7 @@
               </div>
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
-                  <input id ="priceMin" type="text" placeholder="giá tối thiểu" value="1000000">
+                  <input id="priceMin" type="text" placeholder="giá tối thiểu" value="1000000">
                 </div>
               </div>
               <div style="margin-top:20px" class="col-md-2">
@@ -229,7 +228,7 @@
               </div>
               <div class="col-md-2">
                 <div class="aa-single-advance-search">
-                  <input id ="SMin" type="text" placeholder="Diện tích tối thiểu" value="15">
+                  <input id="SMin" type="text" placeholder="Diện tích tối thiểu" value="15">
                 </div>
               </div>
               <div style="margin-top:20px" class="col-md-2">
@@ -254,7 +253,7 @@
     <div class="container">
       <div class="aa-latest-property-area">
         <div class="aa-title">
-          <h2>Các bài đăng gần đây</h2>
+          <h2>Hiển thị phòng trọ</h2>
           <span></span>
         </div>
         <div class="aa-latest-properties-content">
@@ -410,7 +409,7 @@
   <div id="luuthongtinnhatroaaa">
 
   </div>
-  <!-- <div class="container">
+<!-- <div class="container">
     <div class="row">
       <div class="col-md-8">
         <div class="aa-properties-content">
@@ -438,9 +437,56 @@
         <p>Ngày hết hạn</p>
       </div>
     </div>
-  </div> -->
+    <div class="row">
+      <div class="col-md-1 user">user</div>
+      <div class="col-md-8 ">Lorem ipsum dolor sit amet consectetur adipisicing elit. Vel quod debitis dolorem labore quidem voluptatibus, eius reprehenderit blanditiis quis dolores modi facilis alias voluptatem sint ex impedit ab magnam libero?</div>
+    </div>
+    <div class="row">
+      <div class="col-md-1 user">user</div>
+      <div class="col-md-8 ">content</div>
+    </div>
+    <div class="row">
+      <div class="col-md-1 user">user</div>
+      <div class="col-md-8 ">content</div>
+    </div>
+    <div class="row">
+      <div class="col-md-1 user">user</div>
+      <div class="col-md-8 ">content</div>
+    </div>
+    <div class="row">
+      <div class="col-md-1 user">user</div>
+      <div class="col-md-8 ">content</div>
+    </div>
+    <div class="row">
+      <h2 id="fh2">Bình Luận Và Đánh giá</h2>
+      <div class="col-md-4 inputGroupContainer">
+        <div class="pinfo">Đánh Giá</div>
+        <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-heart"></i></span>
+          <select id="rate">
+            <option value="1star">1</option>
+            <option value="2stars">2</option>
+            <option value="3stars">3</option>
+            <option value="4stars">4</option>
+            <option value="5stars">5</option>
+          </select>
+        </div>
+      </div>
+    </div>
+    <div class="row">Nội dung</div>
+      <div class="col-md-8 inputGroupContainer">
+       <div class="input-group">
+          <span class="input-group-addon"><i class="fa fa-pencil"></i></span>
+          <textarea class="form-control" id="review" width="100%" rows="3"></textarea>
+         </div>
+      </div>
+      <button type="submit" class="col-md-1 btn btn-primary">Gửi</button>
+     </div>
+    </div>
+  </div>
+</div> -->
 
- 
+
 
   <script src="main.js"></script>
   <script src="js/login.js"></script>
@@ -464,7 +510,7 @@
   <!-- Custom js -->
   <script src="js/custom.js"></script>
   <script src="js/hienthiroom.js"></script>
-  <script src="js/search.js" ></script>
+  <script src="js/search.js"></script>
 
 
 </body>
