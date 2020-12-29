@@ -231,10 +231,27 @@ button.Sua,button.Xoa,button.Sua1,button.Xoa1{
     color: black;
     font-size: 15px;
 }
-#quanlithongbao>div,#quanlichat>div{
+#quanlithongbao>div,div.userThongbao{
     margin-bottom: 10px;
     border: solid 2px steelblue;
     border-radius: 5px;
     padding: 5px;
     text-align: center;
+}
+#quanlithongbao>div:hover,div.userThongbao:hover{
+    background-color:turquoise;
+    cursor: pointer;
+}
+.thongtinquanli>div:hover{
+    background-color:turquoise;
+    cursor: pointer;
+}
+.ipchat{
+    width: 100%;
+    height: 60px;
+}
+.noidungchat{
+    width: 100%;
+    height: 60px;
+    margin-top: 15px;
 }
