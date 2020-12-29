@@ -2,7 +2,10 @@ var luu = document.getElementById("luuthongtinnhatro");
 var luu1 = document.getElementById("luuthongtinnhatroaaa");
 
 // document.getElementById("a");
-
+var bien = "";
+var bientanganh =0;
+var bienluu_room_id = "";
+var bienluu_id_chutro = "";
 var luudata ="";
 var chuoixuli ="";
 var diadiem ="";
@@ -137,20 +140,21 @@ function xemchitiet(room_id,user_id_chothue)
                                               }else{
                                                   chuoibancong = "Không";
                                               }
+                                              bien = i;
+                                              bienluu_room_id = luudata[i].room_id;
+                                              bienluu_id_chutro = luudata[i].owners_Id;
+                                              let image = luudata[i].image[bientanganh];
                                               //xu li phan hien tat ca cac anh
-                                              let image ="";
-                                              for(var j=0;j<luudata[i].image.length;j++){
-                                                image+=`<img src="img/item/`+ luudata[i].image[j] +`.jpg" alt="img"></img>`
-                                              }
                                               chuoiluuthongtinchitiet = `<div class="container" id="addcommentbox">
                                               <div class="row">
                                                 <div class="col-md-8">
                                                   <div class="aa-properties-content">
                                                     <div class="aa-properties-details">
                                                       <div class="aa-properties-details-img">
-                                                        `+image+`
+                                                      <img src="img/item/`+image+`.jpg" alt="img"></img>
                                                       </div>
                                                       <div class="aa-properties-info">
+                                                      <button onclick="doianh(luudata,bien,bienluu_room_id,bienluu_id_chutro)">Ảnh khác</button>
                                                         <h2>` + luudata[i].tenphong + `</h2>
                                                         <span class="aa-price">`+ luudata[i].gia_thue + `.đ</span>
                                                       </div>
@@ -283,5 +287,18 @@ function addComment(room_id){
       }
   });
 }
-
+function doianh(hamluudulieu,bien,bienluu_room_id1,bienluu_id_chutro1)
+{
+  if(bientanganh < hamluudulieu[bien].image.length-1)
+  {
+    bientanganh += 1;
+  }
+  else{
+    bientanganh = 0;
+  }
+  if(xemchitiet(bienluu_room_id1,bienluu_id_chutro1)!=null)
+  {
+    xemchitiet(bienluu_room_id1,bienluu_id_chutro1).click();
+  }
+}
 
