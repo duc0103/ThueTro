@@ -15,7 +15,11 @@ class commentController
     public function addComment(){
         $input = json_decode(file_get_contents("php://input"), true);
         $comment = new comment();
-            $data=$comment->addComment($input["user_id"],$input["room_id"],$input["content"],$input["date"]);
+        $check=$comment->addComment($input["user_id"],$input["room_id"],$input["content"]);
+        if($check==1){
+            $data=$comment->getComment($input["room_id"]);
             return array("status"=> "ok" ,"data"=> $data);
+        }
+        return array("status"=> "nok" ,"data"=> "");      
     }
 }

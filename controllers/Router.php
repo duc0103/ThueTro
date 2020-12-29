@@ -51,6 +51,14 @@
 				$controllerName = "user";
 				$actionName = "doGetUser";
 			}
+			// POST /GetUserbyID
+			else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+				count($commandArray) == 1 &&
+				strtolower($commandArray[0]) == strtolower("GetUserbyID")) 
+			{
+				$controllerName = "user";
+				$actionName = "doGetUserbyID";
+			}
 		// post /register
 			else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
 			count($commandArray) == 1 &&

@@ -28,7 +28,10 @@ class User {
         $data = $this->db->doQuery ("select * from User where status=0 or status = 2");
         return $data;
     }
-   
+    public function getUserByUserID($user_id){
+        $data = $this->db->doQuery ("select * from User where user_id='$user_id';");
+        return $data[0];
+    }
     public function addUserRender($user,$pass,$email,$name){
         $data=$this->db->doQuery("
         INSERT INTO user (user, pass, email, name,per)

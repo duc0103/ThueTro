@@ -89,8 +89,18 @@ class UserController {
 			return array("status"=> "ok" ,"data"=> $data);
 	   }
 	   return array("status"=> "nok" ,"data"=> "ko co");
-
    }
+   public function doGetUserbyID(){
+	$input = json_decode(file_get_contents("php://input"), true);
+		 $user = new User();
+		 $data=$user->getUserByUserID($input["user_id"]);
+		 if(count($data)>0){
+			return array("status"=> "ok" ,"name"=> $data["name"],"phone"=>$data["phoneNumber"],"email"=>$data["email"]);
+		 
+	}
+	return array("status"=> "nok" ,"data"=> "ko co");
+
+}
    public function dosearchUser(){
 		$input = json_decode(file_get_contents("php://input"), true);
 		if(isset($_SESSION["user"]) && $_SESSION["status"]== 1 && isset($input["search"]) ){
