@@ -91,6 +91,14 @@
 			$controllerName = "user";
 			$actionName = "doUpdateUser";
 		}
+		//POST/updateRoom
+			else if ($_SERVER["REQUEST_METHOD"] == "POST" &&
+			count($commandArray) == 1 &&
+			strtolower($commandArray[0]) == strtolower("updateRoom")) 
+		{
+			$controllerName = "room";
+			$actionName = "doUpdateRoom";
+		}
 
 		//POST/changePass
 		else if ($_SERVER["REQUEST_METHOD"] == "POST" &&

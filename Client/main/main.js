@@ -46,5 +46,4 @@ document.getElementById("loginaddRoom").onclick =function(){
               });
       }
   });
-  
 }
