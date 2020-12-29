@@ -266,7 +266,7 @@ function addComment(room_id,bienluu_room_id1,bienluu_id_chutro1){
                                   .then(ret => {
                                     console.log("comment"+ret.data[0]["content"]);
                                       if (ret.status == "ok") {
-                                        document.getElementById("comment").value=""; 
+                                        document.getElementById("comment").value="Đã đánh giá"; 
                                         document.getElementById( "addcommentbox").innerHTML+=
 
                                         ` <div class="row">
