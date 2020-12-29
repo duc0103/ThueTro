@@ -70,8 +70,12 @@ let thongtin = document.getElementById("tt1");
 let sotrang = "";
 let chuoivehtmlqlbd = "";
 let chuoivehtmlqlbdSua = "";
-let chuoiluuthongbao ="";
-let chuoiluuchat ="";
+let chuoiluuthongbao = "";
+let chuoiluuchat = "";
+let chuoiluuhienthichat = "";
+let thoatChat = document.getElementById("thoatChat");
+let htdnChat = document.getElementsByClassName("htdn")[1];
+let htdnChat1 = document.getElementsByClassName("htdn1")[1];
 console.log(timkiem[0]);
 //Hiển thị sau khi load trang
 window.onload = function () {
@@ -189,12 +193,35 @@ function deleteUser(id_tenbaidang, nhandientrangxoa) {
 qlbd.onclick = function () {
     // console.log("Chạy quản lí bài đăng");
     // themthongtinhienthi(0,1);
-    chuoi1 = '[{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"}]';
-    // chuoi1 = "";
-    chuoijson = JSON.parse(chuoi1);
-    // console.log(chuoijson);
-    them(chuoijson, 1);
-    console.log("Đã bấm vào quản lí bài đăng");
+    //Lấy tất cả các phòng về 
+    fetch("../../index.php/allRoom")
+        .then(resp => {
+            if (resp.status == 200) {
+                resp.json()
+                    .then(ret => {
+                        // console.log(ret);
+                        if (ret.status == "ok") {
+                            //   luu.textContent="";
+                            luudata = ret.data;
+                            console.log(luudata);
+                            chuoijson = luudata;
+                            them(chuoijson, 1);
+                            console.log("Đã bấm vào quản lí bài đăng");
+
+                        } else {
+                            alert("lấy dữ ko liệu thành công");
+                        }
+                    });
+            } else {
+                // Xử lý lỗi HTTP
+            }
+        });
+    // chuoi1 = '[{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"},{"tenbaidang":"abc","thoigiandang":"12512","thoigianketthuc":"12223","tinhtrangpheduyet":"ahsuaw","chuquanlibaidang":"ahsa"}]';
+    // // chuoi1 = "";
+    // chuoijson = JSON.parse(chuoi1);
+    // // console.log(chuoijson);
+    // them(chuoijson, 1);
+    // console.log("Đã bấm vào quản lí bài đăng");
 
 }
 //Xử lí khi bấm vào phần hiển thị của nút thông báo
@@ -204,15 +231,15 @@ tb.onclick = function () {
     htContent2.style.display = "none";
     htContent4.style.display = "none";
     htContent5.style.display = "none";
-    chuoiluuthongbao ="";
+    chuoiluuthongbao = "";
     //Khi người dùng bấm vào nút thông báo toàn bộ thông báo ở bảng thông báo sẽ được trả về
     chuoi1 = '[{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa2"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài2"},{"tennguoithaydoi":"Đức1","noidungthaydoi":"Sửa"}]';
     chuoijson = JSON.parse(chuoi1);
     maxTrang = chuoijson.length / 8;
     sotrang = giatritrang[2].value - 1;
     for (let i = sotrang * 8; i < sotrang * 8 + 8; i++) {
-        if(chuoijson[i]!= null)
-        chuoiluuthongbao += `<div>" ` + chuoijson[i].tennguoithaydoi + ` " đã " ` + chuoijson[i].noidungthaydoi + ` " : Chờ phê duyệt</div>`;      
+        if (chuoijson[i] != null)
+            chuoiluuthongbao += `<div>" ` + chuoijson[i].tennguoithaydoi + ` " đã " ` + chuoijson[i].noidungthaydoi + ` " : Chờ phê duyệt</div>`;
     }
     quanlithongbao.innerHTML = chuoiluuthongbao;
     console.log("Xin chào");
@@ -236,15 +263,27 @@ chat.onclick = function () {
                             maxTrang = chuoijson.length / 8;
                             sotrang = giatritrang[3].value - 1;
                             for (let i = sotrang * 8; i < sotrang * 8 + 8; i++) {
-                                if(chuoijson[i]!= null) 
-                                chuoiluuchat += `<div class="userThongbao">Tài khoản : `+ chuoijson[i].user +`</div>`;                              
+                                if (chuoijson[i] != null)
+                                    chuoiluuchat += `<div class="userThongbao">Tài khoản : ` + chuoijson[i].user + `</div>`;
                             }
                             quanlichat.innerHTML = chuoiluuchat;
+                            let nhanNguoiChat = document.getElementsByClassName("userThongbao");
+                            for (let i = 0; i < 8; i++) {
+                                if (nhanNguoiChat[i] != null) {
+                                    nhanNguoiChat[i].onclick = function () {
+                                        let phanTuDuocChon = i + (giatritrang[3].value - 1) * 8;
+                                        console.log(nhanNguoiChat[i]);
+                                        console.log(chuoijson[phanTuDuocChon]);
+
+                                    }
+                                }
+                            }
                         }
                         //  console.log(ret.status);
                     });
             }
         });
+
 }
 //Xử lí khi bấm vào phần hiển thị của nút thống kê phân tích xu hướng
 tkpt.onclick = function () {
@@ -296,7 +335,7 @@ for (let j = 0; j <= 3; j++) {
             them(chuoijson, 1);//Hiển thị thông tin dựa vào số trang
         } else if (j == 2) {
             tb.click();
-        }else if (j == 3) {
+        } else if (j == 3) {
             chat.click();
         }
     }
@@ -359,19 +398,27 @@ function themthongtinhienthi(bienchay, luuthongtintrangnho1) {
         theto.appendChild(diachi);
         theto.appendChild(loaitaikhoan);
         thongtinquanli[0].appendChild(theto);
-    } else if (luuthongtintrangnho1 == 1) {
+    } else if (luuthongtintrangnho1 == 1) {//Thêm thông tin vào phần quản lí bài đăng
         // console.log("chay vs biến trạng thái bằng 1");
+        let pheduyet = "";
+        if(chuoijson[bienchay].public == 1 )
+        {
+            pheduyet = "Đã phê duyệt";
+        }else if(chuoijson[bienchay].public == 0)
+        {
+            pheduyet = "Chờ phê duyệt";
+        }
         chuoivehtmlqlbd = `
         <div>
             <div>
                 <button class="Sua1">Sửa</button>
                 <button class="Xoa1">Xóa</button>
             </div>
-            <div>`+ chuoijson[bienchay].tenbaidang + `</div>
-            <div>`+ chuoijson[bienchay].thoigiandang + `</div>
-            <div>`+ chuoijson[bienchay].thoigianketthuc + `</div>
-            <div>`+ chuoijson[bienchay].tinhtrangpheduyet + `</div>
-            <div>`+ chuoijson[bienchay].chuquanlibaidang + `</div>
+            <div>`+ chuoijson[bienchay].tenphong + `</div>
+            <div>`+ chuoijson[bienchay].ngay_dang + `</div>
+            <div>`+ chuoijson[bienchay].ngay_het_han + `</div>
+            <div>`+ pheduyet + `</div>
+            <div>`+ chuoijson[bienchay].owners_Id + `</div>
         </div>`;
         thongtinquanli[luuthongtintrangnho1].innerHTML += chuoivehtmlqlbd;
         // console.log(chuoivehtmlqlbd);
@@ -537,7 +584,7 @@ function them(chuoijson, bienluutrangnho) {
                 }
             }
         }
-    } else if (bienluutrangnho == 1) {
+    } else if (bienluutrangnho == 1) {//Quản lí bài đăng
         // console.log(chuoijson[0].tenbaidang);
         htContent1.style.display = "none";
         htContent2.style.display = "block";
@@ -564,8 +611,8 @@ function them(chuoijson, bienluutrangnho) {
                     console.log("Trang được nhấn là :" + giatritrang[bienluutrangnho].value);
                     let phanTuDuocThaoTacXoa = m + (giatritrang[bienluutrangnho].value - 1) * 8;
                     console.log("Phần tử sẽ được xóa là : " + phanTuDuocThaoTacXoa);
-                    let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].tenbaidang;//Chọn ra id của phần tử được xóa
-                    if (confirm("Bạn chắc chắn muốn XÓA bài đăng có tên : " + chuoijson[phanTuDuocThaoTacXoa].tenbaidang + " ?"))
+                    let giaTriXoa = chuoijson[phanTuDuocThaoTacXoa].tenphong;//Chọn ra id của phần tử được xóa
+                    if (confirm("Bạn chắc chắn muốn XÓA bài đăng có tên : " + chuoijson[phanTuDuocThaoTacXoa].tenphong + " ?"))
                         deleteUser(giaTriXoa, bienluutrangnho);//Xóa phần tử
                 }
             }
