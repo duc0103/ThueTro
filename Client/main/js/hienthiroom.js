@@ -1,8 +1,5 @@
-
-
-let luu = document.getElementById("luuthongtinnhatro");
-let luu1 = document.getElementById("luuthongtinnhatroaaa");
-
+var luu = document.getElementById("luuthongtinnhatro");
+var luu1 = document.getElementById("luuthongtinnhatroaaa");
 
 // document.getElementById("a");
 
@@ -266,11 +263,13 @@ function addComment(room_id){
                                     console.log("comment"+ret.data[0]["content"]);
                                       if (ret.status == "ok") {
                                         document.getElementById("comment").value=""; 
-                                        document.getElementById( "addcommentbox").innerHTML=
+                                        document.getElementById( "addcommentbox").innerHTML+=
+
                                         ` <div class="row">
                                         <div class="col-md-2 ">`+ret.data[0]["name"]+`</div>
                                         <div class="col-md-7 ">`+ret.data[0]["content"]+`</div>
-                                      </div>`  
+                                      </div>`  ;
+
                                       } 
                                   });
                           } 

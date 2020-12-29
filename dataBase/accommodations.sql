@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 28, 2020 lúc 02:21 PM
+-- Thời gian đã tạo: Th12 29, 2020 lúc 12:24 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
--- Phiên bản PHP: 7.2.34
+-- Phiên bản PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -30,17 +30,35 @@ SET time_zone = "+00:00";
 CREATE TABLE `comments` (
   `id_user` int(11) NOT NULL,
   `id_room` int(11) NOT NULL,
-  `votting` tinyint(4) NOT NULL,
   `content` text NOT NULL,
-  `Date` date NOT NULL
+  `Date` datetime NOT NULL
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
 
 --
 -- Đang đổ dữ liệu cho bảng `comments`
 --
 
-INSERT INTO `comments` (`id_user`, `id_room`, `votting`, `content`, `Date`) VALUES
-(2, 1, 4, 'Cũng thường thôi', '2020-12-22');
+INSERT INTO `comments` (`id_user`, `id_room`, `content`, `Date`) VALUES
+(29, 2, 'Bình luận được cập nhật', '0000-00-00 00:00:00'),
+(29, 1, 'Bình luận được cập nhật', '2020-12-29 14:40:27'),
+(29, 1, 'Bình luận được cập nhật', '2020-12-29 15:00:05'),
+(29, 2, 'Bình luận được cập nhật', '2020-12-29 15:01:18'),
+(3, 1, 'còn phòng ko ạ', '2020-12-29 17:04:24'),
+(1, 1, 'aaa', '2020-12-29 17:09:36'),
+(1, 1, 'qqqqqqqqqqqqqqqqqqq', '2020-12-29 17:11:03'),
+(1, 1, 'sssssssssssssssssssssssssss', '2020-12-29 17:11:16'),
+(1, 1, 'alo', '2020-12-29 17:12:52'),
+(1, 1, 'okeeeeeeeeeeeeee', '2020-12-29 17:13:06'),
+(1, 2, 'lô', '2020-12-29 17:55:52'),
+(1, 2, 'Được đó', '2020-12-29 17:56:40'),
+(1, 1, 'được rồi nhé', '2020-12-29 17:57:37'),
+(1, 1, 'alo', '2020-12-29 18:01:00'),
+(1, 1, 'he lô', '2020-12-29 18:04:34'),
+(1, 1, 'alo', '2020-12-29 18:09:59'),
+(1, 1, 'đông ăn cứt chó', '2020-12-29 18:18:38'),
+(3, 2, 'Đông gà', '2020-12-29 18:20:31'),
+(3, 1, 'nghe rõ trả lời', '2020-12-29 18:21:49'),
+(3, 1, 'aaaaaaaaaaaaaaaaaaaaa', '2020-12-29 18:22:13');
 
 -- --------------------------------------------------------
 
@@ -11550,8 +11568,8 @@ CREATE TABLE `room_for_rent` (
 --
 
 INSERT INTO `room_for_rent` (`room_id`, `owners_Id`, `room_area`, `address`, `gia_thue`, `loai_phong`, `dia_diem_gan`, `chung_chu`, `ngay_dang`, `ngay_het_han`, `phong_tam`, `nuoc_nong`, `phong_bep`, `ban_cong`, `mo_ta`, `gia_dien`, `gia_nuoc`, `public`, `diachi_xa`, `diachi_huyen`, `diachi_tinh`, `tenphong`) VALUES
-(1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 0, 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 0, 'Dịch Vọng Hậu', 'Cầu giấy', 'Hà Nội', 'Phòng Mễ Trì'),
-(2, 2, 30, '45 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội\r\n', 3000, 'chung cư mini', 'Học viện Báo Chí và tuyên truyền', 0, '2020-12-16', '2020-12-31', 'Khép kín', 1, 'Khu bếp chung', 0, 'Thuận lợi cho các bạn đi làm vs diện tích  gần 30m2 thoải mái sinh hoạt', 3000, 3000, 1, 'Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Hà Nội', 'Phòng Xịn');
+(1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 0, 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu giấy', 'Thành phố Hà Nội', 'Phòng trọ Cầu Giấy'),
+(2, 2, 30, '45 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội\r\n', 3000000, 'chung cư mini', 'Học viện Báo Chí và tuyên truyền', 0, '2020-12-16', '2020-12-31', 'Khép kín', 1, 'Khu bếp chung', 0, 'Thuận lợi cho các bạn đi làm vs diện tích  gần 30m2 thoải mái sinh hoạt', 3000, 3000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành Phố Hà Nội', 'Phòng trọ đại gia');
 
 -- --------------------------------------------------------
 
@@ -11578,12 +11596,31 @@ CREATE TABLE `user` (
 --
 
 INSERT INTO `user` (`user_id`, `code_id`, `user`, `pass`, `address`, `status`, `email`, `phoneNumber`, `name`, `per`, `online`) VALUES
-(1, 18020352, 'dong', '2', '144 xuân thủy-Cầu Giấy-Hà Nội', 2, '     vu@gmail.com', '0326654448', 'Vũ Văn Đông', 'owner', 0),
+(1, 18020352, 'dong', '1', '144 xuân thủy-Cầu Giấy-Hà Nội', 2, '     vu@gmail.com', '0326654448', 'Vũ Văn Đông', 'owner', 0),
 (2, 180203352, 'duc', '1', 'Cầu giấy -Hà nội', 1, 'leducdhcn@gmail.com', '0986459532', 'Lê Văn Đức', 'admin', 0),
 (3, 187871524, 'duc11', '1', '144 xuân thủy cầu giấy', 2, '  anhduc@gmail.com', '0986599632', 'Nguyễn Anh Đức', 'owner', 0),
-(4, NULL, 'hung', '1', NULL, 0, 'hung@gmail.com', NULL, 'hưng', 'render', 0),
-(29, 212111221, 'duc0103', 'duc', '12123121212', 0, ' ducanh@gmail.com', '172121902012', 'Lê Văn Ạnh', 'render', 0),
-(30, NULL, 'ductam', '1234', NULL, 0, 'leduc@gmail.com', NULL, 'Lê Văn Đức', 'render', 0);
+(29, NULL, 'duc0103', 'duc', NULL, 0, 'ducanh@gmail.com', NULL, 'Lê Văn Ạnh', 'render', 0),
+(30, NULL, 'ductam', '1234', NULL, 0, 'leduc@gmail.com', NULL, 'Lê Văn Đức', 'render', 0),
+(31, NULL, 'abc', '1', NULL, 0, 'abc@gmail.com', NULL, 'Họ Và C', 'render', 0);
+
+-- --------------------------------------------------------
+
+--
+-- Cấu trúc bảng cho bảng `vote`
+--
+
+CREATE TABLE `vote` (
+  `room_id` int(11) NOT NULL,
+  `vote` float NOT NULL
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Đang đổ dữ liệu cho bảng `vote`
+--
+
+INSERT INTO `vote` (`room_id`, `vote`) VALUES
+(1, 4.5),
+(2, 5);
 
 -- --------------------------------------------------------
 
@@ -11652,7 +11689,7 @@ ALTER TABLE `room_for_rent`
 -- AUTO_INCREMENT cho bảng `user`
 --
 ALTER TABLE `user`
-  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=31;
+  MODIFY `user_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=32;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
