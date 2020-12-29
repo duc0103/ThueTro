@@ -31,7 +31,7 @@ btnRes.onclick=function(){
                         }
                         else {
                             // Sai tên đăng nhập hoặc mật khẩu
-                            alert("sai ten tai khoan hoac mat khau");
+                            alert("Sai tên tài khoản hoặc mật khẩu");
                             // document.querySelector("div.err-submit").classList.remove("nodisplay");
                         }
                     } else {

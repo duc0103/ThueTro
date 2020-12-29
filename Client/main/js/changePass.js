@@ -14,7 +14,7 @@ function changPass() {
                     .then(ret => {
                         if (ret.status == "ok" ) {
                             if (ret.data ) {
-                                alert("thay đổi mật khẩu t thafh công");
+                                alert("Đổi mật khẩu thành công");
                                 
                                 document.getElementById("btnRes").style.display="none";
                                 document.getElementById("btnlogin").style.display="none";

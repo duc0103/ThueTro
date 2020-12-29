@@ -41,7 +41,7 @@ btnLogin.onclick = function() {
                                                        
                                                     }
                                                     if (ret2.data[0] == 1 && ret2.data[3]=="admin")  {
-                                                        if(confirm("Bạn Là Amin bạn có muốn vào trang quản lí")){
+                                                        if(confirm("Bạn Là Admin bạn có muốn vào trang quản lí")){
                                                             document.location.href = "../admin/admin.htm";
                                                         }
                                                        
@@ -56,7 +56,7 @@ btnLogin.onclick = function() {
                         }
                         else {
                             // Sai tên đăng nhập hoặc mật khẩu
-                            alert("sai ten tai khoan hoac mat khau");
+                            alert("Sai tên tài khoản hoặc mật khẩu");
                             // document.querySelector("div.err-submit").classList.remove("nodisplay");
                         }
                     } else {
