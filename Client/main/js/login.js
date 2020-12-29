@@ -1,7 +1,7 @@
 var user = document.getElementById("user1");
 var pass = document.getElementById("pass1");
 var btnLogin = document.getElementById("login");
-
+var checkThem;
 
 
 btnLogin.onclick = function() {
@@ -33,6 +33,7 @@ btnLogin.onclick = function() {
                                             .then(ret2 => {
                                                 document.getElementById("nameUser").textContent=ret2.data[1];
                                                 if (ret2.status == "OK") {
+                                                    checkThem=ret.data;
                                                     if (ret2.data[0] == 1 && ret2.data[3]=="owner")  {
                                                         if(confirm("Bạn Là chủ trọ bạn có muốn vào trang quản lí")){
                                                             document.location.href = "../admin/admin.htm";
@@ -45,6 +46,9 @@ btnLogin.onclick = function() {
                                                         }
                                                        
                                                     }
+                                                }
+                                                else{
+                                                    checkThem="";
                                                 }
                                             });
                                     }
