@@ -26,6 +26,7 @@ let thongtinquanli = document.getElementsByClassName("thongtinquanli");//Thẻ c
 //let thongtinquanlibaidang = document.getElementById("thongtinquanlibaidang");
 console.log(thongtinquanli);
 let quanlithongbao = document.getElementById("quanlithongbao");
+let quanlichat = document.getElementById("quanlichat");
 var chuoijson = "";//Chuỗi json trả về dữ liệu phần quản lí thông tin tài khoản
 let chuoi1 = "";//Chuyển chuoijson bên trên thành đối tượng
 let nutXoa = "";//Chứa các nút xóa trong phần chức năng của hiển thị thông tin 
@@ -69,6 +70,8 @@ let thongtin = document.getElementById("tt1");
 let sotrang = "";
 let chuoivehtmlqlbd = "";
 let chuoivehtmlqlbdSua = "";
+let chuoiluuthongbao ="";
+let chuoiluuchat ="";
 console.log(timkiem[0]);
 //Hiển thị sau khi load trang
 window.onload = function () {
@@ -201,16 +204,17 @@ tb.onclick = function () {
     htContent2.style.display = "none";
     htContent4.style.display = "none";
     htContent5.style.display = "none";
-    quanlithongbao.innerHTML = "";
+    chuoiluuthongbao ="";
     //Khi người dùng bấm vào nút thông báo toàn bộ thông báo ở bảng thông báo sẽ được trả về
-    chuoi1 = '[{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa2"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài2"},{"tennguoithaydoi":"Đức1","noidungthaydoi":"Sửa"}]';
+    chuoi1 = '[{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa2"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài"},{"tennguoithaydoi":"Đức","noidungthaydoi":"Sửa"},{"tennguoithaydoi":"Đông","noidungthaydoi":"Đăng bài2"},{"tennguoithaydoi":"Đức1","noidungthaydoi":"Sửa"}]';
     chuoijson = JSON.parse(chuoi1);
-    maxTrang = chuoijson.length/8 ;
+    maxTrang = chuoijson.length / 8;
     sotrang = giatritrang[2].value - 1;
-    for (let i = sotrang*8 ; i < sotrang*8 + 8; i++) {
-        let chuoiluuthongbao = `<div>" ` + chuoijson[i].tennguoithaydoi + ` " đã " ` + chuoijson[i].noidungthaydoi + ` " : Chờ phê duyệt</div>`;
-        quanlithongbao.innerHTML += chuoiluuthongbao;
+    for (let i = sotrang * 8; i < sotrang * 8 + 8; i++) {
+        if(chuoijson[i]!= null)
+        chuoiluuthongbao += `<div>" ` + chuoijson[i].tennguoithaydoi + ` " đã " ` + chuoijson[i].noidungthaydoi + ` " : Chờ phê duyệt</div>`;      
     }
+    quanlithongbao.innerHTML = chuoiluuthongbao;
     console.log("Xin chào");
 }
 //Xử lí khi bấm vào phần hiển thị của nút chat
@@ -220,6 +224,27 @@ chat.onclick = function () {
     htContent2.style.display = "none";
     htContent3.style.display = "none";
     htContent4.style.display = "none";
+    chuoiluuchat = "";
+    fetch("../../index.php/getUser")
+        .then(resp => {
+            if (resp.status == 200) {
+                resp.json()
+                    .then(ret => {
+                        if (ret.status == "ok") {
+                            chuoijson = ret.data;
+                            console.log(chuoijson);
+                            maxTrang = chuoijson.length / 8;
+                            sotrang = giatritrang[3].value - 1;
+                            for (let i = sotrang * 8; i < sotrang * 8 + 8; i++) {
+                                if(chuoijson[i]!= null) 
+                                chuoiluuchat += `<div class="userThongbao">Tài khoản : `+ chuoijson[i].user +`</div>`;                              
+                            }
+                            quanlichat.innerHTML = chuoiluuchat;
+                        }
+                        //  console.log(ret.status);
+                    });
+            }
+        });
 }
 //Xử lí khi bấm vào phần hiển thị của nút thống kê phân tích xu hướng
 tkpt.onclick = function () {
@@ -252,9 +277,10 @@ for (let j = 0; j <= 3; j++) {
         }
         else if (j == 1) {
             them(chuoijson, 1);//Hiển thị thông tin dựa vào số trang
-        }else if(j == 2)
-        {
+        } else if (j == 2) {
             tb.click();
+        } else if (j == 3) {
+            chat.click();
         }
     }
 }
@@ -268,9 +294,10 @@ for (let j = 0; j <= 3; j++) {
             them(chuoijson, 0);//Hiển thị thông tin dựa vào số trang
         } else if (j == 1) {
             them(chuoijson, 1);//Hiển thị thông tin dựa vào số trang
-        }else if(j == 2)
-        {
+        } else if (j == 2) {
             tb.click();
+        }else if (j == 3) {
+            chat.click();
         }
     }
 }
