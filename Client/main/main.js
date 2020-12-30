@@ -39,7 +39,7 @@ document.getElementById("loginaddRoom").onclick =function(){
                             document.location.href = "../main/themphongtro.htm";     
                       }   
                       else{
-                          alert("này này dừng có thêm khi không là chủ nhà trọ chứ");
+                          alert("Không đủ thẩm quyền !!!");
                       }
                       
                   }   

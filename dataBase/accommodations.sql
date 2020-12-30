@@ -1,11 +1,11 @@
 -- phpMyAdmin SQL Dump
--- version 5.0.3
+-- version 5.0.2
 -- https://www.phpmyadmin.net/
 --
 -- Máy chủ: 127.0.0.1
--- Thời gian đã tạo: Th12 29, 2020 lúc 10:10 PM
+-- Thời gian đã tạo: Th12 29, 2020 lúc 11:44 PM
 -- Phiên bản máy phục vụ: 10.4.14-MariaDB
--- Phiên bản PHP: 7.2.34
+-- Phiên bản PHP: 7.4.10
 
 SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
 START TRANSACTION;
@@ -67,7 +67,8 @@ INSERT INTO `comments` (`id_user`, `id_room`, `content`, `Date`) VALUES
 (32, 1, 'hjk', '2020-12-29 20:56:29'),
 (32, 1, 'jhhhkkku', '2020-12-29 20:56:49'),
 (32, 1, 'hihi', '2020-12-29 20:57:15'),
-(1, 11, 'abc', '2020-12-30 04:03:26');
+(1, 11, 'abc', '2020-12-30 04:03:26'),
+(1, 1, 'alo ae', '2020-12-30 04:20:49');
 
 -- --------------------------------------------------------
 
@@ -11536,7 +11537,7 @@ CREATE TABLE `image` (
 INSERT INTO `image` (`room_id`, `url_image`, `id`) VALUES
 (1, 'image1.1.jpg', 1),
 (1, 'image1.2.jpg', 2),
-(1, 'image1.3', 3),
+(1, 'image1.3.jpg', 3),
 (2, 'image2.1.jpg', 4),
 (2, 'image2.2.jpg', 5),
 (2, 'image2.3.jpg', 6),
@@ -11546,7 +11547,13 @@ INSERT INTO `image` (`room_id`, `url_image`, `id`) VALUES
 (10, 'Background2.jpg', 10),
 (11, 'Background2.jpg', 11),
 (11, 'Background4.jpg', 12),
-(11, 'Background3.jpg', 13);
+(11, 'Background3.jpg', 13),
+(12, 'cach-trang-tri-phong-tro-co-gac-lung-1.jpg', 14),
+(12, 'Đang-tin-cho-thue-phong-tro-hieu-qua.jpg', 15),
+(12, 'images.jpg', 16),
+(13, 'cach-trang-tri-phong-tro-co-gac-lung-1.jpg', 17),
+(13, 'Đang-tin-cho-thue-phong-tro-hieu-qua.jpg', 18),
+(13, 'images.jpg', 19);
 
 -- --------------------------------------------------------
 
@@ -11586,13 +11593,8 @@ CREATE TABLE `room_for_rent` (
 INSERT INTO `room_for_rent` (`room_id`, `owners_Id`, `room_area`, `address`, `gia_thue`, `loai_phong`, `dia_diem_gan`, `chung_chu`, `ngay_dang`, `ngay_het_han`, `phong_tam`, `nuoc_nong`, `phong_bep`, `ban_cong`, `mo_ta`, `gia_dien`, `gia_nuoc`, `public`, `diachi_xa`, `diachi_huyen`, `diachi_tinh`, `tenphong`) VALUES
 (1, 1, 15, '144 Xuân Thủy - Dịch Vọng Hậu - Cầu Giấy -Hà Nội', 1500000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', 'Khép kín - có nóng lạnh', 0, 'Khu bếp chung', 1, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 4000, 1000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu giấy', 'Thành phố Hà Nội', 'Phòng trọ Cầu Giấy'),
 (2, 2, 30, '45 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội\r\n', 3000000, 'chung cư mini', 'Học viện Báo Chí và tuyên truyền', 0, '2020-12-16', '2020-12-31', 'Khép kín', 1, 'Khu bếp chung', 0, 'Thuận lợi cho các bạn đi làm vs diện tích  gần 30m2 thoải mái sinh hoạt', 3000, 3000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành Phố Hà Nội', 'Phòng trọ đại gia'),
-(4, 4, 32, '47 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 3200000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '0000-00-00', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 1, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc1'),
-(5, 5, 33, '48 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 3300000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc2'),
-(6, 6, 34, '49 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 340000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, 'Phường Dịch Vọng Hậu', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc3'),
-(7, 7, 35, '50 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 350000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, '', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc4'),
-(8, 8, 36, '51 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 360000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '2020-12-31', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, '', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc5'),
-(9, 9, 37, '52 Trần Đăng Ninh, Phường Dịch Vọng, Quận Cầu Giấy, Hà Nội', 370000, 'Phòng Trọ', 'Đại Học Công nghệ -Đại học quốc gia Hà Nội', 0, '2020-12-24', '0000-00-00', '', 0, '', 0, 'Thoải mái tiện nghi phù hợp với tân sinh viên nhập học', 3000, 3000, 0, '', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'abc6'),
-(11, 1, 20, 'Xuân Thủy - Thành phố Hà Nội - Quận Cầu Giấy - Phường Quan Hoa', 4000000, 'Chung cư mini', 'Đại Học Quốc Gia', 0, '2020-12-30', '2021-01-07', 'Có', 0, 'khu bếp riêng', 0, 'Phòng đẹp mát', 4000, 3000, 1, 'Phường Quan Hoa', 'Quận Cầu Giấy', 'Thành phố Hà Nội', 'Phòng 1');
+(12, 1, 30, 'xuân thủy - Thành phố Hà Nội - Quận Ba Đình - Phường Phúc Xá', 3000000, 'Phòng trọ', 'DH Ngoại ngữ', 0, '2020-12-30', '2021-02-06', 'Có', 0, 'khu bếp riêng', 0, 'Phòng Rất OK', 3000, 3000, 1, 'Phường Phúc Xá', 'Quận Ba Đình', 'Thành phố Hà Nội', 'Phòng A'),
+(13, 1, 30, 'xuân thủy - Thành phố Hà Nội - Quận Hoàn Kiếm - Phường Phan Chu Trinh', 3000000, 'Phòng trọ', 'DH Ngoại ngữ', 0, '2020-12-30', '2021-02-06', 'Có', 0, 'khu bếp riêng', 0, 'Phòng Rất OK', 3000, 3000, 0, 'Phường Phan Chu Trinh', 'Quận Hoàn Kiếm', 'Thành phố Hà Nội', 'Phòng B');
 
 -- --------------------------------------------------------
 
@@ -11625,18 +11627,7 @@ INSERT INTO `user` (`user_id`, `code_id`, `user`, `pass`, `address`, `status`, `
 (29, NULL, 'duc0103', 'duc', NULL, 0, 'ducanh@gmail.com', NULL, 'Lê Văn Ạnh', 'render', 0),
 (30, NULL, 'ductam', '1234', NULL, 0, 'leduc@gmail.com', NULL, 'Lê Văn Đức', 'render', 0),
 (31, NULL, 'abc', '1', NULL, 0, 'abc@gmail.com', NULL, 'Họ Và C', 'render', 0),
-(32, NULL, 'diep anh', '1', NULL, 0, 'quaydangyeu@gmail.com', NULL, 'nguyen thi diep anh', 'render', 0),
-(33, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(34, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(35, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(36, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(37, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(38, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(39, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(40, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(41, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(42, NULL, 'Dong', '', NULL, 2, '', NULL, '', '', 0),
-(43, NULL, 'Đức', '', NULL, 0, '', NULL, '', '', 0);
+(32, NULL, 'diep anh', '1', NULL, 0, 'quaydangyeu@gmail.com', NULL, 'nguyen thi diep anh', 'render', 0);
 
 -- --------------------------------------------------------
 
@@ -11724,13 +11715,13 @@ ALTER TABLE `user`
 -- AUTO_INCREMENT cho bảng `image`
 --
 ALTER TABLE `image`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=20;
 
 --
 -- AUTO_INCREMENT cho bảng `room_for_rent`
 --
 ALTER TABLE `room_for_rent`
-  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=12;
+  MODIFY `room_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
 
 --
 -- AUTO_INCREMENT cho bảng `user`

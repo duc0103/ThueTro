@@ -31,7 +31,7 @@ btnRes.onclick=function(){
                         }
                         else {
                             // Sai tên đăng nhập hoặc mật khẩu
-                            alert("Sai tên tài khoản hoặc mật khẩu");
+                            alert("Email chưa chính xác hoặc tài khoản đã tồn tại !!!");
                             // document.querySelector("div.err-submit").classList.remove("nodisplay");
                         }
                     } else {

@@ -215,6 +215,7 @@ AddRoom.onclick=function(){
                     .then(ret => {
                         if (ret.status == "ok" ) {
                             alert("Thêm thành công");
+                            document.location.href = "../main/index.htm";
                         }
                     });
             }

@@ -650,31 +650,41 @@ function them(chuoijson, bienluutrangnho) {
                     chuoivehtmlqlbdSua = `
                     <div class="thechua">
                         <label>Tên phòng : </label>
-                        <input value="`+ chuoijson[phanTuDuocThaoTacSua].tenphong + `">
+                        <input id="id_phong" value="`+ chuoijson[phanTuDuocThaoTacSua].tenphong + `">
                     </div>
                     <div class="thechua">
                         <label>Ngày hết hạn : </label>
-                        <input value="`+ chuoijson[phanTuDuocThaoTacSua].ngay_het_han + `">
+                        <input type ="date" id="date" value="`+ chuoijson[phanTuDuocThaoTacSua].ngay_het_han + `">
                     </div>
                     <div class="thechua">
                         <label>Tình trạng phê duyệt : </label>
-                        <select>
-                            <option value="chopheduyet">Chờ phê duyệt</option>
+                        <select id="public">
+                            <option value="chopheduyet" selected>Chờ phê duyệt</option>
                             <option value="dapheduyet">Đã phê duyệt</option>
                         </select>
                     </div>
                     `;
+                    // document.getElementById("public").value="chopheduyet";
                     chinhsuathongtin.innerHTML = chuoivehtmlqlbdSua;
+                    
                     nutdn.onclick = function () {
+                        let b ;
+                        let a = document.getElementById("public").value;
+                        if(a=="dapheduyet"){
+                            b=1;
+                        }
+                        else{
+                            b=0;
+                        }
                         console.log("Gửi thông tin lên sever");
                         console.log(chuoijson[phanTuDuocThaoTacSua]);
                         fetch("../../index.php/updateRoom", {
                             method: "POST",
                             headers: { "Content-Type": "application/json" },
                             body: '{"room_id":"' + chuoijson[phanTuDuocThaoTacSua].room_id +
-                                '","tenphong":"' + chuoijson[phanTuDuocThaoTacSua].tenphong +
-                                '","date_end":"' + chuoijson[phanTuDuocThaoTacSua].ngay_het_han+
-                                '","public":"' + chuoijson[phanTuDuocThaoTacSua].public+
+                                '","tenphong":"' + document.getElementById("id_phong").value +
+                                '","date_end":"' + document.getElementById("date").value+
+                                '","public":"' + b+
                                 '"}'
                           }).then(resp => {
                             if (resp.status == 200) {

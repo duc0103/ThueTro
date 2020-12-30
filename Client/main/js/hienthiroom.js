@@ -209,7 +209,7 @@ function xemchitiet(room_id,user_id_chothue)
                                                   <textarea id="comment" class="form-control" id="review" width="100%" rows="3"></textarea>
                                                 </div>
                                               </div>
-                                              <button type="submit" onclick="addComment(`+room_id+`,bienluu_room_id,bienluu_id_chutro)"  class="col-md-1 btn btn-primary">Gửi</button>
+                                              <button style="z-index:1000" type="submit" onclick="addComment(`+room_id+`,bienluu_room_id,bienluu_id_chutro)"  class="col-md-1 btn btn-primary">Gửi</button>
                                               </div>
                                               `+ hienthibinhluan+`</div>
                                             </div>

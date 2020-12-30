@@ -35,16 +35,20 @@ btnLogin.onclick = function() {
                                                 if (ret2.status == "OK") {
                                                     checkThem=ret.data;
                                                     if (ret2.data[0] == 1 && ret2.data[3]=="owner")  {
-                                                        if(confirm("Bạn Là chủ trọ bạn có muốn vào trang quản lí")){
-                                                            document.location.href = "../admin/admin.htm";
-                                                        }
+                                                        // if(alert("Bạn là Chủ Trọ")){
+                                                        //     // document.location.href = "../admin/admin.htm";
+                                                        // }
+                                                        alert("Bạn là Chủ Trọ");
                                                        
-                                                    }
+                                                    }else
                                                     if (ret2.data[0] == 1 && ret2.data[3]=="admin")  {
                                                         if(confirm("Bạn Là Admin bạn có muốn vào trang quản lí")){
                                                             document.location.href = "../admin/admin.htm";
                                                         }
                                                        
+                                                    }
+                                                    else{
+                                                        alert("Đăng nhập thành công : " + ret2.data[1]);
                                                     }
                                                 }
                                                 else{
