@@ -1,22 +1,179 @@
 <html>
-    <head>
-        <title>Đây là trang quản lý của nhà phát hành</title>
-        <meta charset="utf8">
-        <link rel="stylesheet" href="./admin.css">
-    </head>
-    <body>
-        <div id="gioithieu">Trang Quản Lý Tài Khoản</div>
-        <div id="dndk">
-            <button id="dn">Đăng nhập</button>
-            <button id="dk">Tạo tài khoản</button>
+
+<head>
+    <title>Đây là trang quản lý của nhà phát hành</title>
+    <meta charset="utf8">
+    <link rel="stylesheet" href="./admin.css">
+ 
+</head>
+
+<body>
+    <!-- <button id="deleteU" onclick="ok()">test delete</button> -->
+    <!-- Hiển thị thông tin phần đăng nhập -->
+    <div class="htdn">
+
+    </div>
+    <div class="htdn1">
+        <div id="tt1">Chỉnh sửa thông tin tài khoản</div>
+        <div id="phanchuathongtintaikhoan">
+            <div class="thechua">
+                <label>Tên bài đăng</label>
+                <input>
+            </div>
+            <div class="thechua">2</div>
+            <div class="thechua">3</div>
+            <div class="thechua">4</div>
+            <div class="thechua">5</div>
+            <div class="thechua">6</div>
         </div>
+        <div><button id="nutdn">Xác nhận</button></div>
+        <button id="thoat">X</button>
+    </div>
+    <div id="gioithieu">Quản Lý Tài Khoản</div>
+    <div id="dndk">
+        <!-- <button id="dn">Đăng nhập</button> -->
+        <div id="displayusename">
+        </div>
+        <button id="dx">Đăng xuất</button>
+    </div>
+    <div id="khung">
         <div id="content">
-            
-            <button>Quản lí tài khoản chủ trọ</button>
-            <button>Quản lí bài đăng</button>
-            <button>Thông báo</button>
-            <button>Thống kê, phân tích xu hướng thị hiếu</button>
+            <button id="qltk">Quản lí tài khoản chủ trọ</button>
+            <button id="qlbd">Quản lí bài đăng</button>
+            <button id="tb">Thông báo</button>
+            <button id="chat">Chat</button>
+            <button id="tkpt">Thống kê, phân tích xu hướng thị hiếu</button>
         </div>
-        <script src="./admin.js"></script>
-    </body>
+        <!-- //Nội dung phần quản lí tài khoản -->
+        <div id="htContent1">
+            <div class="phandauthongtinnho">
+                <div>Quản lí tài khoản </div>
+                <div><button class="thoat1">X</button></div>
+            </div>
+
+            <div class="qltk1">
+                <div>
+                    <input type="text" class="iptimkiem" placeholder=" Nhập tên tài khoản tìm kiếm ...">
+                    <button class="timkiem">Tìm kiếm</button>
+                </div>
+                <div class="sotrang">
+                    <button class="giam"><</button>
+                    <input class="giatri" type="text" value="1">
+                    <button class="tang">></button>
+                </div>
+            </div>
+            <div id="bangquanli">
+                <div>Chức năng</div>
+                <div>Tên đăng nhập</div>
+                <div>Họ tên</div>
+                <div>Email</div>
+                <div>Số điện thoại</div>
+                <div>Địa chỉ</div>
+                <div>Loại tài khoản</div>
+            </div>
+            <div class="thongtinquanli"></div>
+
+        </div>
+        <div id="htContent2">
+            <div class="phandauthongtinnho">
+                <div>Quản lí bài đăng</div>
+                <button class="thoat1">X</button>
+            </div>
+
+            <div class="qlbd1">
+                <div>
+                    <input type="text" placeholder="Tìm kiếm ..." class="iptimkiem">
+                    <button class="timkiem">Tìm kiếm</button>
+                </div>
+                <div class="sotrang">
+                    <button class="giam"><</button>
+                    <input class="giatri" type="text" value="1">
+                    <button class="tang">></button>
+                </div>
+            </div>
+            <div id="quanlibaidang">
+                <div>Chức năng</div>
+                <div>Tên bài đăng</div>
+                <div>Thời gian đăng</div>
+                <div>Ngày hết hạn</div>
+                <div>Tình trạng phê duyệt</div>
+                <div>Chủ quản lí bài đăng</div>
+            </div>
+            <div class="thongtinquanli">
+                <div>
+                    <div>
+                        <button class="Sua1">Sửa</button>
+                        <button class="Xoa1">Xóa</button>
+                    </div>
+                    <div>1</div>
+                    <div>2</div>
+                    <div>3</div>
+                    <div>4</div>
+                    <div>5</div>
+                    <select>
+                        <option value=""></option>
+                    </select>
+                </div>
+            </div>
+
+        </div>
+        <div id="htContent3">
+            <div class="phandauthongtinnho">
+                <div>Thông báo</div>
+                <button class="thoat1">X</button>
+            </div>
+
+            <div class="tb1">
+                <div>
+                    <input type="text" placeholder="Tìm kiếm ..." class="iptimkiem">
+                    <button class="timkiem">Tìm kiếm</button>
+                </div>
+                <div class="sotrang">
+                    <button class="giam"><</button>
+                    <input class="giatri" type="text" value="1">
+                    <button class="tang">></button>
+                </div>
+            </div>
+            <div id="quanlithongbao">
+            </div>
+
+        </div>
+        <div id="htContent5">
+            <div class="phandauthongtinnho">
+                <div>Người liên hệ</div>
+                <button class="thoat1">X</button>
+            </div>
+
+            <div class="chat1">
+                <div>
+                    <input type="text" placeholder="Tìm kiếm ..." class="iptimkiem">
+                    <button class="timkiem">Tìm kiếm</button>
+                </div>
+                <div class="sotrang">
+                    <button class="giam"><</button>
+                    <input class="giatri" type="text" value="1">
+                    <button class="tang">></button>
+                </div>
+            </div>
+            <div id="quanlichat">
+                <div>Tài khoản : Đông</div>
+            </div>
+
+        </div>
+        <div id="htContent4">
+            <div class="phandauthongtinnho">
+                <div>Thống kê , phân tích xu hướng thị hiếu</div>
+                <button class="thoat1">X</button>
+            </div>
+
+            <div id="phantichxuhuong">
+                Phần này chưa biết trình bài gì tính sau
+            </div>
+
+        </div>
+    </div>
+    <script src="./admin.js"></script>
+ 
+</body>
+
 </html>

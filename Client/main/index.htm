@@ -2,60 +2,444 @@
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="main.css">
-    <title>Document</title>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Nhà Trọ</title>
+
+  <!-- Favicon -->
+  <!-- <link rel="shortcut icon" href="img/favicon.ico" type="image/x-icon"> -->
+  <link rel="stylesheet" href="main.css">
+  <!-- Font awesome -->
+  <link href="css/font-awesome.css" rel="stylesheet">
+  <!-- Bootstrap -->
+  <link href="css/bootstrap.css" rel="stylesheet">
+  <!-- slick slider -->
+  <link rel="stylesheet" type="text/css" href="css/slick.css">
+  <!-- price picker slider -->
+  <link rel="stylesheet" type="text/css" href="css/nouislider.css">
+  <!-- Fancybox slider -->
+  <link rel="stylesheet" href="css/jquery.fancybox.css" type="text/css" media="screen" />
+  <!-- Theme color -->
+  <link id="switcher" href="css/theme-color/default-theme.css" rel="stylesheet">
+
+  <!-- Main style sheet -->
+  <link href="css/style.css" rel="stylesheet">
+
+
 </head>
 
-<body>
-    <div id="container">
-        <div id="head">
-            <div id="gioithieu">Nhà Trọ</div>
-            <div class="khungdn">
-                <a class="dangnhap" href="">Đăng Nhập</a>
-                <a class="dangtin" href="">Đăng Tin</a>
+<body class="aa-price-range">
+  <!-- Pre Loader -->
+  <div id="aa-preloader-area">
+    <div class="pulse"></div>
+  </div>
+
+  <!-- SCROLL TOP BUTTON -->
+  <a class="scrollToTop" href="#"><i class="fa fa-angle-double-up"></i></a>
+  <!-- END SCROLL TOP BUTTON -->
+
+  <!-- Start header section -->
+  <header id="aa-header">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-header-area">
+            <div class="row">
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="aa-header-left">
+                  <div class="aa-telephone-no">
+                    <span class="fa fa-phone"></span>
+                    0986459532<br>
+                    <span class="fa fa-phone"></span>
+                    0836515128
+                  </div>
+                  <div class="aa-email hidden-xs">
+                    <span class="fa fa-envelope-o"></span> leducdhcn@gmail.com<br>
+                    <span class="fa fa-envelope-o"></span> dongvu055@gmail.com
+                  </div>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-6 col-xs-6">
+                <div class="aa-header-right">
+                  <div id="nameUser"></div>
+                  <a id="btnRes" onclick="document.getElementById('id02').style.display='block'" style="width:auto;"
+                    class="aa-register">Đăng kí</a>
+                  <a id="btnlogin" onclick="document.getElementById('id01').style.display='block'" style="width:auto;"
+                    class="aa-login">Đăng nhập</a>
+                  <a id="logout" onclick="logout()" style="width:auto;" class="aa-register">Đăng xuất</a>
+                  <a id="changePass" onclick="document.getElementById('id03').style.display='block'" style="width:auto;"
+                    class="aa-login">Đổi mật khẩu</a>
+                </div>
+              </div>
             </div>
+          </div>
         </div>
-        <div id="timkiem">
-            <input id="thetimkiem" type="search" placeholder="Search..." />
-        </div>
-
-        <div class="timkiem1">
-            <select class="timkiem2" id="thechon1" name="vitri" value="Vị trí">
-                <option value="">vị trí</option>
-                <option value="hanoi">Hà Nội</option>
-            <option value="hochiminh">Hồ Chí Minh</option>
-            </select>
-            <select class="timkiem2" id="thechon2" name="gia">
-                <option value="">Mức giá</option>
-                <option value="1">dưới 1 triệu</option>
-                <option value="2">1 triệu đến 2 triệu</option>
-                <option value="3">2 triệu đến 3 triệu</option>
-                <option value="4">3 triệu đến 4 triệu</option>
-                <option value="5">4 triệu đến 5 triệu</option>
-                <option value="6">trên 5 triệu</option>
-            </select>
-            <select class="timkiem2" id="thechon3" name="dientich">
-                <option value="">Diện tích</option>
-                <option value="15">dưới 15 m vuông</option>
-                <option value="20">15 đến 20 m vuông</option>
-                <option value="30">20 đến 30 m vuông</option>
-                <option value="40">trên 30 m</option>
-            </select>
-            <select class="timkiem2" id="thechon4" name="loaiphong">
-                <option value="">Loại phòng</option>
-                <option value="khepkin">Khép kín</option>
-                <option value="khongkhepkin">Không khép kín</option>
-                
-            </select>
-            <button class="timkiem2">Tìm Kiếm</button>
-        </div>
+      </div>
     </div>
+  </header>
+  <!-- End header section -->
 
-    <div class="content">
+  <!-- Start menu section -->
+  <section id="aa-menu-area">
+    <nav class="navbar navbar-default main-navbar" role="navigation">
+      <div class="container">
+        <div class="navbar-header">
+          <!-- FOR MOBILE VIEW COLLAPSED BUTTON -->
+          <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+            aria-expanded="false" aria-controls="navbar">
+            <span class="sr-only">Toggle navigation</span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+            <span class="icon-bar"></span>
+          </button>
+          <!-- LOGO -->
+          <!-- Text based logo -->
+          <a class="navbar-brand aa-logo" href="index.htm"><span>Web Trọ</span></a>
+          <!-- Image based logo -->
+          <!-- <a class="navbar-brand aa-logo-img" href="index.html"><img src="img/logo.png" alt="logo"></a> -->
+        </div>
+        <div id="navbar" class="navbar-collapse collapse">
+          <ul id="top-menu" class="nav navbar-nav navbar-right aa-main-nav">
+            <li><a href="index.htm">Trang chủ</a></li>
+            <!-- <li class="dropdown">
+              <a class="dropdown-toggle" data-toggle="dropdown" href="properties.html">Phòng Trọ <span class="caret"></span></a>
+              <ul class="dropdown-menu" role="menu">                
+                <li><a href="properties.html">Phòng Trọ </a></li>
+                <li><a href="properties-detail.html">CHi tiết phòng trọ</a></li>                                            
+              </ul>
+            </li> -->
+            <li><a href="#">Chat</a></li>
+            <li><a href="#">Yêu thích</a></li>
+            <li><a id="loginaddRoom">Thêm phòng</a></li>
+          </ul>
+        </div>
+        <!--/.nav-collapse -->
+      </div>
+    </nav>
+  </section>
+  <!-- End menu section -->
 
+  <!-- Start slider  -->
+  <section id="aa-slider">
+    <div class="aa-slider-area">
+      <!-- Top slider -->
+      <div class="aa-top-slider">
+        <!-- Top slider single slide -->
+        <div class="aa-top-slider-single">
+          <img src="img/slider/3.jpg" alt="img">
+
+        </div>
+
+        <div class="aa-top-slider-single">
+          <img src="img/slider/2.jpg" alt="img">
+          <!-- / Top slider content -->
+        </div>
+
+        <div class="aa-top-slider-single">
+          <img src="img/slider/1.jpg" alt="img">
+        </div>
+
+        <div class="aa-top-slider-single">
+          <img src="img/slider/4.jpg" alt="img">
+          <!-- Top slider content -->
+        </div>
+        <!-- / Top slider single slide -->
+      </div>
     </div>
+  </section>
+  <!-- End slider  -->
+
+  <!-- Advance Search -->
+  <section id="aa-advance-search">
+    <div class="container">
+      <div class="aa-advance-search-area">
+        <div class="form">
+          <div class="aa-advance-search-top">
+            <div class="row">
+              <div class="col-md-6">
+                <div class="aa-single-advance-search">
+                  <input type="text" id="road" placeholder="Tên đường">
+                </div>
+              </div>
+              <div class="col-md-4">
+                <div class="aa-single-advance-search">
+                  <select id="typeRoom">
+                    <option value="Phòng trọ" selected>Phòng trọ</option>
+                    <option value="Chung cư mini">Chung cư mini</option>
+                    <option value="Nhà nguyên căn">Nhà nguyên căn</option>
+                    <option value="Chung cư cao cấp">Chung cư cao cấp</option>
+                  </select>
+                </div>
+              </div>
+            </div>
+            <div class="row">
+
+              <div class="col-md-3">
+                <div class="aa-single-advance-search">
+                  <select id="tinh">
+                    <option value="0" selected>Tỉnh</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="aa-single-advance-search">
+                  <select id="huyen">
+                    <option value="0" selected>Huyện</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="aa-single-advance-search">
+                  <select id="xa">
+                    <option value="0" selected>Xã</option>
+                  </select>
+                </div>
+              </div>
+              <div class="col-md-3">
+                <div class="aa-single-advance-search">
+                  <input class="aa-search-btn" id="submitSearch" type="submit" value="Search">
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="aa-advance-search-top">
+            <div class="row">
+              <div style="margin-top:20px" class="col-md-2">
+                Giá Từ:
+              </div>
+              <div class="col-md-2">
+                <div class="aa-single-advance-search">
+                  <input id="priceMin" type="text" placeholder="giá tối thiểu" value="1000000">
+                </div>
+              </div>
+              <div style="margin-top:20px" class="col-md-2">
+                <span>Đến:</span>
+              </div>
+              <div class="col-md-2">
+                <div class="aa-single-advance-search">
+                  <input id="priceMax" type="text" placeholder="giá tối đa" value="2000000">
+                </div>
+              </div>
+            </div>
+            <div class="row">
+              <div style="margin-top:20px" class="col-md-2">
+                Diện tích Từ:
+              </div>
+              <div class="col-md-2">
+                <div class="aa-single-advance-search">
+                  <input id="SMin" type="text" placeholder="Diện tích tối thiểu" value="15">
+                </div>
+              </div>
+              <div style="margin-top:20px" class="col-md-2">
+                <span>Đến:</span>
+              </div>
+              <div class="col-md-2">
+                <div class="aa-single-advance-search">
+                  <input id="SMax" type="text" placeholder="Diện tích tối đa" value="30">
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+    </div>
+  </section>
+  <!-- / Advance Search -->
+
+  <!-- Latest property -->
+  <section id="aa-latest-property">
+    <div class="container">
+      <div class="aa-latest-property-area">
+        <div class="aa-title">
+          <h2>Hiển thị phòng trọ</h2>
+          <span></span>
+        </div>
+        <div class="aa-latest-properties-content">
+          <div id="luuthongtinnhatro">
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Latest property -->
+
+  <!-- Promo Banner Section -->
+  <section id="aa-promo-banner">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-promo-banner-area">
+            <h3>Nơi trao gửi niềm tin </h3>
+            <p>Trang web của chúng tôi đảm bảo các phòng trọ đã được qua phê duyệt và kiểm định
+              <br>Chúc các bạn tìm được phòng trọ ưng ý
+            </p><br>
+            <a href="#" class="aa-view-btn">Liên hệ ngay</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+  <!-- / Promo Banner Section -->
+
+  <!-- Footer -->
+  <footer id="aa-footer">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-12">
+          <div class="aa-footer-area">
+            <div class="row">
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="aa-footer-left">
+                  <p>Được tạo ra <a rel="nofollow">Đông và Đức</a></p>
+                </div>
+              </div>
+              <div class="col-md-3 col-sm-6 col-xs-12">
+                <div class="aa-footer-middle">
+                  <a href="#"><i class="fa fa-facebook"></i></a>
+                  <a href="#"><i class="fa fa-twitter"></i></a>
+                  <a href="#"><i class="fa fa-google-plus"></i></a>
+                  <a href="#"><i class="fa fa-youtube"></i></a>
+                </div>
+              </div>
+              <div class="col-md-6 col-sm-12 col-xs-12">
+                <div class="aa-footer-right">
+                  <a href="#">Trang chủ</a>
+                  <a href="#">Liên hệ hỗ trợ</a>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </footer>
+  <!-- / Footer -->
+
+  <!-- authen -->
+  <div id="id01" class="modal1">
+
+    <div class="modal-content1 animate1">
+      <div class="imgcontainer1">
+        <span onclick="document.getElementById('id01').style.display='none'" class="close1"
+          title="Close Modal">&times;</span>
+        <span>Đăng nhập</span>
+      </div>
+
+      <div class="container1">
+        <label for="uname"><b>Tên Tài Khoản</b></label>
+        <input type="text" placeholder="Nhập Tên Tài Khoản" id="user1">
+
+        <label for="psw"><b>Mật Khẩu</b></label>
+        <input type="password" placeholder="Nhập Mật Khẩu" id="pass1">
+
+        <button type="submit" class="btn_submit" id="login">Đăng Nhập</button>
+        <label>
+          <input type="checkbox" checked="checked" name="remember"> Remember me
+        </label>
+      </div>
+
+      <div class="container1" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id01').style.display='none'"
+          class="cancelbtn1">Cancel</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Dăng kí -->
+  <div id="id02" class="modal1">
+
+    <div class="modal-content1 animate1">
+      <div class="imgcontainer1">
+        <span onclick="document.getElementById('id02').style.display='none'" class="close1"
+          title="Close Modal">&times;</span>
+        <span>Đăng kí</span>
+      </div>
+
+      <div class="container1">
+        <label for="uname"><b>Tên Tài Khoản</b></label>
+        <input type="text" placeholder="Nhập Tên Tài Khoản" id="user2">
+
+        <label for="psw"><b>Mật Khẩu</b></label>
+        <input type="password" placeholder="Nhập Mật Khẩu" id="pass2">
+
+        <label for="psw"><b>Họ và Tên</b></label>
+        <input type="text" placeholder="Họ và Tên" id="name">
+
+        <label for="psw"><b>Email</b></label>
+        <input type="text" placeholder="Nhập email" id="email">
+
+        <button type="submit" class="btn_submit" id="register">Đăng kí</button>
+
+      </div>
+
+      <div class="container1" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'"
+          class="cancelbtn1">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <!-- Đổi mật khẩu -->
+  <div id="id03" class="modal1">
+
+    <div class="modal-content1 animate1">
+      <div class="imgcontainer1">
+        <span onclick="document.getElementById('id03').style.display='none'" class="close1"
+          title="Close Modal">&times;</span>
+        <span>Đăng kí</span>
+      </div>
+
+      <div class="container1">
+        <label for="psw"><b>Mật Khẩu cũ</b></label>
+        <input type="password" placeholder="Nhập Mật Khẩu" id="pass3">
+        <label for="psw"><b>Mật khẩu mới</b></label>
+        <input type="password" placeholder="Nhập mật khẩu mới" id="newpass">
+        <button type="submit" class="btn_submit" onclick=" changPass()" id="doChange">Đổi mật khẩu</button>
+
+      </div>
+
+      <div class="container1" style="background-color:#f1f1f1">
+        <button type="button" onclick="document.getElementById('id02').style.display='none'"
+          class="cancelbtn1">Cancel</button>
+      </div>
+    </div>
+  </div>
+  <!-- Hiển thị thông tin chi tiết phòng -->
+  <div id="luuthongtinnhatroaaa">
+
+  </div>
+<div class="container">
+    
+</div>
+
+
+
+  <script src="main.js"></script>
+  <script src="js/login.js"></script>
+  <script src="js/register.js"></script>
+  <script src="js/logout.js"></script>
+  <script src="js/changePass.js"></script>
+
+  <!-- jQuery library -->
+  <!--<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.11.3/jquery.min.js"></script> -->
+  <script src="js/jquery.min.js"></script>
+  <!-- Include all compiled plugins (below), or include individual files as needed -->
+  <script src="js/bootstrap.js"></script>
+  <!-- slick slider -->
+  <script type="text/javascript" src="js/slick.js"></script>
+  <!-- Price picker slider -->
+  <script type="text/javascript" src="js/nouislider.js"></script>
+  <!-- mixit slider -->
+  <script type="text/javascript" src="js/jquery.mixitup.js"></script>
+  <!-- Add fancyBox -->
+  <script type="text/javascript" src="js/jquery.fancybox.pack.js"></script>
+  <!-- Custom js -->
+  <script src="js/custom.js"></script>
+  <script src="js/hienthiroom.js"></script>
+  <script src="js/search.js"></script>
+
+
 </body>
 
 </html>

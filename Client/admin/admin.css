@@ -1,15 +1,18 @@
 body{
-    background-color: lightblue;
+    background-color:ivory;
+    width: 100%;
+    margin: auto;
 }
 #gioithieu{
+    margin-left: 20px;
     font-size: 50px;
     color:lightseagreen;
     text-shadow: 4px 2px 4px;
 }
 #dndk{
-    position: fixed;
+    position: absolute;
     top: 10px;
-    right: 30px;
+    right: 0px;
     display: flex;
     width: auto;
     height: 50px;
@@ -28,14 +31,227 @@ body{
 }
 #content{
     display: flex;
+    flex:1;
     flex-direction: column;
-    width: auto;
-    height: 500px;
+    width: 100%;
+    height: 600px;
     margin:inherit;
     margin-left: auto;
     margin-right: auto;
 }
 #content button{
-    height: 100px;
+    height: 70px;
     margin: 20px;
+    background-color: beige;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+}
+.htdn{
+    position:fixed;
+    background-color:lavenderblush;
+    width:100%;
+    height:100%;
+    overflow: auto;
+    opacity: 0.5;
+    z-index: 1;
+    display: none;
+}
+.htdn1{
+    position: absolute;
+    display:none;
+    z-index:2;
+    width: 50%;
+   /* // height: 50%; */
+    background-color: aqua;
+    top: 20px;
+    left: 350px;
+    border: solid 3px cadetblue;
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+}
+.htdn1>div{
+    text-align: center;
+    padding: 20px;
+}
+.htdn1>div>div{
+    text-align: center;
+    padding: 10px;
+    font-size: 20px;
+}
+
+.thechua{
+    display: flex;
+}
+label{
+    flex: 1;
+    text-align: left;
+    margin-left: 25px;
+}
+input,select,#nutdn{
+    flex: 1;
+    width: 300px;
+    height: 30px;
+    border: solid 2px teal;
+    border-radius: 5px;
+    text-align: left;
+}
+#thoat{
+    position: absolute;
+    top:0px;
+    right: 0px;
+}
+#tt1{
+    font-size: 50px;
+    color:lightseagreen;
+    text-shadow: 2px 2px 4px;
+}
+#nutdn{
+    width: 120px;
+    height: 30px;
+    border: solid 2px teal;
+    border-radius: 5px;
+    text-align: center;
+}
+button{
+    cursor: pointer;
+}
+#thoat{
+    width: 40px;
+    height: 30px;
+}
+#thoat:hover{
+    background-color: red;
+    color: white;
+}
+#khung{
+    display: flex;
+}
+#htContent1, #htContent2, #htContent3, #htContent4,#htContent5{
+    position: relative;
+    border-radius: 5px;
+    flex:5;
+    margin: 20px;
+    display: none;
+}
+/* .thoat1{
+    position: absolute;
+    top: 0px;
+    right: 0px;
+} */
+#bangquanli,#quanlibaidang,.thongtinquanli>div{
+    display: flex;
+}
+#bangquanli div,#quanlibaidang div,.thongtinquanli>div>div{
+    flex: 1;
+    overflow: auto;
+    text-align: center;
+    border: solid 2px steelblue;
+    /* border-right: solid 1px steelblue; */
+    padding: 5px;
+    /* background-color: beige; */
+    margin: 1px;
+    border-radius: 5px;
+}
+#phantichxuhuong{
+    border: solid 2px steelblue;
+    margin-top:5px ;
+    padding: 5px;
+}
+.qlbd1,.qltk1,.tb1,.chat1{
+    display: flex;
+    flex:1;
+}
+.qlbd1>div,.qltk1>div,.tb1>div,.chat1>div{
+    flex: 1;
+}
+.sotrang input{
+    width: 40px;
+    text-align: center;
+}
+.qlbd1 button,.qltk1 button,.tb1 button,.chat1 button{
+    border: solid 2px steelblue;
+    height: 30px;
+    border-radius: 5px;
+    margin: 5px;
+}
+#displayusename button, #dx{
+    width: 80px;
+    height: 30px;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+    margin: 10px;
+}
+/* button.thoat1{
+    width: 25px;
+    height: 25px;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+} */
+button.thoat1:hover{
+    color:red;
+}
+.phandauthongtinnho{
+    font-size: 25px;
+    margin-bottom: 10px;
+    padding: 5px;
+    display: flex;
+    background:beige;
+    flex-direction: inherit;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+    padding-left: 20px;
+}
+.phandauthongtinnho>div{
+    flex: 1;
+}
+.phandauthongtinnho>div button{
+    float: right;
+    height: 100%;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+    background-color: white;
+    color: black;
+}
+button.Sua,button.Xoa,button.Sua1,button.Xoa1{
+    width: 40px;
+    height: 30px;
+    text-align: center;
+    margin-left: 5px;
+    background-color: beige;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+}
+#bangquanli div{
+    color: black;
+    font-size: 18;
+    background-color: beige;
+}
+.thongtinquanli>div>div{
+    color: black;
+    font-size: 15px;
+}
+#quanlithongbao>div,div.userThongbao{
+    margin-bottom: 10px;
+    border: solid 2px steelblue;
+    border-radius: 5px;
+    padding: 5px;
+    text-align: center;
+}
+#quanlithongbao>div:hover,div.userThongbao:hover{
+    background-color:turquoise;
+    cursor: pointer;
+}
+.thongtinquanli>div:hover{
+    background-color:turquoise;
+    cursor: pointer;
+}
+.ipchat{
+    width: 100%;
+    height: 60px;
+}
+.noidungchat{
+    width: 100%;
+    height: 60px;
+    margin-top: 15px;
 }
